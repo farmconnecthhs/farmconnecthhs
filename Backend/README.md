@@ -119,3 +119,32 @@ class UserController {
 module.exports = UserController;
 ```
 In een REST API werken deze componenten samen om de functionaliteit van de API te bieden. De controller ontvangt het inkomende HTTP-verzoek en routeert deze naar de juiste service methode op basis van de URL-route. De service verwerkt vervolgens het verzoek en roept indien nodig de DAL aan om de gegevens te manipuleren. Wanneer de bewerking is voltooid, retourneert de service het resultaat aan de controller, die de juiste HTTP-statuscode retourneert aan de client.
+
+# DTO's
+In een REST API staat DTO voor Data Transfer Object. Het is een object dat wordt gebruikt om gegevens tussen verschillende lagen van de applicatie over te dragen zonder de interne structuur van de objecten bloot te leggen.
+
+Een DTO bevat alleen de relevante gegevens die nodig zijn voor een specifieke actie of taak. Het kan bijvoorbeeld worden gebruikt om gegevens van een client naar de server te verzenden, of om gegevens van de server naar de client te verzenden. Door alleen de benodigde gegevens te verzenden, kan de DTO de grootte van de overgedragen gegevens beperken en de prestaties van de API verbeteren.
+
+DTO's worden vaak gebruikt om de gegevens van een entity model te transformeren naar een ander formaat of een subset van de gegevens te selecteren. Bijvoorbeeld, als een client een lijst van gebruikers opvraagt, kan de server een DTO gebruiken om alleen de naam en e-mail van de gebruikers terug te sturen in plaats van de volledige gebruikersobjecten.
+
+Het gebruik van DTO's kan ook de veiligheid van de applicatie verbeteren, omdat het de interne structuur van de objecten verborgen houdt en voorkomt dat ongewenste gegevens worden blootgesteld aan de client.
+
+```ts
+// UserDTO.js
+import { Optional} from "sequelize";
+
+// DTO's voor het aanmaken van een gebruiker
+export type CreateUserDTO = {
+    username: string;
+    displayname: string;
+    email: string;
+}
+// DTO's voor het updaten van een gebruiker
+export type UpdateUserDTO = Optional<CreateUserDTO, 'email'>
+
+// DTO's voor het filteren van gebruikers
+export type FilterUserDTO = {
+    isDeleted?: boolean;
+    includeDeleted?: boolean;
+}
+```
