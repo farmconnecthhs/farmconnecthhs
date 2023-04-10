@@ -1,0 +1,11 @@
+# Uitleg layers van de API
+
+1. Route: Een route in een REST API bepaalt welke actie moet worden uitgevoerd op basis van het HTTP-verzoek dat door de client wordt verzonden. Een route wordt gedefinieerd als een URL met een HTTP-methode (GET, POST, PUT, DELETE, enzovoort). Bijvoorbeeld, een route "/users" kan worden gebruikt om alle gebruikers op te halen met een GET-verzoek, of om een nieuwe gebruiker aan te maken met een POST-verzoek.
+
+2. Service: Een service in een REST API bevat de logica om de vereiste acties uit te voeren voor de verschillende verzoeken die via de routes binnenkomen. Het is verantwoordelijk voor de verwerking van gegevens, het valideren van invoer en het retourneren van de resultaten. De service fungeert als een tussenlaag tussen de controller en de DAL en zorgt voor de scheiding van verantwoordelijkheden tussen deze lagen.
+
+3. Data Access Layer (DAL): Een DAL in een REST API is verantwoordelijk voor het beheren van de communicatie met de database of externe gegevensbronnen. Het bevat logica voor het uitvoeren van CRUD-operaties (Create, Read, Update en Delete) op de gegevens en biedt een abstractie van de database-implementatie. De DAL is verantwoordelijk voor het opslaan en ophalen van gegevens van en naar de database.
+
+4. Controller: Een controller in een REST API ontvangt de inkomende HTTP-verzoeken van de client en verwerkt deze door de juiste service methode aan te roepen op basis van de route die wordt aangeroepen. De controller is verantwoordelijk voor het afhandelen van de HTTP-verzoeken en het retourneren van de juiste HTTP-statuscodes aan de client.
+
+In een REST API werken deze componenten samen om de functionaliteit van de API te bieden. De controller ontvangt het inkomende HTTP-verzoek en routeert deze naar de juiste service methode op basis van de URL-route. De service verwerkt vervolgens het verzoek en roept indien nodig de DAL aan om de gegevens te manipuleren. Wanneer de bewerking is voltooid, retourneert de service het resultaat aan de controller, die de juiste HTTP-statuscode retourneert aan de client.
