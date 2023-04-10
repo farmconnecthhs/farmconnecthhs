@@ -148,3 +148,6 @@ export type FilterUserDTO = {
     includeDeleted?: boolean;
 }
 ```
+
+# Links naar relevante docs
+[https://sequelize.org/docs/v6/other-topics/typescript/](https://sequelize.org/docs/v6/other-topics/typescript/)
