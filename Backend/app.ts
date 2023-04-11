@@ -36,12 +36,14 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:3000",
+        url: "http://localhost:3000/api/v1",
       },
     ],
   },
   apis: ['./api/**/*.ts',
     './api/users/routes/*.ts',
+    './swagger/components/user.yaml',
+    './swagger/components/error.yaml',
   ],
 };
 const specs = swaggerJsdoc(options);
