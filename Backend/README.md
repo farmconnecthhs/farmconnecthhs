@@ -1,3 +1,12 @@
+# Development omgeving opzetten
+
+
+- vul de .env.example in (te vinden in de backend map) en hernoem deze naar .env
+- navigeer naar de backend map in de terminal
+- npm install
+- npm run dev om de server te starten op localhost:3000 (nodemon) changes worden automatisch herladen
+
+
 # Applicatiestructuur
 
 De hoofdmap van de backend bevat de volgende mappen:
