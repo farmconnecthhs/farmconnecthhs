@@ -3,10 +3,11 @@ import sequelize from "../../../config/config";
 
 interface UserAttributes {
     id: number;
-    username: string;
-    email: string;
-    token?: string;
-    avatar?: string;
+    first_name?: string;
+    last_name?: string;
+    user_name: string;
+    email_address: string;
+    phone_number?: string;
     createdAt?: Date;
     updatedAt?: Date;
     deletedAt?: Date;
@@ -17,10 +18,11 @@ export interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {
 export class User extends Model<InferAttributes<User>, UserCreationAttributes> implements UserAttributes {
     //CreateOptional is a type that allows you to set the type of a property to undefined
     declare id: CreationOptional<number>;
-    declare username: string;
-    declare email: string;
-    declare token?: CreationOptional<string>;
-    declare avatar?: CreationOptional<string>;
+    declare first_name?: string;
+    declare last_name?: string;
+    declare user_name: string;
+    declare email_address: string;
+    declare phone_number?: string;
 
     // timestamps!
     // timestamps are optional, so we need to use CreationOptional
@@ -36,21 +38,21 @@ User.init({
         autoIncrement: true,
         primaryKey: true,
     },
-    username: {
+    first_name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    email: {
+    last_name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    token: {
+    user_name: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
     },
-    avatar: {
+    email_address: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
     },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
