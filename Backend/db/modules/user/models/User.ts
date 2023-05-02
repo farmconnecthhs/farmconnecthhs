@@ -1,5 +1,6 @@
-import {CreationOptional, DataTypes, InferAttributes, Model, Optional} from "sequelize";
+import {BelongsToGetAssociationMixin, CreationOptional, DataTypes, InferAttributes, Model, Optional} from "sequelize";
 import sequelize from "../../../config/config";
+import {Role} from "../../role/models/Role";
 
 interface UserAttributes {
     id: number;
@@ -11,6 +12,7 @@ interface UserAttributes {
     createdAt?: Date;
     updatedAt?: Date;
     deletedAt?: Date;
+    roleId?: number;
 }
 
 export interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
@@ -23,6 +25,9 @@ export class User extends Model<InferAttributes<User>, UserCreationAttributes> i
     declare user_name: string;
     declare email_address: string;
     declare phone_number?: string;
+    declare roleId?: CreationOptional<number>;
+
+    public getRole!: BelongsToGetAssociationMixin<Role>;
 
     // timestamps!
     // timestamps are optional, so we need to use CreationOptional
@@ -52,6 +57,10 @@ User.init({
     },
     email_address: {
         type: DataTypes.STRING,
+        allowNull: false,
+    },
+    roleId: {
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     createdAt: DataTypes.DATE,
