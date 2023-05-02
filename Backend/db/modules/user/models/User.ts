@@ -28,6 +28,7 @@ export class User extends Model<InferAttributes<User>, UserCreationAttributes> i
     declare roleId?: CreationOptional<number>;
 
     public getRole!: BelongsToGetAssociationMixin<Role>;
+    public deleteRole!: BelongsToGetAssociationMixin<Role>;
 
     // timestamps!
     // timestamps are optional, so we need to use CreationOptional
