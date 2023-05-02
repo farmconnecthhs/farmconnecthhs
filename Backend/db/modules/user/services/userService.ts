@@ -1,6 +1,6 @@
 import {User, UserCreationAttributes} from "../models/User";
 import * as dal from "../dal/user";
-import exp from "constants";
+
 export const create = async (payload: UserCreationAttributes): Promise<User> => {
     return await dal.create(payload);
 }

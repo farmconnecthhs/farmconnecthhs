@@ -15,7 +15,3 @@ export const getById = async (id: number) => {
 export const getAll = async () => {
     return await Role.findAll();
 }
-
-export const deleteRole = async(role : Role)=>{
-    await role.destroy();
-}
