@@ -161,5 +161,5 @@ export type FilterUserDTO = {
 # Links naar relevante docs
 [https://sequelize.org/docs/v6/other-topics/typescript/](https://sequelize.org/docs/v6/other-topics/typescript/)
 
-# Server side vs Client components
+# Server vs Client components
 https://beta.nextjs.org/docs/rendering/server-and-client-components
