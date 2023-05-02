@@ -1,4 +1,16 @@
-import {BelongsToGetAssociationMixin, CreationOptional, DataTypes, InferAttributes, Model, Optional} from "sequelize";
+import {
+    BelongsToGetAssociationMixin,
+    CreationOptional,
+    DataTypes,
+    HasManyGetAssociationsMixin,
+    HasManyRemoveAssociationMixin,
+    HasOneCreateAssociationMixin,
+    HasOneGetAssociationMixin,
+    HasOneSetAssociationMixin,
+    InferAttributes,
+    Model,
+    Optional
+} from "sequelize";
 import sequelize from "../../../config/config";
 import {Role} from "../../role/models/Role";
 
@@ -27,8 +39,8 @@ export class User extends Model<InferAttributes<User>, UserCreationAttributes> i
     declare phone_number?: string;
     declare roleId?: CreationOptional<number>;
 
-    public getRole!: BelongsToGetAssociationMixin<Role>;
-    public deleteRole!: BelongsToGetAssociationMixin<Role>;
+    public getRole!: HasOneGetAssociationMixin<Role>;
+    public setRole!: HasOneCreateAssociationMixin<Role>;
 
     // timestamps!
     // timestamps are optional, so we need to use CreationOptional

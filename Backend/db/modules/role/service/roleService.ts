@@ -26,11 +26,3 @@ export const getAll = async () => {
     return roles;
 }
 
-export const deleteRoleById = async(id : number)=>{
-    const role = await dal.getById(id);
-    if (!role) {
-        throw new Error("Role not found");
-    }
-    await dal.deleteRole(role);
-}
-
