@@ -1,7 +1,7 @@
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  --font-mono: Roboto,Arial,Helvetica,sans-serif;;
 
     --default-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
     --font-color: #000;
@@ -143,6 +143,7 @@ input[type="time"]{
 
 h1, h2, h3, h4{
     color: rgb(66, 66, 66);
+    font-weight: 800;
 }
 
 .margin_s{
@@ -171,6 +172,10 @@ h1, h2, h3, h4{
 .row{
     display: flex;
     flex-direction: row;
+}
+
+.row_align_center{
+    align-items: center;
 }
 
 .row__wrap{
