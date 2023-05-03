@@ -13,6 +13,8 @@ import {Boerderijprofiel} from "@/components/boerderij/editor/interfaces/Boerder
 
 const EditFarmProfile: NextPage = () => {
 
+    //TODO: get slug from url and fetch boerderijprofiel from backend
+
     const [openingstijden, setOpeningstijden] =
         useState<Openingstijden>(defaultOpeningstijden);
 
