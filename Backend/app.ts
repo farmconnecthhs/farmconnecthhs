@@ -53,7 +53,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 //app.use(express.urlencoded({ extended: false }));
 
-const port: number = 3000;
+const port: number = 3001;
 
 app.get('/', (req: Request, res: Response) => {
   res.send("Hello Worlds!");

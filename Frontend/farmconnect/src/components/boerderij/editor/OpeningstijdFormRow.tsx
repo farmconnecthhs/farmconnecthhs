@@ -1,5 +1,5 @@
 import React from 'react';
-import {Openingstijd} from "../../../interfaces/Openingstijd";
+import {Openingstijd} from "@/components/boerderij/editor/interfaces/Openingstijd";
 interface OpeningstijdFormRowProps {
     openingstijd: Openingstijd;
     onChangeOpeningstijd: (openingstijd: Openingstijd) => void;

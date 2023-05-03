@@ -1,10 +1,11 @@
 'use client'
 import {NextPage} from "next";
 import {useState} from "react";
-import {Openingstijd} from "../../../../../interfaces/Openingstijd";
-import {defaultOpeningstijden, Openingstijden} from "../../../../../interfaces/Openingstijden";
-import OpeningstijdFormRow from "@/components/boerderij/OpeningstijdFormRow";
+import {Openingstijd} from "@/components/boerderij/editor/interfaces/Openingstijd";
+import {defaultOpeningstijden, Openingstijden} from "@/components/boerderij/editor/interfaces/Openingstijden";
 import OpeningstijdenEditForm from "@/components/boerderij/editor/OpeningstijdenEditForm";
+import {Adresgegevens} from "@/components/boerderij/editor/interfaces/Adresgegevens";
+import AdresGegevensEditForm from "@/components/boerderij/editor/AdresGegevensEditForm";
 
 
 const EditFarmProfile: NextPage = () => {
@@ -12,11 +13,16 @@ const EditFarmProfile: NextPage = () => {
     const [openingstijden, setOpeningstijden] =
         useState<Openingstijden>(defaultOpeningstijden);
 
+    const [adresGegevens, setAdresGegevens] =
+        useState<Adresgegevens>({straat: "", huisnummer: "", postcode: "", stad: ""});
+
+
+
     function changeOpeningstijd(openingstijd: Openingstijd) {
         setOpeningstijden({...openingstijden, [openingstijd.day]: openingstijd});
         console.log(openingstijd);
     }
-    
+
     return (
         <>
             <div className={"content-container"}>
@@ -27,13 +33,10 @@ const EditFarmProfile: NextPage = () => {
                         <input className={"input input--large"} type={"text"} placeholder={"Boerderij naam"}/>
                         <textarea className={"input input--large"} placeholder={"Boerderij website tekst"}/>
                     </div>
-                    <div className={"card col margin-s"}>
-                        <h2>Bezoekersaddress</h2>
-                        <input className={"input"} type={"text"} placeholder={"straat"}/>
-                        <input className={"input"} type={"text"} placeholder={"huisnummer"}/>
-                        <input className={"input"} type={"text"} placeholder={"postcode"}/>
-                        <input className={"input"} type={"text"} placeholder={"stad"}/>
-                    </div>
+                   <AdresGegevensEditForm
+                        adresGegevens={adresGegevens}
+                        setAdresGegevens={setAdresGegevens}
+                   />
                 </div>
                 <div className={"card col margin-s"}>
                     <h2>Openingstijden</h2>

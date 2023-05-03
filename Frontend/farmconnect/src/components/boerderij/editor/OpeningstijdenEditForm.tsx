@@ -1,6 +1,6 @@
-import {Openingstijden} from "../../../../interfaces/Openingstijden";
-import OpeningstijdFormRow from "@/components/boerderij/OpeningstijdFormRow";
-import {Openingstijd} from "../../../../interfaces/Openingstijd";
+import {Openingstijden} from "@/components/boerderij/editor/interfaces/Openingstijden";
+import OpeningstijdFormRow from "@/components/boerderij/editor/OpeningstijdFormRow";
+import {Openingstijd} from "@/components/boerderij/editor/interfaces/Openingstijd";
 
 interface OpeningstijdenEditFormProps {
     openingstijden: Openingstijden
