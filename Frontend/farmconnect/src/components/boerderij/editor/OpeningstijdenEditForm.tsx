@@ -17,13 +17,15 @@ const OpeningstijdenEditForm: React.FunctionComponent<OpeningstijdenEditFormProp
         for (let openingstijd in openingstijden) {
             openingTimesElements.push(<OpeningstijdFormRow
                 openingstijd={openingstijden[openingstijd as keyof Openingstijden]}
-                onChangeOpeningstijd={changeOpeningstijd}/>)
+                onChangeOpeningstijd={changeOpeningstijd}
+                key={openingstijd}
+            />)
         }
         return openingTimesElements;
     }
 
     return (
-        <div className={"card col margin-s"}>
+        <div className={"card col margin_s"}>
             <h2>Openingstijden</h2>
             <div className={"row row__wrap"}>
                 <div className={"col"}>

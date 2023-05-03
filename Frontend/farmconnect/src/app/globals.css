@@ -105,13 +105,19 @@ a {
 
 textarea{
     min-height: 300px;
-    min-width: 700px;
+    min-width: 600px;
+    max-width: 600px;
     border-radius: 6px;
     border: none;
     outline: none;
     padding: 0.5rem 1rem;
     margin: 4px;
     box-shadow: var(--default-shadow);
+}
+
+.textarea_smaller{
+    height: 100px;
+    min-height: 100px;
 }
 
 input[type="text"],
@@ -139,11 +145,11 @@ h1, h2, h3, h4{
     color: rgb(66, 66, 66);
 }
 
-.margin-s{
+.margin_s{
     margin: 0.5rem;
 }
 
-.input--large{
+.input_large{
     width: 700px;
 }
 
@@ -166,6 +172,7 @@ h1, h2, h3, h4{
     display: flex;
     flex-direction: row;
 }
+
 .row__wrap{
     flex-wrap: wrap;
 }

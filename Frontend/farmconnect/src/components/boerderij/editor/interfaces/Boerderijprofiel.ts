@@ -6,6 +6,7 @@ export interface Boerderijprofiel{
     id?: number,
     boerderijNaam: string,
     boerderijBeschrijving: string,
+    productenBeschrijving: string,
     adresgegevens: Adresgegevens,
     openingstijden: Openingstijden,
     betaalmethodes: Betaalmethodes

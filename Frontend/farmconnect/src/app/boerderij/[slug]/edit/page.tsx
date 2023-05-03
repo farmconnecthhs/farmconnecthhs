@@ -14,9 +14,11 @@ import {Boerderijprofiel} from "@/components/boerderij/editor/interfaces/Boerder
 const EditFarmProfile: NextPage = () => {
 
     //TODO: get slug from url and fetch boerderijprofiel from backend
-
     const [openingstijden, setOpeningstijden] =
         useState<Openingstijden>(defaultOpeningstijden);
+
+    const [productenBeschrijving, setProductenBeschrijving] =
+        useState<string>("");
 
     const [adresGegevens, setAdresGegevens] =
         useState<Adresgegevens>({straat: "", huisnummer: "", postcode: "", stad: ""});
@@ -40,6 +42,7 @@ const EditFarmProfile: NextPage = () => {
         const profiel: Boerderijprofiel = {
             boerderijNaam: boerderijNaam,
             boerderijBeschrijving: boerderijWebsiteTekst,
+            productenBeschrijving: productenBeschrijving,
             adresgegevens: adresGegevens,
             openingstijden: openingstijden,
             betaalmethodes: betaalmethoden
@@ -51,25 +54,34 @@ const EditFarmProfile: NextPage = () => {
     }
 
     return (
-        <>
+        <div>
             <div className={"content-container"}>
                 <h1>Bewerk boerderijprofiel</h1>
                 <div className={'row'}>
-                    <button className={''} onClick={saveProfile}>Save</button>
+                    <button onClick={()=>saveProfile}>Save</button>
                 </div>
                 <div className={"row row__wrap"}>
-                    <div className={"card col margin-s"}>
+                    <div className={"card col margin_s"}>
                         <h2>Boerderij informatie</h2>
                         <input
-                            className={"input input--large"}
+                            className={"input input_large"}
                             type={"text"}
                             placeholder={"Boerderij naam"}
+                            value={boerderijNaam}
                             onChange={(e) => setBoerderijNaam(e.target.value)}
                         />
                         <textarea
-                            className={"input input--large"}
+                            className={"input input_large"}
                             placeholder={"Boerderij website tekst"}
+                            value={boerderijWebsiteTekst}
                             onChange={(e) => setBoerderijWebsiteTekst(e.target.value)}
+                        />
+                        <h2>Producten beschrijving</h2>
+                        <textarea
+                            className={"input input_large textarea_smaller"}
+                            placeholder={"Beschrijving producten"}
+                            value={productenBeschrijving}
+                            onChange={(e) => setProductenBeschrijving(e.target.value)}
                         />
                         {/*TODO gamification elementen uitwerken*/}
                     </div>
@@ -91,7 +103,7 @@ const EditFarmProfile: NextPage = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 export default EditFarmProfile;

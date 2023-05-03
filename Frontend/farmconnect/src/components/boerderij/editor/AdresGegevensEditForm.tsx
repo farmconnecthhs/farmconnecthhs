@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {Adresgegevens} from "../editor/interfaces/Adresgegevens";
 
@@ -15,7 +16,7 @@ const AdresGegevensEditForm: React.FunctionComponent<Props> = (props: Props) => 
     }
 
     return (
-        <div className={"card col margin-s"}>
+        <div className={"card col margin_s"}>
             <h2>Bezoekersaddress</h2>
             <input
                 className={"input"}

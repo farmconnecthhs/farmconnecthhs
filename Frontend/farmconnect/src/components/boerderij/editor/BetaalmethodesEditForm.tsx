@@ -8,7 +8,7 @@ interface Props {
 const BetaalmethodesEditForm: React.FunctionComponent<Props> = (props) => {
 
     return (
-        <div className={'card margin-s'}>
+        <div className={'card margin_s'}>
             <h2>Betaalmethodes</h2>
             <div>
                 <label htmlFor="contant">Contant</label>
@@ -21,7 +21,6 @@ const BetaalmethodesEditForm: React.FunctionComponent<Props> = (props) => {
             </div>
             <div>
                 <label htmlFor="pin">Pin</label>
-
                 <input
                     type="checkbox"
                     id="pin"

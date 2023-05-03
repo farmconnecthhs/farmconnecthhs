@@ -7,7 +7,7 @@ interface OpeningstijdFormRowProps {
 const OpeningstijdFormRow: React.FunctionComponent<OpeningstijdFormRowProps> = (props: OpeningstijdFormRowProps) => {
     const {openingstijd, onChangeOpeningstijd} = props;
     return (
-        <label key={openingstijd.day}>{openingstijd.day}
+        <div key={openingstijd.day}>{openingstijd.day}
             <input
                 className={"input_type_time"}
                 type={"time"}
@@ -45,7 +45,7 @@ const OpeningstijdFormRow: React.FunctionComponent<OpeningstijdFormRowProps> = (
                 }
             }
             />
-        </label>);
+        </div>);
 }
 
 export default OpeningstijdFormRow;
