@@ -1,12 +1,8 @@
 import {
-    BelongsToGetAssociationMixin,
     CreationOptional,
     DataTypes,
-    HasManyGetAssociationsMixin,
-    HasManyRemoveAssociationMixin,
     HasOneCreateAssociationMixin,
     HasOneGetAssociationMixin,
-    HasOneSetAssociationMixin,
     InferAttributes,
     Model,
     Optional
