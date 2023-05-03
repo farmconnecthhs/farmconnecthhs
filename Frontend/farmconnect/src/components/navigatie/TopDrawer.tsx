@@ -7,7 +7,7 @@ interface Props {
 }
 export const TopDrawer: React.FunctionComponent<Props> = (props) => {
     const {open} = props;
-    const [style, setStyle] = React.useState({transform: 'translateY(-5rem)'});
+    const [style, setStyle] = React.useState({transform: 'translateY(-10rem)'});
 
     const menuStyle = {
         display: 'flex',
