@@ -23,15 +23,22 @@ const OpeningstijdenEditForm: React.FunctionComponent<OpeningstijdenEditFormProp
     }
 
     return (
+        <div className={"card col margin-s"}>
+            <h2>Openingstijden</h2>
+            <div className={"row row__wrap"}>
+                <div className={"col"}>
+                    <div className={"row row__wrap"}>
 
-        <div className={"row row__wrap"}>
-            <div className={"col"}>
-                {
-                    getOpeningTimes().map((openingstijd) => {
-                            return openingstijd;
-                        }
-                    )
-                }
+                        <div className={"col"}>
+                            {
+                                getOpeningTimes().map((openingstijd) => {
+                                        return openingstijd;
+                                    }
+                                )
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
