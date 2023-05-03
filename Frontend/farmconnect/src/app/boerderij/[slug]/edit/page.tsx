@@ -1,11 +1,27 @@
+'use client'
 import {NextPage} from "next";
+import {useState} from "react";
+import {Openingstijd} from "../../../../../interfaces/Openingstijd";
+import {defaultOpeningstijden, Openingstijden} from "../../../../../interfaces/Openingstijden";
+import OpeningstijdFormRow from "@/components/boerderij/OpeningstijdFormRow";
+import OpeningstijdenEditForm from "@/components/boerderij/editor/OpeningstijdenEditForm";
+
 
 const EditFarmProfile: NextPage = () => {
+
+    const [openingstijden, setOpeningstijden] =
+        useState<Openingstijden>(defaultOpeningstijden);
+
+    function changeOpeningstijd(openingstijd: Openingstijd) {
+        setOpeningstijden({...openingstijden, [openingstijd.day]: openingstijd});
+        console.log(openingstijd);
+    }
+    
     return (
-        <div>
-            <h1>Bewerk boerderij profiel</h1>
+        <>
             <div className={"content-container"}>
-                <div className={"row"}>
+                <h1>Bewerk boerderijprofiel</h1>
+                <div className={"row row__wrap"}>
                     <div className={"card col margin-s"}>
                         <h2>Boerderij informatie</h2>
                         <input className={"input input--large"} type={"text"} placeholder={"Boerderij naam"}/>
@@ -19,10 +35,20 @@ const EditFarmProfile: NextPage = () => {
                         <input className={"input"} type={"text"} placeholder={"stad"}/>
                     </div>
                 </div>
+                <div className={"card col margin-s"}>
+                    <h2>Openingstijden</h2>
+                    <div className={"row row__wrap"}>
+                        <div className={"col"}>
+                           <OpeningstijdenEditForm
+                                openingstijden={openingstijden}
+                                changeOpeningstijd={changeOpeningstijd}
+                                setOpeningstijden={setOpeningstijden}
+                           />
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
-        </div>
+        </>
     )
 }
 export default EditFarmProfile;

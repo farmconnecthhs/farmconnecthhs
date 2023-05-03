@@ -5,9 +5,9 @@
 
     --default-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
     --font-color: #000;
-  --foreground-rgb: 10, 10, 10;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: rgb(10, 10, 10);
+  --background-start-rgb: rgb(214, 219, 220);
+  --background-end-rgb: rgb(255, 255, 255);
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -34,10 +34,10 @@
     #00000080
   );
 
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
+  --callout-rgb: rgb(238, 240, 241);
+  --callout-border-rgb: rgb(172, 175, 176);
   --card-hex: #f3f3f3;
-  --card-border-rgb: 131, 134, 135;
+  --card-border-rgb: rgb(220, 224, 224);
 }
 
 /*@media (prefers-color-scheme: dark) {*/
@@ -114,7 +114,12 @@ textarea{
     box-shadow: var(--default-shadow);
 }
 
-input{
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="time"]{
     border: none;
     outline: none;
     width: 350px;
@@ -124,6 +129,10 @@ input{
     margin: 4px;
     font-size: 1rem;
     box-shadow: var(--default-shadow);
+}
+
+input[type="time"]{
+    width: 80px;
 }
 
 h1, h2, h3, h4{
@@ -140,7 +149,7 @@ h1, h2, h3, h4{
 
 .card{
     background: var(--card-hex);
-    border: 1px solid rgb(var(--card-border-rgb));
+    border: 1px solid var(--card-border-rgb);
     border-radius: var(--border-radius);
     box-shadow: var(--default-shadow);
     padding: 1rem;
@@ -157,6 +166,10 @@ h1, h2, h3, h4{
     display: flex;
     flex-direction: row;
 }
+.row__wrap{
+    flex-wrap: wrap;
+}
+
 
 .content-container{
     width: 70%;
