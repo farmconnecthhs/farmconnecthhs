@@ -1,11 +1,11 @@
 {
-  "compilerOptions":{
+  "compilerOptions": {
     /*Language and Environment*/
-    "target":"es2020",
+    "target": "es2020",
 
     /* Modules */
-    "module":"commonjs",
-    "moduleResolution":"node",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "./dist",
     //"rootDirs": [],

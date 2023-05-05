@@ -1,19 +1,19 @@
 # Development omgeving opzetten
 
-
 - vul de .env.example in (te vinden in de backend map) en hernoem deze naar .env
 - navigeer naar de backend map in de terminal
 - npm install
 - npm run dev om de server te starten op localhost:3000 (nodemon) changes worden automatisch herladen
 
-
 # Applicatiestructuur
 
 De hoofdmap van de backend bevat de volgende mappen:
+
 - db: bevat de sequelize configuratie en de modellen
 - api: bevat de api routes en controllers
 
 ## Database
+
 ```text
 ├───Associations
 ├───config
@@ -30,6 +30,7 @@ De hoofdmap van de backend bevat de volgende mappen:
 ```
 
 ## API
+
 ```text
 ├───core
 ├───posts
@@ -62,6 +63,7 @@ module.exports = router;
 ```
 
 2. Service: Een service in een REST API bevat de logica om de vereiste acties uit te voeren voor de verschillende verzoeken die via de routes binnenkomen. Het is verantwoordelijk voor de verwerking van gegevens, het valideren van invoer en het retourneren van de resultaten. De service fungeert als een tussenlaag tussen de controller en de DAL en zorgt voor de scheiding van verantwoordelijkheden tussen deze lagen.
+
 ```ts
 // UserService.js
 
@@ -85,17 +87,23 @@ class UserService {
 
 module.exports = UserService;
 ```
+
 3. Data Access Layer (DAL): Een DAL in een REST API is verantwoordelijk voor het beheren van de communicatie met de database of externe gegevensbronnen. Het bevat logica voor het uitvoeren van CRUD-operaties (Create, Read, Update en Delete) op de gegevens en biedt een abstractie van de database-implementatie. De DAL is verantwoordelijk voor het opslaan en ophalen van gegevens van en naar de database.
+
 ```ts
 //Onze dal maakt gebruik van sequelize V6
-import {User} from "../models/User";
-import {UserCreationAttributes} from "../models/User";
+import { User } from '../models/User';
+import { UserCreationAttributes } from '../models/User';
 
-export const create = async (payload: UserCreationAttributes): Promise<User> => {
-    return await User.create(payload);
-}
+export const create = async (
+  payload: UserCreationAttributes
+): Promise<User> => {
+  return await User.create(payload);
+};
 ```
+
 4. Controller: Een controller in een REST API ontvangt de inkomende HTTP-verzoeken van de client en verwerkt deze door de juiste service methode aan te roepen op basis van de route die wordt aangeroepen. De controller is verantwoordelijk voor het afhandelen van de HTTP-verzoeken en het retourneren van de juiste HTTP-statuscodes aan de client.
+
 ```ts
 // UserController.js
 
@@ -127,9 +135,11 @@ class UserController {
 
 module.exports = UserController;
 ```
+
 In een REST API werken deze componenten samen om de functionaliteit van de API te bieden. De controller ontvangt het inkomende HTTP-verzoek en routeert deze naar de juiste service methode op basis van de URL-route. De service verwerkt vervolgens het verzoek en roept indien nodig de DAL aan om de gegevens te manipuleren. Wanneer de bewerking is voltooid, retourneert de service het resultaat aan de controller, die de juiste HTTP-statuscode retourneert aan de client.
 
 # DTO's
+
 In een REST API staat DTO voor Data Transfer Object. Het is een object dat wordt gebruikt om gegevens tussen verschillende lagen van de applicatie over te dragen zonder de interne structuur van de objecten bloot te leggen.
 
 Een DTO bevat alleen de relevante gegevens die nodig zijn voor een specifieke actie of taak. Het kan bijvoorbeeld worden gebruikt om gegevens van een client naar de server te verzenden, of om gegevens van de server naar de client te verzenden. Door alleen de benodigde gegevens te verzenden, kan de DTO de grootte van de overgedragen gegevens beperken en de prestaties van de API verbeteren.
@@ -140,26 +150,28 @@ Het gebruik van DTO's kan ook de veiligheid van de applicatie verbeteren, omdat 
 
 ```ts
 // UserDTO.js
-import { Optional} from "sequelize";
+import { Optional } from 'sequelize';
 
 // DTO's voor het aanmaken van een gebruiker
 export type CreateUserDTO = {
-    username: string;
-    displayname: string;
-    email: string;
-}
+  username: string;
+  displayname: string;
+  email: string;
+};
 // DTO's voor het updaten van een gebruiker
-export type UpdateUserDTO = Optional<CreateUserDTO, 'email'>
+export type UpdateUserDTO = Optional<CreateUserDTO, 'email'>;
 
 // DTO's voor het filteren van gebruikers
 export type FilterUserDTO = {
-    isDeleted?: boolean;
-    includeDeleted?: boolean;
-}
+  isDeleted?: boolean;
+  includeDeleted?: boolean;
+};
 ```
 
 # Links naar relevante docs
+
 [https://sequelize.org/docs/v6/other-topics/typescript/](https://sequelize.org/docs/v6/other-topics/typescript/)
 
 # Server vs Client components
+
 https://beta.nextjs.org/docs/rendering/server-and-client-components

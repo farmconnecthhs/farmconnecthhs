@@ -1,46 +1,47 @@
+import cors from 'cors';
 import dotenv from 'dotenv';
-dotenv.config();
+// import dbInit from "./db/init";
+import express, { Application, Request, Response } from 'express';
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 
-//import dbInit from "./db/init";
-import express, {Application, Request, Response} from "express";
-import swaggerJsdoc from "swagger-jsdoc";
-import swaggerUi from "swagger-ui-express";
-import cors from "cors";
-import router from "./api/routes";
+import router from './api/routes';
+
+dotenv.config();
 
 const app: Application = express();
 
 const corsOptions = {
   // origin: ["http://localhost:4200", "http://localhost:3001"],
   // optionsSuccessStatus: 200
-}
+};
 
 const options = {
   failOnErrors: true,
   definition: {
-    openapi: "3.0.0",
+    openapi: '3.0.0',
     info: {
-      title: "FarmConnect API",
-      version: "0.1.0",
-      description:
-          "FarmConnect API application",
+      title: 'FarmConnect API',
+      version: '0.1.0',
+      description: 'FarmConnect API application',
       license: {
-        name: "MIT",
-        url: "https://spdx.org/licenses/MIT.html",
+        name: 'MIT',
+        url: 'https://spdx.org/licenses/MIT.html',
       },
       contact: {
-        name: "FarmConnect",
-        url: "https://FarmConnect.com",
-        email: "cms@farmconnect.com",
+        name: 'FarmConnect',
+        url: 'https://FarmConnect.com',
+        email: 'cms@farmconnect.com',
       },
     },
     servers: [
       {
-        url: "http://localhost:3000/api/v1",
+        url: 'http://localhost:3000/api/v1',
       },
     ],
   },
-  apis: ['./api/**/*.ts',
+  apis: [
+    './api/**/*.ts',
     './api/users/routes/*.ts',
     './swagger/components/user.yaml',
     './swagger/components/error.yaml',
@@ -51,21 +52,17 @@ const specs = swaggerJsdoc(options);
 
 app.use(cors(corsOptions));
 app.use(express.json());
-//app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
 
-const port: number = 3001;
+const port = 3001;
 
 app.get('/', (req: Request, res: Response) => {
-  res.send("Hello Worlds!");
+  res.send('Hello Worlds!');
 });
 
 app.use('/api/v1', router);
 
-app.use(
-    "/api-docs",
-    swaggerUi.serve,
-    swaggerUi.setup(specs)
-);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 app.listen(port, () => {
   return console.log(`Example app listening at http://localhost:${port}`);

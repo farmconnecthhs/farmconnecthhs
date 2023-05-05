@@ -1,4 +1,4 @@
-export interface Betaalmethodes{
-    contant: boolean,
-    pin: boolean,
+export interface Betaalmethodes {
+  contant: boolean;
+  pin: boolean;
 }

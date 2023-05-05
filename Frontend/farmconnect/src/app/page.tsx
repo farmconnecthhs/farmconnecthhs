@@ -1,15 +1,8 @@
+import { NextPage } from 'next';
 
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
-import {NextPage} from "next";
-
-const inter = Inter({ subsets: ['latin'] })
+import styles from './page.module.css';
 
 const Home: NextPage = () => {
-  return (
-    <main className={styles.main}>
-    </main>
-  )
-}
-
-export default Home
+  return <main className={styles.main}></main>;
+};
+export default Home;
