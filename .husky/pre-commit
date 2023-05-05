@@ -5,7 +5,11 @@
 
 echo '🏗️👷 Styling, testing and building your project before committing'
 
-npm run format
+npm run format ||
+(
+    echo 'Your styling is being fixed.';
+)
+
 # Check Prettier standards
 npm run check-format ||
 (
