@@ -7,6 +7,7 @@ import { MenuItems } from '@/components/navigatie/MenuItems';
 interface Props {
   open: boolean;
 }
+
 export const TopDrawer: React.FunctionComponent<Props> = (props) => {
   const { open } = props;
   const [style, setStyle] = React.useState({ transform: 'translateY(-10rem)' });

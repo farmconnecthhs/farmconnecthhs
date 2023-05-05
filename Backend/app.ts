@@ -1,6 +1,11 @@
 import cors from 'cors';
+/* eslint-disable import/first */
+/* eslint-disable import/newline-after-import  */
+/* eslint-disable import/order */
 import dotenv from 'dotenv';
-// import dbInit from "./db/init";
+
+dotenv.config();
+
 import express, { Application, Request, Response } from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
