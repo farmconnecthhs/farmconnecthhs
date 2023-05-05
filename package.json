@@ -1,9 +1,9 @@
 {
   "scripts": {
     "install-all": "(npm i) & (cd backend && npm install) & (cd ../Frontend/farmconnect && npm install)",
-    "run-all-dev": "(npm run run-backend-dev) & (npm run run-frontend-dev)",
-    "run-backend-dev": "cd backend && npm run dev",
-    "run-frontend-dev": "cd ../Frontend/farmconnect && npm run dev",
+    "run-all-dev": "(start npm run run-backend-dev) & (start npm run run-frontend-dev)",
+    "run-backend-dev": "cd Backend && npm run dev",
+    "run-frontend-dev": "cd Frontend/farmconnect && npm run dev",
     "check-format": "prettier --check .",
     "check-lint": "(cd Backend && eslint . --ext ts --ext tsx --ext js --fix) & (cd ../Frontend/farmconnect && eslint . --ext ts --ext tsx --ext js --fix)",
     "format": "prettier --write .",
