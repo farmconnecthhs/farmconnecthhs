@@ -1,43 +1,43 @@
 :root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: Roboto, Arial, Helvetica, sans-serif;
+    --max-width: 1100px;
+    --border-radius: 12px;
+    --font-mono: Roboto, Arial, Helvetica, sans-serif;
 
-  --default-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  --font-color: #000;
-  --foreground-rgb: rgb(10, 10, 10);
-  --background-start-rgb: rgb(214, 219, 220);
-  --background-end-rgb: rgb(255, 255, 255);
+    --default-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    --font-color: #000;
+    --foreground-rgb: rgb(10, 10, 10);
+    --background-start-rgb: rgb(214, 219, 220);
+    --background-end-rgb: rgb(255, 255, 255);
 
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
+    --primary-glow: conic-gradient(
+            from 180deg at 50% 50%,
+            #16abff33 0deg,
+            #0885ff33 55deg,
+            #54d6ff33 120deg,
+            #0071ff33 160deg,
+            transparent 360deg
+    );
+    --secondary-glow: radial-gradient(
+            rgba(255, 255, 255, 1),
+            rgba(255, 255, 255, 0)
+    );
 
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
+    --tile-start-rgb: 239, 245, 249;
+    --tile-end-rgb: 228, 232, 233;
+    --tile-border: conic-gradient(
+            #00000080,
+            #00000040,
+            #00000030,
+            #00000020,
+            #00000010,
+            #00000010,
+            #00000080
+    );
 
-  --callout-rgb: rgb(238, 240, 241);
-  --callout-border-rgb: rgb(172, 175, 176);
-  --card-hex: #f3f3f3;
-  --card-border-rgb: rgb(220, 224, 224);
+    --callout-rgb: rgb(238, 240, 241);
+    --callout-border-rgb: rgb(172, 175, 176);
+    --card-hex: #f3f3f3;
+    --card-border-rgb: rgb(220, 224, 224);
 }
 
 /*@media (prefers-color-scheme: dark) {*/
@@ -84,39 +84,38 @@ body {
 }
 
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  margin: 0;
-  font-family: var(--font-mono);
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    max-width: 100vw;
+    overflow-x: hidden;
+    margin: 0;
+    font-family: var(--font-mono);
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+            to bottom,
+            transparent,
+            rgb(var(--background-end-rgb))
+    ) rgb(var(--background-start-rgb));
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 textarea {
-  min-height: 300px;
-  min-width: 600px;
-  max-width: 600px;
-  border-radius: 6px;
-  border: none;
-  outline: none;
-  padding: 0.5rem 1rem;
-  margin: 4px;
-  box-shadow: var(--default-shadow);
+    min-height: 300px;
+    min-width: 600px;
+    max-width: 600px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    padding: 0.5rem 1rem;
+    margin: 4px;
+    box-shadow: var(--default-shadow);
 }
 
 .textarea_smaller {
-  height: 100px;
-  min-height: 100px;
+    height: 100px;
+    min-height: 100px;
 }
 
 input[type='text'],
@@ -125,81 +124,141 @@ input[type='email'],
 input[type='password'],
 input[type='date'],
 input[type='time'] {
-  border: none;
-  outline: none;
-  width: 350px;
-  background: #fff;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  margin: 4px;
-  font-size: 1rem;
-  box-shadow: var(--default-shadow);
+    border: none;
+    outline: none;
+    width: 350px;
+    background: #fff;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    margin: 4px;
+    font-size: 1rem;
+    box-shadow: var(--default-shadow);
 }
 
 input[type='time'] {
-  width: 80px;
+    width: 80px;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  color: rgb(66, 66, 66);
-  font-weight: 800;
+    color: rgb(66, 66, 66);
+    font-weight: 800;
 }
 
 .margin_s {
-  margin: 0.5rem;
+    margin: 0.5rem;
 }
 
 .input_large {
-  width: 700px;
+    width: 700px;
 }
 
 .card {
-  background: var(--card-hex);
-  border: 1px solid var(--card-border-rgb);
-  border-radius: var(--border-radius);
-  box-shadow: var(--default-shadow);
-  padding: 1rem;
-  width: fit-content;
-  height: fit-content;
+    background: var(--card-hex);
+    border: 1px solid var(--card-border-rgb);
+    border-radius: var(--border-radius);
+    box-shadow: var(--default-shadow);
+    padding: 1rem;
+    width: fit-content;
+    height: fit-content;
 }
 
 .col {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .row {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .row_align_center {
-  align-items: center;
+    align-items: center;
+}
+
+.row_margin_s {
+    margin: 0.5rem 0;
 }
 
 .row__wrap {
-  flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .content-container {
-  width: 70%;
-  margin: 0 auto;
+    width: 70%;
+    margin: 0 auto;
 }
 
 .btn-call_to_action {
-  background-color: #059409;
-  padding: 10px;
-  border-radius: 6px;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: bold;
+    background-color: #059409;
+    padding: 10px;
+    border-radius: 6px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
+.button {
+    min-width: 150px;
+    margin: 4px;
+    border: none;
+    width: fit-content;
+}
+
+.button--primary {
+    background-color: #059409;
+    padding: 10px;
+    border-radius: 6px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.button--secondary {
+    background-color: #059409;
+    padding: 10px;
+    border-radius: 6px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.button--danger {
+    background-color: #da4f4f;
+    padding: 10px;
+    border-radius: 6px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.form__group {
+    display: flex;
+    flex-flow: column;
+    margin: 0.5rem;
+    color: #414141
+}
+
+.form__group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.form__group input {
+    font-size: 1rem;
+    font-weight: 900;
+    padding: 1rem 1rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 11px;
+    color: #414141
+}
+
+
 @media (prefers-color-scheme: dark) {
-  /*html {*/
-  /*  color-scheme: dark;*/
-  /*}*/
+    /*html {*/
+    /*  color-scheme: dark;*/
+    /*}*/
 }
