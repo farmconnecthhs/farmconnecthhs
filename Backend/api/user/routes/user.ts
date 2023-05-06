@@ -1,7 +1,8 @@
-import Router from "express";
-import * as UserController  from "../controller/index";
+import { Router } from 'express';
 
-const UserRouter = Router();
+import * as UserController from '../controller/index';
+
+const userRouter: Router = Router();
 /**
  * @swagger
  * /users:
@@ -26,6 +27,6 @@ const UserRouter = Router();
  *                  $ref: '#/components/schemas/Error'
  *
  */
-UserRouter.get("/", UserController.getAll);
+userRouter.get('/', UserController.getAll);
 
-export default UserRouter;
+export default userRouter;
