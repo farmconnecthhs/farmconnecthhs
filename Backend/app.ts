@@ -7,6 +7,8 @@ import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import cors from "cors";
 import router from "./api/routes";
+// @ts-ignore
+import apiDocs from "./swagger/api-docs.js";
 
 const app: Application = express();
 
@@ -15,37 +17,39 @@ const corsOptions = {
   // optionsSuccessStatus: 200
 }
 
-const options = {
-  failOnErrors: true,
-  definition: {
-    openapi: "3.0.0",
-    info: {
-      title: "FarmConnect API",
-      version: "0.1.0",
-      description:
-          "FarmConnect API application",
-      license: {
-        name: "MIT",
-        url: "https://spdx.org/licenses/MIT.html",
-      },
-      contact: {
-        name: "FarmConnect",
-        url: "https://FarmConnect.com",
-        email: "cms@farmconnect.com",
-      },
-    },
-    servers: [
-      {
-        url: "http://localhost:3000/api/v1",
-      },
-    ],
-  },
-  apis: ['./api/**/*.ts',
-    './api/users/routes/*.ts',
-    './swagger/components/user.yaml',
-    './swagger/components/error.yaml',
-  ],
-};
+// const options = {
+//   failOnErrors: true,
+//   definition: {
+//     openapi: "3.0.0",
+//     info: {
+//       title: "FarmConnect API",
+//       version: "0.1.0",
+//       description:
+//           "FarmConnect API application",
+//       license: {
+//         name: "MIT",
+//         url: "https://spdx.org/licenses/MIT.html",
+//       },
+//       contact: {
+//         name: "FarmConnect",
+//         url: "https://FarmConnect.com",
+//         email: "cms@farmconnect.com",
+//       },
+//     },
+//     servers: [
+//       {
+//         url: "http://localhost:3000/api/v1",
+//       },
+//     ],
+//   },
+//   apis: ['./api/**/*.ts',
+//     './api/users/routes/*.ts',
+//     './swagger/components/User.yaml',
+//     './swagger/components/Error.yaml',
+//   ],
+// };
+const options = apiDocs;
+
 const specs = swaggerJsdoc(options);
 // dbInit();
 
