@@ -1,4 +1,4 @@
-const apiDocs = {
+{
   "openapi": "3.0.0",
   "info": {
     "title": "FarmConnect API",
@@ -174,5 +174,3 @@ const apiDocs = {
     }
   }
 }
-
-module.exports = apiDocs;

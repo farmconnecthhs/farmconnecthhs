@@ -7,8 +7,8 @@ import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import cors from "cors";
 import router from "./api/routes";
-// @ts-ignore
-import apiDocs from "./swagger/api-docs.js";
+
+const apiDefinition = require('./swagger/api-docs.json');
 
 const app: Application = express();
 
@@ -48,9 +48,8 @@ const corsOptions = {
 //     './swagger/components/Error.yaml',
 //   ],
 // };
-const options = apiDocs;
 
-const specs = swaggerJsdoc(options);
+const specs = swaggerJsdoc(apiDefinition);
 // dbInit();
 
 app.use(cors(corsOptions));
@@ -68,7 +67,7 @@ app.use('/api/v1', router);
 app.use(
     "/api-docs",
     swaggerUi.serve,
-    swaggerUi.setup(specs)
+    swaggerUi.setup(apiDefinition)
 );
 
 app.listen(port, () => {
