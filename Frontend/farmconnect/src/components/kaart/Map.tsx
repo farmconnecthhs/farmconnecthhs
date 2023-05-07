@@ -24,7 +24,7 @@ const Map: React.FC<MapProps> = ({ farms }) => {
   const center = [52.3783, 4.9009];
 
   return (
-    <div className={styles.mapWrapper}>
+    <div className={styles.mapContainer}>
       <MapContainer
         center={center}
         zoom={8}
