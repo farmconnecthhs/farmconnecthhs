@@ -19,4 +19,4 @@ To check code quality, run the following commands in the project directory:
 
 To run the project, run the following commands in the project directory:
 
-1. npm run-all-dev to run the project in development mode
+1. npm run run-all-dev to run the project in development mode
