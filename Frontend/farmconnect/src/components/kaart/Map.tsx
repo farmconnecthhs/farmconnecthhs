@@ -32,7 +32,7 @@ const Map: React.FC<MapProps> = ({ farms }) => {
       >
         <MapEffect />
         <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          url="https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
         {farms.map((farm) => (
