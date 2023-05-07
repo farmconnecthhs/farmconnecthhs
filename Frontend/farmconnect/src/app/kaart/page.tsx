@@ -1,37 +1,10 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import Map from '@/components/kaart/Map';
+import MapComponent from '@/components/kaart/MapComponent';
 
-const farms = [
-  {
-    id: 1,
-    latitude: 52.3783,
-    longitude: 4.9009,
-    name: 'Farm 1',
-  },
-  {
-    id: 2,
-    latitude: 52.4783,
-    longitude: 4.8009,
-    name: 'Farm 2',
-  },
-  {
-    id: 3,
-    latitude: 52.2783,
-    longitude: 4.7009,
-    name: 'Farm 3',
-  },
-];
-
-const Kaart: React.FC = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  return <div>{isClient && <Map farms={farms} />}</div>;
+const KaartPagina: React.FC = () => {
+  return <div>{<MapComponent />}</div>;
 };
 
-export default Kaart;
+export default KaartPagina;
