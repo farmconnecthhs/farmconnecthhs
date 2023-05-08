@@ -2,7 +2,7 @@ import React from 'react';
 
 import MapComponent from '@/components/kaart/MapComponent';
 
-const KaartPagina: React.FC = () => {
+const KaartPagina: NextPage = () => {
   return <div>{<MapComponent />}</div>;
 };
 
