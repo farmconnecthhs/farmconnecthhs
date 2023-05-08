@@ -4,9 +4,9 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import styles from './Map.module.css';
 
-interface MapProps = {
+interface MapProps {
   farms: { id: number; latitude: number; longitude: number; name: string }[];
-};
+}
 
 const MapEffect: React.FunctionComponent = () => {
   const map = useMap();
