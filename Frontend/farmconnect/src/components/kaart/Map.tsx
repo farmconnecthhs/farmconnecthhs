@@ -20,7 +20,7 @@ const MapEffect: React.FC = () => {
   return null;
 };
 
-const Map: React.FC<MapProps> = ({ farms }) => {
+const Map: React.FunctionComponent<MapProps> = ({ farms }) => {
   const center = [52.3783, 4.9009];
 
   return (
