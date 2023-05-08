@@ -3,27 +3,25 @@ import cors from 'cors';
 /* eslint-disable import/newline-after-import  */
 /* eslint-disable import/order */
 import dotenv from 'dotenv';
-
-dotenv.config();
-
 import express, { Application, Request, Response } from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
 import router from './api/routes';
 // @ts-ignore
-import { optionsAPI } from './swagger/apiOptions.ts';
+import { options } from './swagger/apiOptions.ts';
+
+dotenv.config();
 
 dotenv.config();
 
 const app: Application = express();
 
 const corsOptions = {
-  // origin: ["http://localhost:4200", "http://localhost:3001"],
-  // optionsSuccessStatus: 200
+  origin: ['http://localhost:4200', 'http://localhost:3001'],
+  optionsSuccessStatus: 200,
 };
 
-const options = optionsAPI;
 const specs = swaggerJsdoc(options);
 // dbInit();
 
