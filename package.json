@@ -1,0 +1,23 @@
+{
+  "scripts": {
+    "install-all": "(npm i) & (cd backend && npm install) & (cd ../Frontend/farmconnect && npm install)",
+    "run-all-dev": "(start npm run run-backend-dev) & (start npm run run-frontend-dev)",
+    "run-backend-dev": "cd Backend && npm run dev",
+    "run-frontend-dev": "cd Frontend/farmconnect && npm run dev",
+    "check-format": "prettier --check .",
+    "check-lint": "(cd Backend && eslint . --ext ts --ext tsx --ext js --fix) & (cd ../Frontend/farmconnect && eslint . --ext ts --ext tsx --ext js --fix)",
+    "format": "prettier --write .",
+    "test-all": "npm run check-format && npm run check-lint && npm run check-types && npm run build",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "prettier": "2.8.8"
+  },
+  "dependencies": {
+    "@types/leaflet": "^1.9.3",
+    "@types/react-leaflet": "^3.0.0",
+    "leaflet": "^1.9.3",
+    "react-leaflet": "^4.2.1"
+  }
+}
