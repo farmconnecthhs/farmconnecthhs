@@ -24,7 +24,7 @@ const farms = [
   },
 ];
 
-const MapComponent: React.FC = () => {
+const MapComponent: React.FunctionComponent = () => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
