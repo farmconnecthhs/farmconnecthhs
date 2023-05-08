@@ -8,7 +8,7 @@ interface MapProps = {
   farms: { id: number; latitude: number; longitude: number; name: string }[];
 };
 
-const MapEffect: React.FC = () => {
+const MapEffect: React.FunctionComponent = () => {
   const map = useMap();
 
   useEffect(() => {
