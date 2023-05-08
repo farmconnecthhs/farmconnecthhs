@@ -206,6 +206,7 @@ h4 {
     margin: 4px;
     border: none;
     width: fit-content;
+    cursor: pointer;
 }
 
 .button--primary {
