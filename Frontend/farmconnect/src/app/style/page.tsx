@@ -34,7 +34,21 @@ const StylePage: React.FunctionComponent = () => {
             <button className="button button--danger">Button</button>
           </div>
           <div className="row row_margin_s">
-            <button className="button button--icon">
+            <button className="button--icon">
+              <svg
+                className="button--icon-i"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <title>editIcon</title>
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path
+                  fill="#000"
+                  d="M19.7 5.3c-.4-.4-1-.4-1.4 0l-1.8 1.8 2.4 2.4 1.8-1.8c.4-.4.4-1 0-1.4l-1.8-1.8zM16.5 8.5l-9.9 9.9H3v-3.9l9.9-9.9 3.6 3.9z"
+                />
+              </svg>
+            </button>
+            <button className="button--icon button--primary">
               <svg
                 className="button--icon-i"
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +62,7 @@ const StylePage: React.FunctionComponent = () => {
                 />
               </svg>
             </button>
-            <button className="button button--icon button--primary">
+            <button className="button--icon button--secondary">
               <svg
                 className="button--icon-i"
                 xmlns="http://www.w3.org/2000/svg"
@@ -62,21 +76,7 @@ const StylePage: React.FunctionComponent = () => {
                 />
               </svg>
             </button>
-            <button className="button button--icon button--secondary">
-              <svg
-                className="button--icon-i"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-              >
-                <title>editIcon</title>
-                <path d="M0 0h24v24H0z" fill="none" />
-                <path
-                  fill="#fff"
-                  d="M19.7 5.3c-.4-.4-1-.4-1.4 0l-1.8 1.8 2.4 2.4 1.8-1.8c.4-.4.4-1 0-1.4l-1.8-1.8zM16.5 8.5l-9.9 9.9H3v-3.9l9.9-9.9 3.6 3.9z"
-                />
-              </svg>
-            </button>
-            <button className="button button--icon button--danger">
+            <button className="button--icon button--danger">
               <svg
                 className="button--icon-i"
                 xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +93,7 @@ const StylePage: React.FunctionComponent = () => {
           </div>
         </div>
         <h2>Forms</h2>
-        <form className="form">
+        <form className="form card">
           <div className="form__group">
             <label className="form__label" htmlFor="name">
               Naam:
@@ -127,9 +127,13 @@ const StylePage: React.FunctionComponent = () => {
             <label className="form__label" htmlFor="select">
               Select
             </label>
-            <select className="form__input" id="select">
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
+            <select className="form__input form__input_select" id="select">
+              <option className={'form__input_select_option'} value="1">
+                Option 1
+              </option>
+              <option className={'form__input_select_option'} value="2">
+                Option 2
+              </option>
             </select>
           </div>
           <div className="form__group">
@@ -185,7 +189,134 @@ const StylePage: React.FunctionComponent = () => {
           <li className="list__item">Item 2</li>
           <li className="list__item">Item 3</li>
         </ul>
-        <h2>Buttons</h2>
+        <h2>Cards</h2>
+        <div className={'row'}>
+          <div className="card card--small margin_s">
+            <div className="card__header">
+              <h3 className="card__title">card-small without image</h3>
+            </div>
+            <div className="card__body">
+              <p className="card__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam voluptatum, quibusdam, quia, voluptates quod quos
+                voluptatem
+              </p>
+            </div>
+            <div className="card__footer">
+              <button className="button button--primary">Button</button>
+            </div>
+          </div>
+          <div className="card card--small margin_s">
+            <div className="card__header">
+              <img
+                className={'card__header__image'}
+                src={'farm_placeholder.png'}
+                alt={''}
+              ></img>
+              <h3 className="card__title">card-small with image</h3>
+            </div>
+            <div className="card__body">
+              <p className="card__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam voluptatum, quibusdam, quia, voluptates quod quos
+                voluptatem
+              </p>
+            </div>
+            <div className="card__footer">
+              <button className="button button--primary">Button</button>
+            </div>
+          </div>
+          <div className="card-full-width card--small margin_s">
+            <div className="card__header">
+              <img
+                className={'card__header__image-full-width'}
+                src={'farm_placeholder.png'}
+                alt={''}
+              ></img>
+            </div>
+            <div className="card__body">
+              <h3 className="card__title">card-small with full-width image</h3>
+              <p className="card__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam voluptatum, quibusdam, quia, voluptates quod quos
+                voluptatem
+              </p>
+              <div className="card__footer">
+                <button className="button button--primary">Button</button>
+              </div>
+            </div>
+          </div>
+          <div className="card card--medium margin_s">
+            <div className="card__header">
+              <h3 className="card__title">card-medium without image</h3>
+            </div>
+            <div className="card__body">
+              <p className="card__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam voluptatum, quibusdam, quia, voluptates quod quos
+                voluptatem
+              </p>
+              <p className="card__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam voluptatum, quibusdam, quia, voluptates quod quos
+                voluptatem
+              </p>
+            </div>
+            <div className="card__footer">
+              <button className="button button--primary">Button</button>
+            </div>
+          </div>
+          <div className="card card--medium margin_s">
+            <div className="card__header">
+              <img
+                className={'card__header__image'}
+                src={'farm_placeholder.png'}
+                alt={''}
+              ></img>
+              <h3 className="card__title">card-medium with image</h3>
+            </div>
+            <div className="card__body">
+              <p className="card__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam voluptatum, quibusdam, quia, voluptates quod quos
+                voluptatem
+              </p>
+              <p className="card__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam voluptatum, quibusdam, quia, voluptates quod quos
+                voluptatem
+              </p>
+            </div>
+            <div className="card__footer">
+              <button className="button button--primary">Button</button>
+            </div>
+          </div>
+          <div className="card-full-width card--medium margin_s">
+            <div className="card__header">
+              <img
+                className={'card__header__image-full-width'}
+                src={'farm_placeholder.png'}
+                alt={''}
+              ></img>
+            </div>
+            <div className="card__body">
+              <h3 className="card__title">card-medium with full-width image</h3>
+              <p className="card__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam voluptatum, quibusdam, quia, voluptates quod quos
+                voluptatem
+              </p>
+              <p className="card__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam voluptatum, quibusdam, quia, voluptates quod quos
+                voluptatem
+              </p>
+            </div>
+            <div className="card__footer">
+              <button className="button button--primary">Button</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
