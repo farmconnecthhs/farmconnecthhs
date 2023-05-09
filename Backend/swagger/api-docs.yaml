@@ -64,7 +64,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /users/{userId}:
+  /user/{userId}:
     get:
       summary: Get an user by ID
       operationId: getUserById
@@ -123,30 +123,74 @@ paths:
       tags:
         - farms
       parameters:
-        - name: userId
+        - name: sortDir
           in: query
-          description: ID of the user to filter by
+          description: Sort by ascending or descending order
           required: false
           schema:
             type: string
-        - name: farmName
+            enum:
+              - asc
+              - desc
+        - name: limit
           in: query
-          description: Name of the farm to filter by
+          description: Limit the number of farms returned
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 20
+        - name: location
+          in: query
+          description: Filter by location
           required: false
           schema:
             type: string
-        - name: farmEmail
+        - name: paymentType
           in: query
-          description: Email of the farm to filter by
+          description: Filter by payment type
           required: false
           schema:
             type: string
-        - name: farmPhone
+            enum:
+              - cash
+              - card
+              - both
+        - name: category
           in: query
-          description: Phone number of the farm to filter by
+          description: Filter by category
           required: false
           schema:
             type: string
+            enum:
+              - fruits
+              - vegetables
+              - grains
+              - nuts
+              - dairy
+              - meat
+              - poultry
+              - fish
+              - eggs
+              - flowers
+              - herbs
+              - mushrooms
+              - honey
+              - other
+        - name: product
+          in: query
+          description: Filter by product
+          required: false
+          schema:
+            type: string
+        - name: rating
+          in: query
+          description: Filter by rating
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 5
       responses:
         '200':
           description: A list of farms was successfully retrieved
@@ -247,8 +291,52 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-
-
+  /farm/{farmName}:
+    get:
+      summary: Get a farm by name
+      operationId: getFarmByName
+      tags:
+        - farms
+      responses:
+        '200':
+          description: A farm was successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /farm/{userId}:
+    get:
+      summary: Get a farm by user ID
+      operationId: getFarmByUserId
+      tags:
+        - farms
+      responses:
+        '200':
+          description: A farm was successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 
   /farmProfiles:
     get:
@@ -256,6 +344,75 @@ paths:
       operationId: getAllFarmProfiles
       tags:
         - farmProfiles
+      parameters:
+        - name: sortDir
+          in: query
+          description: Sort by ascending or descending order
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: limit
+          in: query
+          description: Limit the number of farmProfiles returned
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 20
+        - name: location
+          in: query
+          description: Filter by location
+          required: false
+          schema:
+            type: string
+        - name: paymentType
+          in: query
+          description: Filter by payment type
+          required: false
+          schema:
+            type: string
+            enum:
+              - cash
+              - card
+              - both
+        - name: category
+          in: query
+          description: Filter by category
+          required: false
+          schema:
+            type: string
+            enum:
+              - fruits
+              - vegetables
+              - grains
+              - nuts
+              - dairy
+              - meat
+              - poultry
+              - fish
+              - eggs
+              - flowers
+              - herbs
+              - mushrooms
+              - honey
+              - other
+        - name: product
+          in: query
+          description: Filter by product
+          required: false
+          schema:
+            type: string
+        - name: rating
+          in: query
+          description: Filter by rating
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 5
       responses:
         '200':
           description: A list of farm profiles was successfully retrieved
@@ -304,7 +461,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /farmProfiles/{farmProfileId}:
+  /farmProfile/{farmProfileId}:
     get:
       summary: Get a farm profile by ID
       operationId: getFarmProfileById
@@ -356,7 +513,181 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /farmProfile/{farmName}:
+    get:
+      summary: Get a farm profile by name
+      operationId: getFarmProfileByName
+      tags:
+        - farmProfiles
+      responses:
+        '200':
+          description: A farm profile was successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FarmProfile'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /logs:
+    get:
+      summary: Get all logs
+      operationId: getAllLogs
+      tags:
+        - logs
+      parameters:
+        - name: sortDir
+          in: query
+          description: Sort by ascending or descending order
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: limit
+          in: query
+          description: The number of logs to return
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: date
+          in: query
+          description: The date of the logs to return
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: serviceName
+          in: query
+          description: The service name of the logs to return
+          required: false
+          schema:
+            type: string
+        - name: level
+          in: query
+          description: The level of the logs to return
+          required: false
+          schema:
+            type: string
+        - name: message
+          in: query
+          description: The message of the logs to return
+          required: false
+          schema:
+            type: string
+        - name: timestamp
+          in: query
+          description: The timestamp of the logs to return
+          required: false
+          schema:
+            type: string
+            format: date-time
 
+      responses:
+        '200':
+          description: A list of logs was successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/logger'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      summary: Create a log
+      operationId: createLog
+      tags:
+        - logs
+      requestBody:
+        description: Log object that needs to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/logger'
+      responses:
+        '201':
+          description: Created a log object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/logger'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /log/{logId}:
+    get:
+      summary: Get a log by ID
+      operationId: getLogById
+      tags:
+        - logs
+      responses:
+        '200':
+          description: A log was successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/logger'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /log/{userId}:
+    get:
+      summary: Get all logs by user ID
+      operationId: getLogsByUserId
+      tags:
+        - logs
+      responses:
+        '200':
+          description: A log was successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/logger'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 
 
 components:
@@ -485,20 +816,6 @@ components:
           example: Bad Request
 
   responses:
-    Success:
-      description: The operation was successful
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              code:
-                type: integer
-                format: int32
-                example: 200
-              message:
-                type: string
-                example: Success
     BadRequest:
       description: The request is malformed or invalid
       content:
