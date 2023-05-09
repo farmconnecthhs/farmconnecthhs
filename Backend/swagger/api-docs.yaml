@@ -64,9 +64,32 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /users/{userId}:
+    get:
+      summary: Get an user by ID
+      operationId: getUserById
+      tags:
+        - users
+      responses:
+        '200':
+          description: An user was successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
     put:
-      summary: Update a user
-      operationId: updateUser
+      summary: Update an user by ID
+      operationId: updateUserById
       tags:
         - users
       requestBody:
@@ -93,6 +116,248 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /farms:
+    get:
+      summary: Get all farms
+      operationId: getAllFarms
+      tags:
+        - farms
+      parameters:
+        - name: userId
+          in: query
+          description: ID of the user to filter by
+          required: false
+          schema:
+            type: string
+        - name: farmName
+          in: query
+          description: Name of the farm to filter by
+          required: false
+          schema:
+            type: string
+        - name: farmEmail
+          in: query
+          description: Email of the farm to filter by
+          required: false
+          schema:
+            type: string
+        - name: farmPhone
+          in: query
+          description: Phone number of the farm to filter by
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of farms was successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Farm'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      summary: Create a farm
+      operationId: createFarm
+      tags:
+        - farms
+      requestBody:
+        description: Farm object that needs to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Farm'
+      responses:
+        '201':
+          description: Created a Farm object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /farm/{farmId}:
+    get:
+      summary: Get a farm by ID
+      operationId: getFarmById
+      tags:
+        - farms
+      responses:
+        '200':
+          description: A farm was successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      summary: Update a farm by ID
+      operationId: updateFarmById
+      tags:
+        - farms
+      requestBody:
+        description: Farm object that needs to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Farm'
+      responses:
+        '200':
+          description: Updated a Farm object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+
+
+  /farmProfiles:
+    get:
+      summary: Get all farm profiles
+      operationId: getAllFarmProfiles
+      tags:
+        - farmProfiles
+      responses:
+        '200':
+          description: A list of farm profiles was successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FarmProfile'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      summary: Create a farm profile
+      operationId: createFarmProfile
+      tags:
+        - farmProfiles
+      requestBody:
+        description: Farm profile object that needs to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FarmProfile'
+      responses:
+        '201':
+          description: Created a farm profile object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FarmProfile'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /farmProfiles/{farmProfileId}:
+    get:
+      summary: Get a farm profile by ID
+      operationId: getFarmProfileById
+      tags:
+        - farmProfiles
+      responses:
+        '200':
+          description: A farm profile was successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FarmProfile'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      summary: Update a farm profile by ID
+      operationId: updateFarmProfileById
+      tags:
+        - farmProfiles
+      requestBody:
+        description: Farm profile object that needs to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FarmProfile'
+      responses:
+        '200':
+          description: Updated a FarmProfile object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FarmProfile'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+
 
 components:
   schemas:

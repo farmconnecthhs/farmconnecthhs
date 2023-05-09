@@ -3,6 +3,8 @@ import cors from 'cors';
 /* eslint-disable import/newline-after-import  */
 /* eslint-disable import/order */
 import dotenv from 'dotenv';
+dotenv.config();
+
 import express, { Application, Request, Response } from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
@@ -10,10 +12,6 @@ import swaggerUi from 'swagger-ui-express';
 import router from './api/routes';
 // @ts-ignore
 import { options } from './swagger/apiOptions.ts';
-
-dotenv.config();
-
-dotenv.config();
 
 const app: Application = express();
 
