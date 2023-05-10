@@ -11,6 +11,7 @@ import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
 import router from './api/routes';
+import { DBInit } from './db/config/DBInit';
 
 dotenv.config();
 
@@ -52,8 +53,9 @@ const options = {
     './swagger/components/error.yaml',
   ],
 };
+
 const specs = swaggerJsdoc(options);
-// dbInit();
+DBInit().then(() => console.log('Db init done'));
 
 app.use(cors(corsOptions));
 app.use(express.json());
