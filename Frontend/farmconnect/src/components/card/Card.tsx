@@ -1,19 +1,20 @@
-
 import React from 'react';
+
 import './Card.css';
-import {BoerderijKaartje} from "@/components/interfaces/BoerderijKaartje";
+import { FarmCard } from '@/components/interfaces/FarmCard';
 
 interface CardProps {
-    boerderijKaartje: BoerderijKaartje;
+  farmCard: FarmCard;
 }
 
-const Card: React.FC<CardProps> = ({ boerderijKaartje }) => {
-    return (
-        <div className="card">
-            <h2>{boerderijKaartje.naam}</h2>
-            <p>{boerderijKaartje.afstand}</p>
-        </div>
-    );
+const Card: React.FC<CardProps> = ({ farmCard }) => {
+  return (
+    <div className="card">
+      <h2>{farmCard.naam}</h2>
+      <p>{farmCard.afstand}</p>
+      <p>{farmCard.beschrijving}</p>
+    </div>
+  );
 };
 
 export default Card;
