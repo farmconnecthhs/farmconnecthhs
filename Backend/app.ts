@@ -12,8 +12,6 @@ import swaggerUi from 'swagger-ui-express';
 
 import router from './api/routes';
 
-dotenv.config();
-
 const app: Application = express();
 
 const corsOptions = {
