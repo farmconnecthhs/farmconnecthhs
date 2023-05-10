@@ -1,6 +1,6 @@
 import React from 'react';
 
-import placeholderImage from '/public/img/placeholder.png';
+import placeholderImage from '/public/placeholder.png';
 
 import Card from './Card';
 

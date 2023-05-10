@@ -1,6 +1,5 @@
 import React from 'react';
 
-import './Card.css';
 import { FarmCard } from '@/components/interfaces/FarmCard';
 
 interface CardProps {
@@ -10,9 +9,19 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ farmCard }) => {
   return (
     <div className="card">
-      <h2>{farmCard.naam}</h2>
+      <div className="card__header">
+        <h2>{farmCard.naam}</h2>
+      </div>
+      <div className="card__image">
+        <img
+          className={'card__header__image'}
+          src={'placeholder.png'}
+          alt={''}
+        ></img>
+      </div>
       <p>{farmCard.afstand}</p>
       <p>{farmCard.beschrijving}</p>
+      <button className="button button--primary">Button</button>
     </div>
   );
 };
