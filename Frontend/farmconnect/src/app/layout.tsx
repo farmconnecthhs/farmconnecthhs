@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NavHeader />
-        <AuthProvider>{children}</AuthProvider>
+        {children}
       </body>
     </html>
   );

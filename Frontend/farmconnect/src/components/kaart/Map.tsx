@@ -6,23 +6,37 @@ import 'leaflet/dist/leaflet.css';
 import styles from './Map.module.css';
 
 import { LatLngExpression } from 'leaflet';
+import L from 'leaflet';
 
 interface MapProps {
   farms: { id: number; latitude: number; longitude: number; name: string }[];
 }
+
+const MapControler: React.FunctionComponent = () => {
+  const map = useMap();
+  map.on('move', () => {
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 400);
+    console.log('move');
+  });
+  return <></>;
+};
 
 const Map: React.FunctionComponent<MapProps> = ({ farms }) => {
   const [center, setCenter] = React.useState<LatLngExpression>([
     52.3783, 4.9009,
   ]);
 
-  const mapRef: any = React.useRef(null);
+  let mapRef: any = React.useRef<L.Map>();
 
   const handleMapMove = useCallback(() => {
     const map = mapRef.current;
     if (map != null) {
       const newCenter = map.leafletElement.getCenter();
-      setCenter([newCenter.lat, newCenter.lng]);
+      if (newCenter.lat !== center[0] || newCenter.lng !== center[1]) {
+        setCenter([newCenter.lat, newCenter.lng] as LatLngExpression);
+      }
     }
   }, []);
 
@@ -32,8 +46,8 @@ const Map: React.FunctionComponent<MapProps> = ({ farms }) => {
         center={center}
         zoom={8}
         style={{ height: '100%', width: '100%' }}
-        ref={mapRef}
       >
+        <MapControler />
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
