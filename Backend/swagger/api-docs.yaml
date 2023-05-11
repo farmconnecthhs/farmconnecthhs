@@ -64,7 +64,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /user/{userId}:
+  /users/{userId}:
     get:
       summary: Get an user by ID
       operationId: getUserById
@@ -106,6 +106,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /users/{userId}/farm:
+    get:
+      summary: Get a farm by user ID
+      operationId: getFarmByUserId
+      tags:
+        - users
+      responses:
+        '200':
+          description: A farm was successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -242,7 +265,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /farm/{farmId}:
+  /farms/{farmId}:
     get:
       summary: Get a farm by ID
       operationId: getFarmById
@@ -294,7 +317,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /farm/{farmName}:
+  /farms/{farmName}:
     get:
       summary: Get a farm by name
       operationId: getFarmByName
@@ -317,7 +340,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /farm/{userId}:
+  /farms/{userId}:
     get:
       summary: Get a farm by user ID
       operationId: getFarmByUserId
@@ -466,7 +489,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /farmProfile/{farmProfileId}:
+  /farmProfiles/{farmProfileId}:
     get:
       summary: Get a farm profile by ID
       operationId: getFarmProfileById
@@ -518,7 +541,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /farmProfile/{farmName}:
+  /farmProfiles/{farmName}:
     get:
       summary: Get a farm profile by name
       operationId: getFarmProfileByName
@@ -629,7 +652,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /review/{reviewId}:
+  /reviews/{reviewId}:
     get:
       summary: Get a review by ID
       operationId: getReviewById
@@ -787,7 +810,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /log/{logId}:
+  /logs/{logId}:
     get:
       summary: Get a log by ID
       operationId: getLogById
@@ -810,7 +833,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /log/{userId}:
+  /logs/{userId}:
     get:
       summary: Get all logs by user ID
       operationId: getLogsByUserId
@@ -866,7 +889,7 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /role/{userId}:
+  /roles/{userId}:
     get:
       summary: Get a role by user ID
       operationId: getRoleByUserId
