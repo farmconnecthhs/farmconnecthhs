@@ -1,8 +1,8 @@
 import {
   CreationOptional,
   DataTypes,
-  HasManyCreateAssociationMixin,
-  HasManyGetAssociationsMixin,
+  // HasManyCreateAssociationMixin,
+  // HasManyGetAssociationsMixin,
   InferAttributes,
   Model,
   Optional,
@@ -70,5 +70,3 @@ Farm.init(
     paranoid: true,
   }
 );
-
-Farm.hasMany(FarmProductCategory, { foreignKey: 'farmId' });
