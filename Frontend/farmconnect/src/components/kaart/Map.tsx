@@ -1,15 +1,17 @@
-import { LatLngExpression } from 'leaflet';
+'use client';
 import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 
 import 'leaflet/dist/leaflet.css';
 import styles from './Map.module.css';
 
+import { LatLngExpression } from 'leaflet';
+
 interface MapProps {
   farms: { id: number; latitude: number; longitude: number; name: string }[];
 }
 
-const MapEffect: React.FunctionComponent = () => {
+const MapController: React.FunctionComponent = () => {
   const map = useMap();
 
   useEffect(() => {
@@ -20,7 +22,6 @@ const MapEffect: React.FunctionComponent = () => {
 
   return null;
 };
-
 const Map: React.FunctionComponent<MapProps> = ({ farms }) => {
   const center: LatLngExpression = [52.3783, 4.9009];
 
@@ -31,11 +32,11 @@ const Map: React.FunctionComponent<MapProps> = ({ farms }) => {
         zoom={8}
         style={{ height: '100%', width: '100%' }}
       >
-        <MapEffect />
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
+        <MapController />
         {farms.map((farm) => (
           <Marker key={farm.id} position={[farm.latitude, farm.longitude]}>
             <Popup>{farm.name}</Popup>

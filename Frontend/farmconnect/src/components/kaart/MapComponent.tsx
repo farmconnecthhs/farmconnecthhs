@@ -1,7 +1,5 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-
-import Map from '@/components/kaart/Map';
+import dynamic from 'next/dynamic';
+import React from 'react';
 
 const farms = [
   {
@@ -25,13 +23,11 @@ const farms = [
 ];
 
 const MapComponent: React.FunctionComponent = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  return <div>{isClient && <Map farms={farms} />}</div>;
+  const Map = dynamic(() => import('@/components/kaart/Map'), {
+    loading: () => <>Kaart is aan het laden</>,
+    ssr: false,
+  });
+  return <Map farms={farms} />;
 };
 
 export default MapComponent;
