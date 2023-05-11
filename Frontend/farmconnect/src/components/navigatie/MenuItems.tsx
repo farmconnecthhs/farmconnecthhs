@@ -11,7 +11,7 @@ export const MenuItems: React.FunctionComponent<Props> = (props) => {
 
   return (
     <div style={style}>
-      <Link style={menuItemStyle} className={'nav-item'} href={'/'}>
+      <Link style={menuItemStyle} className={'nav-item'} href={'/kaart'}>
         Kaart
       </Link>
       <Link style={menuItemStyle} className={'nav-item'} href={'/auth/login'}>

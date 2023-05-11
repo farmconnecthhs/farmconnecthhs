@@ -1,3 +1,4 @@
+import { LatLngExpression } from 'leaflet';
 import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 
@@ -21,7 +22,7 @@ const MapEffect: React.FunctionComponent = () => {
 };
 
 const Map: React.FunctionComponent<MapProps> = ({ farms }) => {
-  const center = [52.3783, 4.9009];
+  const center: LatLngExpression = [52.3783, 4.9009];
 
   return (
     <div className={styles.mapContainer}>

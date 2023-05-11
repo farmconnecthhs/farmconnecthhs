@@ -95,38 +95,28 @@ const StylePage: React.FunctionComponent = () => {
         <h2>Forms</h2>
         <form className="form card">
           <div className="form__group">
-            <label className="form__label" htmlFor="name">
-              Naam:
-            </label>
+            <label className="form__label">Naam:</label>
             <input
               className="form__input"
               type="text"
               id="name"
-              value={'Jan Jansen'}
+              defaultValue={'Jan Jansen'}
             />
           </div>
           <div className="form__group">
-            <label className="form__label" htmlFor="email">
-              Email
-            </label>
+            <label className="form__label">Email</label>
             <input className="form__input" type="email" id="email" />
           </div>
           <div className="form__group">
-            <label className="form__label" htmlFor="password">
-              Password
-            </label>
+            <label className="form__label">Password</label>
             <input className="form__input" type="password" id="password" />
           </div>
           <div className="form__group">
-            <label className="form__label" htmlFor="textarea">
-              Textarea
-            </label>
+            <label className="form__label">Textarea</label>
             <textarea className="form__input" id="textarea" />
           </div>
           <div className="form__group">
-            <label className="form__label" htmlFor="select">
-              Select
-            </label>
+            <label className="form__label">Select</label>
             <select className="form__input form__input_select" id="select">
               <option className={'form__input_select_option'} value="1">
                 Option 1
@@ -137,27 +127,19 @@ const StylePage: React.FunctionComponent = () => {
             </select>
           </div>
           <div className="form__group">
-            <label className="form__label" htmlFor="checkbox">
-              Checkbox
-            </label>
+            <label className="form__label">Checkbox</label>
             <input className="form__input" type="checkbox" id="checkbox" />
           </div>
           <div className="form__group">
-            <label className="form__label" htmlFor="radio">
-              Radio
-            </label>
+            <label className="form__label">Radio</label>
             <input className="form__input" type="radio" id="radio" />
           </div>
           <div className="form__group">
-            <label className="form__label" htmlFor="file">
-              File
-            </label>
+            <label className="form__label">File</label>
             <input className="form__input" type="file" id="file" />
           </div>
           <div className="form__group">
-            <label className="form__label" htmlFor="date">
-              Date
-            </label>
+            <label className="form__label">Date</label>
             <input className="form__input" type="date" id="date" />
           </div>
         </form>

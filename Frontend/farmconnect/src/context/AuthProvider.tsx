@@ -13,7 +13,6 @@ export const AuthProvider: React.FunctionComponent<{
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    console.log('target');
     setLoading(true);
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (!user) {
@@ -21,7 +20,6 @@ export const AuthProvider: React.FunctionComponent<{
         setLoading(false);
         return;
       }
-
       setAuthUser(user);
       if (UserService.getUser() === null) {
         UserService.setUser(user);
@@ -30,7 +28,6 @@ export const AuthProvider: React.FunctionComponent<{
     });
     return () => unsubscribe();
   }, []);
-
   return (
     <AuthContext.Provider value={{ user: authUser, loading: loading }}>
       {' '}

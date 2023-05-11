@@ -14,6 +14,7 @@ export default class UserService {
    * Creates an instance of UserService.
    */
   constructor() {
+    console.log('UserService constructor');
     UserService.user = null;
   }
 

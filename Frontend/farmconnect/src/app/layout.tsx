@@ -1,8 +1,8 @@
-import './globals.css';
-
 import React from 'react';
 
-import NavHeader from '@/components/navigatie/NavHeader';
+import './globals.css';
+import NavHeader from '../components/navigatie/NavHeader';
+
 import { AuthProvider } from '@/context/AuthProvider';
 
 export const metadata = {
@@ -23,9 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NavHeader />
-
-        <AuthProvider>{}</AuthProvider>
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );
