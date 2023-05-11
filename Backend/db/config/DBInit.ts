@@ -1,3 +1,4 @@
+import { Farm } from '../modules/farm/models/Farm';
 import { Role } from '../modules/role/models/Role';
 import { User } from '../modules/user/models/User';
 
@@ -14,6 +15,7 @@ export const DBInit = async () => {
         console.log('Database has been synced successfully.');
         await User.sync();
         await Role.sync();
+        await Farm.sync();
         console.log('Database has been synced successfully.');
       }
     } catch (err) {
