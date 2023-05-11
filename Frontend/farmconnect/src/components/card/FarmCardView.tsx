@@ -8,33 +8,49 @@ import { FarmCard } from '@/components/interfaces/FarmCard';
 
 const farmCards: FarmCard[] = [
   {
-    naam: 'Farm 1',
+    naam: 'Jac. Uittenbogaart & zonen',
     afstand: '24km',
-    beschrijving: 'Gewoon wat',
+    beschrijving: 'Kippetjes, lammetjes, schaapies en aardappelen',
   },
   {
-    naam: 'Farm 2',
-    afstand: '24km',
-    beschrijving: 'Gewoon wat',
+    naam: 'Henk Jan en zijn verloren koffer',
+    afstand: '301km',
+    beschrijving: 'Eieren voor een prikkie',
   },
   {
-    naam: 'Farm 3',
+    naam: 'Oma Bob de krokkettendraaier',
     afstand: '24km',
-    beschrijving: 'Gewoon wat',
+    beschrijving: 'Prei',
   },
   {
-    naam: 'Farm 4',
+    naam: 'Roos Marijn',
     afstand: '24km',
-    beschrijving: 'Gewoon wat',
+    beschrijving: 'Kaas',
+  },
+  {
+    naam: 'Corry Anders',
+    afstand: '24km',
+    beschrijving: 'Peren',
+  },
+  {
+    naam: 'Peter Selie',
+    afstand: '24km',
+    beschrijving: 'Bowlingballen',
   },
 ];
 
 const FarmCardView: React.FC = () => {
   return (
     <div>
-      {farmCards.map((farmCard, index) => (
-        <Card key={index} farmCard={farmCard} imageSrc={placeholderImage.src} />
-      ))}
+      <div className={'row'}>
+        {farmCards.map((farmCard, index) => (
+          <Card
+            key={index}
+            farmCard={farmCard}
+            imageSrc={placeholderImage.src}
+          />
+        ))}
+      </div>
     </div>
   );
 };
