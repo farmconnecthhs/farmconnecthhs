@@ -267,6 +267,10 @@ h4 {
 .button--provider {
   border: 1px solid #ccc;
   background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
   color: #333333;
   border-radius: 8px;
   padding: 0.5rem;
@@ -274,6 +278,12 @@ h4 {
   width: 100%;
 }
 
+.button__logo-provider{
+  width: 20px;
+  height: 20px;
+  margin: auto 0.5rem;
+  justify-items: center;
+}
 textarea {
   font-family: var(--font-mono);
   font-weight: 500;

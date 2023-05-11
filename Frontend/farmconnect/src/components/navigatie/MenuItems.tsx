@@ -17,11 +17,7 @@ export const MenuItems: React.FunctionComponent<Props> = (props) => {
       <Link style={menuItemStyle} className={'nav-item'} href={'/auth/login'}>
         Login
       </Link>
-      <Link
-        style={menuItemStyle}
-        className={'nav-item'}
-        href={'/auth/register'}
-      >
+      <Link style={menuItemStyle} className={'nav-item'} href={'/register'}>
         Register
       </Link>
       <Link
