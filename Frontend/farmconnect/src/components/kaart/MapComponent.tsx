@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react';
-
-import Map from '@/components/kaart/Map';
+import dynamic from 'next/dynamic';
+import React from 'react';
 
 const farms = [
   {
     id: 1,
     latitude: 52.3783,
     longitude: 4.9009,
-    name: 'Groene Weiden Boerderij',
+    name: 'Farm 1',
   },
   {
     id: 2,
     latitude: 52.4783,
     longitude: 4.8009,
-    name: 'Zonnige Velden Hoeve',
+    name: 'Farm 2',
   },
   {
     id: 3,
@@ -66,13 +65,11 @@ const farms = [
 ];
 
 const MapComponent: React.FunctionComponent = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  return <div>{isClient && <Map farms={farms} />}</div>;
+  const Map = dynamic(() => import('@/components/kaart/Map'), {
+    loading: () => <>Kaart is aan het laden</>,
+    ssr: false,
+  });
+  return <Map farms={farms} />;
 };
 
 export default MapComponent;

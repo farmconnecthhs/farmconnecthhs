@@ -1,0 +1,1563 @@
+export const options = {
+  failOnErrors: true,
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'FarmConnect API',
+      description: 'An API for FarmConnect.',
+      version: '1.0.5',
+    },
+    servers: [
+      {
+        url: 'http://localhost:3001/api/v1',
+        description: 'Local FarmConnect server.',
+      },
+    ],
+    paths: {
+      '/users': {
+        get: {
+          summary: 'Get all users',
+          operationId: 'getAllUsers',
+          tags: ['users'],
+          responses: {
+            '200': {
+              description: 'A list of users was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'array',
+                    items: {
+                      $ref: '#/components/schemas/User',
+                    },
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+        post: {
+          summary: 'Create a user',
+          operationId: 'createUser',
+          tags: ['users'],
+          requestBody: {
+            description: 'User object that needs to be added',
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/User',
+                },
+              },
+            },
+          },
+          responses: {
+            '201': {
+              description: 'Created an User object',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/User',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/user/{userId}': {
+        get: {
+          summary: 'Get an user by ID',
+          operationId: 'getUserById',
+          tags: ['users'],
+          responses: {
+            '200': {
+              description: 'An user was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/User',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+        put: {
+          summary: 'Update an user by ID',
+          operationId: 'updateUserById',
+          tags: ['users'],
+          requestBody: {
+            description: 'User object that needs to be updated',
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/User',
+                },
+              },
+            },
+          },
+          responses: {
+            '200': {
+              description: 'Updated an User object',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/User',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/farms': {
+        get: {
+          summary: 'Get all farms',
+          operationId: 'getAllFarms',
+          tags: ['farms'],
+          parameters: [
+            {
+              name: 'sortDir',
+              in: 'query',
+              description: 'Sort by ascending or descending order',
+              required: false,
+              schema: {
+                type: 'string',
+                enum: ['asc', 'desc'],
+              },
+            },
+            {
+              name: 'limit',
+              in: 'query',
+              description: 'Limit the number of farms returned',
+              required: false,
+              schema: {
+                type: 'integer',
+                minimum: 1,
+                maximum: 20,
+              },
+            },
+            {
+              name: 'location',
+              in: 'query',
+              description: 'Filter by location',
+              required: false,
+              schema: {
+                type: 'string',
+              },
+            },
+            {
+              name: 'paymentType',
+              in: 'query',
+              description: 'Filter by payment type',
+              required: false,
+              schema: {
+                type: 'string',
+                enum: ['cash', 'card', 'both'],
+              },
+            },
+            {
+              name: 'category',
+              in: 'query',
+              description: 'Filter by category',
+              required: false,
+              schema: {
+                type: 'string',
+                enum: [
+                  'fruits',
+                  'vegetables',
+                  'grains',
+                  'nuts',
+                  'dairy',
+                  'meat',
+                  'poultry',
+                  'fish',
+                  'eggs',
+                  'flowers',
+                  'herbs',
+                  'mushrooms',
+                  'honey',
+                  'other',
+                ],
+              },
+            },
+            {
+              name: 'product',
+              in: 'query',
+              description: 'Filter by product',
+              required: false,
+              schema: {
+                type: 'string',
+              },
+            },
+            {
+              name: 'rating',
+              in: 'query',
+              description: 'Filter by rating',
+              required: false,
+              schema: {
+                type: 'integer',
+                minimum: 1,
+                maximum: 5,
+              },
+            },
+          ],
+          responses: {
+            '200': {
+              description: 'A list of farms was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'array',
+                    items: {
+                      $ref: '#/components/schemas/Farm',
+                    },
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+        post: {
+          summary: 'Create a farm',
+          operationId: 'createFarm',
+          tags: ['farms'],
+          requestBody: {
+            description: 'Farm object that needs to be added',
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/Farm',
+                },
+              },
+            },
+          },
+          responses: {
+            '201': {
+              description: 'Created a Farm object',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/Farm',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/farm/{farmId}': {
+        get: {
+          summary: 'Get a farm by ID',
+          operationId: 'getFarmById',
+          tags: ['farms'],
+          responses: {
+            '200': {
+              description: 'A farm was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/Farm',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+        put: {
+          summary: 'Update a farm by ID',
+          operationId: 'updateFarmById',
+          tags: ['farms'],
+          requestBody: {
+            description: 'Farm object that needs to be updated',
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/Farm',
+                },
+              },
+            },
+          },
+          responses: {
+            '200': {
+              description: 'Updated a Farm object',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/Farm',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/farm/{farmName}': {
+        get: {
+          summary: 'Get a farm by name',
+          operationId: 'getFarmByName',
+          tags: ['farms'],
+          responses: {
+            '200': {
+              description: 'A farm was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/Farm',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/farm/{userId}': {
+        get: {
+          summary: 'Get a farm by user ID',
+          operationId: 'getFarmByUserId',
+          tags: ['farms'],
+          responses: {
+            '200': {
+              description: 'A farm was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/Farm',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/farmProfiles': {
+        get: {
+          summary: 'Get all farm profiles',
+          operationId: 'getAllFarmProfiles',
+          tags: ['farmProfiles'],
+          parameters: [
+            {
+              name: 'sortDir',
+              in: 'query',
+              description: 'Sort by ascending or descending order',
+              required: false,
+              schema: {
+                type: 'string',
+                enum: ['asc', 'desc'],
+              },
+            },
+            {
+              name: 'limit',
+              in: 'query',
+              description: 'Limit the number of farmProfiles returned',
+              required: false,
+              schema: {
+                type: 'integer',
+                minimum: 1,
+                maximum: 20,
+              },
+            },
+            {
+              name: 'location',
+              in: 'query',
+              description: 'Filter by location',
+              required: false,
+              schema: {
+                type: 'string',
+              },
+            },
+            {
+              name: 'paymentType',
+              in: 'query',
+              description: 'Filter by payment type',
+              required: false,
+              schema: {
+                type: 'string',
+                enum: ['cash', 'card', 'both'],
+              },
+            },
+            {
+              name: 'category',
+              in: 'query',
+              description: 'Filter by category',
+              required: false,
+              schema: {
+                type: 'string',
+                enum: [
+                  'fruits',
+                  'vegetables',
+                  'grains',
+                  'nuts',
+                  'dairy',
+                  'meat',
+                  'poultry',
+                  'fish',
+                  'eggs',
+                  'flowers',
+                  'herbs',
+                  'mushrooms',
+                  'honey',
+                  'other',
+                ],
+              },
+            },
+            {
+              name: 'product',
+              in: 'query',
+              description: 'Filter by product',
+              required: false,
+              schema: {
+                type: 'string',
+              },
+            },
+            {
+              name: 'rating',
+              in: 'query',
+              description: 'Filter by rating',
+              required: false,
+              schema: {
+                type: 'integer',
+                minimum: 1,
+                maximum: 5,
+              },
+            },
+          ],
+          responses: {
+            '200': {
+              description: 'A list of farm profiles was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'array',
+                    items: {
+                      $ref: '#/components/schemas/FarmProfile',
+                    },
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+        post: {
+          summary: 'Create a farm profile',
+          operationId: 'createFarmProfile',
+          tags: ['farmProfiles'],
+          requestBody: {
+            description: 'Farm profile object that needs to be added',
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/FarmProfile',
+                },
+              },
+            },
+          },
+          responses: {
+            '201': {
+              description: 'Created a farm profile object',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/FarmProfile',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/farmProfile/{farmProfileId}': {
+        get: {
+          summary: 'Get a farm profile by ID',
+          operationId: 'getFarmProfileById',
+          tags: ['farmProfiles'],
+          responses: {
+            '200': {
+              description: 'A farm profile was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/FarmProfile',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+        put: {
+          summary: 'Update a farm profile by ID',
+          operationId: 'updateFarmProfileById',
+          tags: ['farmProfiles'],
+          requestBody: {
+            description: 'Farm profile object that needs to be updated',
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/FarmProfile',
+                },
+              },
+            },
+          },
+          responses: {
+            '200': {
+              description: 'Updated a FarmProfile object',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/FarmProfile',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/farmProfile/{farmName}': {
+        get: {
+          summary: 'Get a farm profile by name',
+          operationId: 'getFarmProfileByName',
+          tags: ['farmProfiles'],
+          responses: {
+            '200': {
+              description: 'A farm profile was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/FarmProfile',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/reviews': {
+        get: {
+          summary: 'Get all reviews',
+          operationId: 'getAllReviews',
+          tags: ['reviews'],
+          parameters: [
+            {
+              name: 'sortDir',
+              in: 'query',
+              description: 'Sort by ascending or descending order',
+              required: false,
+              schema: {
+                type: 'string',
+                enum: ['asc', 'desc'],
+              },
+            },
+            {
+              name: 'limit',
+              in: 'query',
+              description: 'The number of reviews to return',
+              required: false,
+              schema: {
+                type: 'integer',
+                format: 'int32',
+              },
+            },
+            {
+              name: 'farmProfileId',
+              in: 'query',
+              description: 'The farm profile ID of the reviews to return',
+              required: false,
+              schema: {
+                type: 'string',
+              },
+            },
+            {
+              name: 'rating',
+              in: 'query',
+              description: 'The rating of the reviews to return',
+              required: false,
+              schema: {
+                type: 'integer',
+                minimum: 1,
+                maximum: 5,
+              },
+            },
+          ],
+          responses: {
+            '200': {
+              description: 'A list of reviews was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'array',
+                    items: {
+                      $ref: '#/components/schemas/Review',
+                    },
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+        post: {
+          summary: 'Create a review',
+          operationId: 'createReview',
+          tags: ['reviews'],
+          requestBody: {
+            description: 'Review object that needs to be added',
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/Review',
+                },
+              },
+            },
+          },
+          responses: {
+            '201': {
+              description: 'Created a review object',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/Review',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/review/{reviewId}': {
+        get: {
+          summary: 'Get a review by ID',
+          operationId: 'getReviewById',
+          tags: ['reviews'],
+          responses: {
+            '200': {
+              description: 'A review was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/Review',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+        put: {
+          summary: 'Update a review by ID',
+          operationId: 'updateReviewById',
+          tags: ['reviews'],
+          requestBody: {
+            description: 'Review object that needs to be updated',
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/Review',
+                },
+              },
+            },
+          },
+          responses: {
+            '200': {
+              description: 'Updated a review object',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/Review',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/logs': {
+        get: {
+          summary: 'Get all logs',
+          operationId: 'getAllLogs',
+          tags: ['logs'],
+          parameters: [
+            {
+              name: 'sortDir',
+              in: 'query',
+              description: 'Sort by ascending or descending order',
+              required: false,
+              schema: {
+                type: 'string',
+                enum: ['asc', 'desc'],
+              },
+            },
+            {
+              name: 'limit',
+              in: 'query',
+              description: 'The number of logs to return',
+              required: false,
+              schema: {
+                type: 'integer',
+                format: 'int32',
+              },
+            },
+            {
+              name: 'date',
+              in: 'query',
+              description: 'The date of the logs to return',
+              required: false,
+              schema: {
+                type: 'string',
+                format: 'date',
+              },
+            },
+            {
+              name: 'serviceName',
+              in: 'query',
+              description: 'The service name of the logs to return',
+              required: false,
+              schema: {
+                type: 'string',
+              },
+            },
+            {
+              name: 'level',
+              in: 'query',
+              description: 'The level of the logs to return',
+              required: false,
+              schema: {
+                type: 'string',
+              },
+            },
+            {
+              name: 'message',
+              in: 'query',
+              description: 'The message of the logs to return',
+              required: false,
+              schema: {
+                type: 'string',
+              },
+            },
+            {
+              name: 'timestamp',
+              in: 'query',
+              description: 'The timestamp of the logs to return',
+              required: false,
+              schema: {
+                type: 'string',
+                format: 'date-time',
+              },
+            },
+          ],
+          responses: {
+            '200': {
+              description: 'A list of logs was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'array',
+                    items: {
+                      $ref: '#/components/schemas/Logger',
+                    },
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+        post: {
+          summary: 'Create a log',
+          operationId: 'createLog',
+          tags: ['logs'],
+          requestBody: {
+            description: 'Log object that needs to be added',
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/Logger',
+                },
+              },
+            },
+          },
+          responses: {
+            '201': {
+              description: 'Created a log object',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/Logger',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/log/{logId}': {
+        get: {
+          summary: 'Get a log by ID',
+          operationId: 'getLogById',
+          tags: ['logs'],
+          responses: {
+            '200': {
+              description: 'A log was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/Logger',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/log/{userId}': {
+        get: {
+          summary: 'Get all logs by user ID',
+          operationId: 'getLogsByUserId',
+          tags: ['logs'],
+          responses: {
+            '200': {
+              description: 'A log was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'array',
+                    items: {
+                      $ref: '#/components/schemas/Logger',
+                    },
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/roles': {
+        post: {
+          summary: 'Create a role',
+          operationId: 'createRole',
+          tags: ['roles'],
+          requestBody: {
+            description: 'Role object that needs to be added',
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/Role',
+                },
+              },
+            },
+          },
+          responses: {
+            '201': {
+              description: 'Created a role object',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/Role',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/role/{userId}': {
+        get: {
+          summary: 'Get a role by user ID',
+          operationId: 'getRoleByUserId',
+          tags: ['roles'],
+          responses: {
+            '200': {
+              description: 'A role was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/Role',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+        put: {
+          summary: 'Update a role by user ID',
+          operationId: 'updateRole',
+          tags: ['roles'],
+          requestBody: {
+            description: 'Role object that needs to be updated',
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/Role',
+                },
+              },
+            },
+          },
+          responses: {
+            '200': {
+              description: 'Updated a role object',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/Role',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+    },
+    components: {
+      schemas: {
+        User: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'integer',
+              format: 'int64',
+              example: 1,
+            },
+            username: {
+              type: 'string',
+              example: 'Jane Doe',
+            },
+            firstName: {
+              type: 'string',
+              example: 'Jane',
+            },
+            lastName: {
+              type: 'string',
+              example: 'Doe',
+            },
+            email: {
+              type: 'string',
+              example: 'janedoe@example.com',
+            },
+            password: {
+              type: 'string',
+              format: 'password',
+              example: 'password',
+            },
+            phone: {
+              type: 'integer',
+              format: 'int64',
+              example: 1234567890,
+            },
+            userStatus: {
+              type: 'integer',
+              description: 'User Status',
+              format: 'int32',
+              example: 1,
+              enum: [1, 2, 3],
+            },
+          },
+        },
+        Farm: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'integer',
+              format: 'int64',
+              example: 1,
+            },
+            name: {
+              type: 'string',
+              example: 'Boerderij de Koe',
+            },
+            email: {
+              type: 'string',
+              example: 'boerdekoe@example.com',
+            },
+            phone: {
+              type: 'integer',
+              format: 'int64',
+              example: 1234567890,
+            },
+          },
+        },
+        FarmProfile: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'integer',
+              format: 'int64',
+              example: 1,
+            },
+            thumbnail: {
+              type: 'string',
+              example: 'https://via.placeholder.com/150',
+            },
+            address: {
+              type: 'string',
+              example: 'De Dam 1',
+            },
+            postalCode: {
+              type: 'string',
+              example: '1234 AB',
+            },
+            city: {
+              type: 'string',
+              example: 'Amsterdam',
+            },
+            farmDescription: {
+              type: 'string',
+              example:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            },
+            productDescription: {
+              type: 'string',
+              example:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            },
+            email: {
+              type: 'string',
+              example: 'info@boerderijdekoe.nl',
+            },
+            website: {
+              type: 'string',
+              example: 'https://www.boerderijdekoe.nl',
+            },
+            phone: {
+              type: 'integer',
+              format: 'int64',
+              example: 1234567890,
+            },
+          },
+        },
+        Logger: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'integer',
+              format: 'int64',
+              example: 1,
+            },
+            date: {
+              type: 'string',
+              example: '2020-12-31T00:00:00.000Z',
+            },
+            serviceName: {
+              type: 'string',
+              example: 'Backend API',
+            },
+            level: {
+              type: 'string',
+              example: 'INFO',
+            },
+            message: {
+              type: 'string',
+              example: 'This is a log message',
+            },
+          },
+        },
+        Review: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'integer',
+              format: 'int64',
+              example: 1,
+            },
+            description: {
+              type: 'string',
+              example: 'This is a review description',
+            },
+            rating: {
+              type: 'integer',
+              format: 'int32',
+              example: 5,
+            },
+            date: {
+              type: 'string',
+              example: '2020-12-31T00:00:00.000Z',
+            },
+            farmId: {
+              type: 'integer',
+              format: 'int64',
+              example: 1,
+            },
+            userId: {
+              type: 'integer',
+              format: 'int64',
+              example: 1,
+            },
+          },
+        },
+        Role: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'integer',
+              format: 'int64',
+              example: 1,
+            },
+            name: {
+              type: 'string',
+              example: 'Admin',
+            },
+          },
+        },
+        ErrorResponse: {
+          type: 'object',
+          required: ['code', 'message'],
+          properties: {
+            code: {
+              type: 'integer',
+              format: 'int32',
+              example: 400,
+            },
+            message: {
+              type: 'string',
+              example: 'Bad Request',
+            },
+          },
+        },
+      },
+      responses: {
+        BadRequest: {
+          description: 'The request is malformed or invalid',
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/ErrorResponse',
+              },
+            },
+          },
+        },
+        Unauthorized: {
+          description:
+            'Authentication is required or the provided credentials are invalid',
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/ErrorResponse',
+              },
+            },
+          },
+        },
+        Forbidden: {
+          description:
+            'The user does not have the necessary permissions to access the resource',
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/ErrorResponse',
+              },
+            },
+          },
+        },
+        NotFound: {
+          description: 'The specified resource was not found',
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/ErrorResponse',
+              },
+            },
+          },
+        },
+        InternalServerError: {
+          description: 'An unexpected server error occurred',
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/ErrorResponse',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  apis: [],
+};
