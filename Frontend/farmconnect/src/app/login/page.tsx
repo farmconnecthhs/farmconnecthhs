@@ -6,15 +6,29 @@ import {
 } from '@firebase/auth';
 import { NextPage } from 'next';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import googleLogo from '../../../public/logos/Google_-G-_Logo.svg.png';
 
 import { auth } from '@/firebase/config';
+import { useRouter } from 'next/navigation';
 
 const LoginPage: NextPage = () => {
   const emailRef = React.createRef<HTMLInputElement>();
   const passwordRef = React.createRef<HTMLInputElement>();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        console.log('User is logged in');
+        router.push('/');
+      } else {
+        console.log('User is logged out');
+      }
+    });
+  }, []);
 
   /**
    * Login with google

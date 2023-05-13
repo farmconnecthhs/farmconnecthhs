@@ -54,6 +54,10 @@ const RegisterPage: NextPage = () => {
     );
   }
 
+  /**
+   * Register to the database
+   * @param {UserCredential} userCredential
+   */
   async function registerToDatabse(userCredential: UserCredential) {
     const user = await userCredential.user;
     const token: string = await userCredential.user.getIdToken();
@@ -89,12 +93,12 @@ const RegisterPage: NextPage = () => {
         console.log(credential);
 
         if (credential instanceof OAuthCredential) {
-          const token = credential.accessToken;
+          // const token = credential.accessToken;
         }
         const aditionalUserInfo = getAdditionalUserInfo(result);
         await registerToDatabse(result);
         console.log(aditionalUserInfo);
-        router.push('kaart');
+        router.push('/');
         // The signed-in user info.
       })
       .catch((error) => {
