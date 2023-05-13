@@ -5,7 +5,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import styles from './Map.module.css';
 
-import { LatLng } from 'leaflet';
+import L, { LatLng, Icon } from 'leaflet';
 
 interface MapProps {
   farms: { id: number; latitude: number; longitude: number; name: string }[];
@@ -22,16 +22,18 @@ const MapControler: React.FunctionComponent = () => {
   return <></>;
 };
 
+const markerIcon: Icon = L.icon({
+  iconUrl: '/mapmarker.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+});
+
 const Map: React.FunctionComponent<MapProps> = ({ farms }) => {
   const [center] = React.useState<LatLng>(new LatLng(52.3783, 4.9009));
 
   return (
     <div className={styles.mapContainer}>
-      <MapContainer
-        center={center}
-        zoom={8}
-        style={{ height: '100%', width: '100%' }}
-      >
+      <MapContainer center={center} zoom={8} className={styles.mapContainer}>
         <MapControler />
         <TileLayer
           url="https://{s}.tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=1bOawQCdnh61NAAZkKPUFGdbZbAUn4eAzQDI3kLZo3SuKCsq9vPMaKStpo7yT5if"
@@ -42,8 +44,12 @@ const Map: React.FunctionComponent<MapProps> = ({ farms }) => {
           accessToken="1bOawQCdnh61NAAZkKPUFGdbZbAUn4eAzQDI3kLZo3SuKCsq9vPMaKStpo7yT5if"
         />
         {farms.map((farm) => (
-          <Marker key={farm.id} position={[farm.latitude, farm.longitude]}>
-            <Popup>{farm.name}</Popup>
+          <Marker
+            key={farm.id}
+            position={[farm.latitude, farm.longitude]}
+            icon={markerIcon}
+          >
+            <Popup offset={[0, -22]}>{farm.name}</Popup>
           </Marker>
         ))}
       </MapContainer>
