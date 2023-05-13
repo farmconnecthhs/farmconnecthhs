@@ -142,7 +142,6 @@ const RegisterPage: NextPage = () => {
                 className={'button__logo-provider'}
                 loading="eager"
                 priority={false}
-                
               />
             </button>
             <button className={'button--provider'} onClick={() => register()}>
