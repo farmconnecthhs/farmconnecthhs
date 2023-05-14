@@ -103,18 +103,14 @@ a {
   text-decoration: none;
 }
 
-h1 {
-
+h1,
+h2,
+h3,
+h4 {
+  color: rgb(66, 66, 66); font-weight: 800;
 }
 h2 {
-  font-size: 1.2em;
-}
-h3 {
-
-}
-h4 {
-  color: rgb(66, 66, 66);
-  font-weight: 800;
+  font-size: 1.2rem;
 }
 
 .margin_s {
