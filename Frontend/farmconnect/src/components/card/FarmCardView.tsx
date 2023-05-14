@@ -37,7 +37,7 @@ const farmCards: FarmCard[] = [
   },
 ];
 
-const FarmCardView: React.FC = () => {
+const FarmCardView: React.FunctionComponent = () => {
   return (
     <div>
       <div className={'row'}>

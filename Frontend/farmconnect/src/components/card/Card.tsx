@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 import { FarmCard } from '@/components/interfaces/FarmCard';
@@ -11,11 +12,13 @@ const Card: React.FC<CardProps> = ({ farmCard }) => {
     <div className="farm-card">
       <div className="card-full-width margin_s">
         <div className="card__image">
-          <img
-            className={'card__header__image-full-width'}
-            src={'placeholder.png'}
+          <Image
+            // className={'card__header__image-full-width'}
+            src={'/placeholder.png'}
             alt={''}
-          ></img>
+            width={500}
+            height={500}
+          ></Image>
         </div>
         <div className={'card__body'}>
           <div className="card__header">

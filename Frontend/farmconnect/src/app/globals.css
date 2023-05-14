@@ -103,11 +103,15 @@ a {
   text-decoration: none;
 }
 
-h1,
-h2 {
-  font-size: 20px;
+h1 {
+
 }
-h3,
+h2 {
+  font-size: 1.2em;
+}
+h3 {
+
+}
 h4 {
   color: rgb(66, 66, 66);
   font-weight: 800;
@@ -132,9 +136,9 @@ h4 {
   border: 1px solid var(--card-border-rgb);
   border-radius: var(--border-radius);
   box-shadow: var(--default-shadow);
-  width: fit-content;
   max-width: 250px;
   height: fit-content;
+  cursor: pointer;
 }
 
 .card-full-width .card__header__image-full-width {
