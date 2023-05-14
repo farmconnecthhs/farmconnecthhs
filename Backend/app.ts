@@ -12,44 +12,15 @@ import swaggerUi from 'swagger-ui-express';
 
 import router from './api/routes';
 
+import { options } from './swagger/apiOptions';
+
 const app: Application = express();
 
 const corsOptions = {
-  // origin: ["http://localhost:4200", "http://localhost:3001"],
-  // optionsSuccessStatus: 200
+  origin: ['http://localhost:4200', 'http://localhost:3001'],
+  optionsSuccessStatus: 200,
 };
 
-const options = {
-  failOnErrors: true,
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'FarmConnect API',
-      version: '0.1.0',
-      description: 'FarmConnect API application',
-      license: {
-        name: 'MIT',
-        url: 'https://spdx.org/licenses/MIT.html',
-      },
-      contact: {
-        name: 'FarmConnect',
-        url: 'https://FarmConnect.com',
-        email: 'cms@farmconnect.com',
-      },
-    },
-    servers: [
-      {
-        url: 'http://localhost:3000/api/v1',
-      },
-    ],
-  },
-  apis: [
-    './api/**/*.ts',
-    './api/users/routes/*.ts',
-    './swagger/components/user.yaml',
-    './swagger/components/error.yaml',
-  ],
-};
 const specs = swaggerJsdoc(options);
 // dbInit();
 
