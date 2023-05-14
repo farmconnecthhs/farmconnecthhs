@@ -1,7 +1,5 @@
 import React from 'react';
 
-import placeholderImage from '/public/placeholder.png';
-
 import Card from './Card';
 
 import { FarmCard } from '@/components/interfaces/FarmCard';
@@ -44,11 +42,7 @@ const FarmCardView: React.FC = () => {
     <div>
       <div className={'row'}>
         {farmCards.map((farmCard, index) => (
-          <Card
-            key={index}
-            farmCard={farmCard}
-            imageSrc={placeholderImage.src}
-          />
+          <Card key={index} farmCard={farmCard} />
         ))}
       </div>
     </div>
