@@ -1,11 +1,12 @@
 .card-container {
   z-index: 1001;
   position: absolute;
-  top: 4.5rem;
+  top: 4.0rem;
   right: 0;
   width: 560px;
   height: 90%;
   overflow: auto;
   overflow-y: scroll;
   overflow-x: hidden;
+  backdrop-filter: blur(20px);
 }
