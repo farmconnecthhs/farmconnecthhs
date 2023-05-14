@@ -8,12 +8,13 @@ import {
   UserCredential,
 } from '@firebase/auth';
 import { NextPage } from 'next';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
-import { auth } from '@/firebase/config';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 import googleLogo from '../../../public/logos/Google_-G-_Logo.svg.png';
+
+import { auth } from '@/firebase/config';
 
 const RegisterPage: NextPage = () => {
   const [email, setEmail] = useState<string>(' ');
