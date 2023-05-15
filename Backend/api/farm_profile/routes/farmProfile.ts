@@ -29,4 +29,6 @@ const farmProfileRouter: Router = Router();
  */
 farmProfileRouter.get('/', FarmProfileController.getAll);
 
+farmProfileRouter.post('/', FarmProfileController.create);
+
 export default farmProfileRouter;
