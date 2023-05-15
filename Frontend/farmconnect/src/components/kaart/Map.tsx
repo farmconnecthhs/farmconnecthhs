@@ -1,11 +1,10 @@
 'use client';
+import L, { LatLng, Icon } from 'leaflet';
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 
 import 'leaflet/dist/leaflet.css';
 import styles from './Map.module.css';
-
-import L, { LatLng, Icon } from 'leaflet';
 
 interface MapProps {
   farms: { id: number; latitude: number; longitude: number; name: string }[];
