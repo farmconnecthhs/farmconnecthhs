@@ -49,7 +49,7 @@ paths:
               $ref: '#/components/schemas/User'
       responses:
         '201':
-          description: Created an User object
+          description: Created a User object
           content:
             application/json:
               schema:
@@ -66,13 +66,13 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /users/{userId}:
     get:
-      summary: Get an user by ID
+      summary: Get a user by ID
       operationId: getUserById
       tags:
         - users
       responses:
         '200':
-          description: An user was successfully retrieved
+          description: A user was successfully retrieved
           content:
             application/json:
               schema:
@@ -88,7 +88,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
     put:
-      summary: Update an user by ID
+      summary: Update a user by ID
       operationId: updateUserById
       tags:
         - users
@@ -101,7 +101,7 @@ paths:
               $ref: '#/components/schemas/User'
       responses:
         '200':
-          description: Updated an User object
+          description: Updated a User object
           content:
             application/json:
               schema:
@@ -340,19 +340,39 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /farms/{userId}:
+  /farms/{farmId}/users/{userId}/reviews:
     get:
-      summary: Get a farm by user ID
-      operationId: getFarmByUserId
+      summary: Get all reviews for a farm by user ID
+      operationId: getAllReviewsForFarmByUser
       tags:
         - farms
+      parameters:
+        - name: sortDir
+          in: query
+          description: Sort by ascending or descending order
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: limit
+          in: query
+          description: Limit the number of reviews returned
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 20
       responses:
         '200':
-          description: A farm was successfully retrieved
+          description: A list of reviews was successfully retrieved
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Farm'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Review'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -512,7 +532,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-    put:
+    patch:
       summary: Update a farm profile by ID
       operationId: updateFarmProfileById
       tags:
@@ -526,7 +546,7 @@ paths:
               $ref: '#/components/schemas/FarmProfile'
       responses:
         '200':
-          description: Updated a FarmProfile object
+          description: Updated a farm profile object
           content:
             application/json:
               schema:
