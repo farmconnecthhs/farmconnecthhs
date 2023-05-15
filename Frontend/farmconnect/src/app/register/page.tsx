@@ -49,7 +49,7 @@ const RegisterPage: NextPage = () => {
     await createUserWithEmailAndPassword(auth, email, password).then(
       async (userCredential) => {
         // TODO dit moet naar de backend
-        await registerToDatabse(userCredential);
+        await registerToDatabase(userCredential);
       }
     );
   }
@@ -58,7 +58,7 @@ const RegisterPage: NextPage = () => {
    * Register to the database
    * @param {UserCredential} userCredential
    */
-  async function registerToDatabse(userCredential: UserCredential) {
+  async function registerToDatabase(userCredential: UserCredential) {
     const user = await userCredential.user;
     const token: string = await userCredential.user.getIdToken();
     const res = await fetch('http://localhost:3001/api/v1/users', {
@@ -96,7 +96,7 @@ const RegisterPage: NextPage = () => {
           // const token = credential.accessToken;
         }
         const aditionalUserInfo = getAdditionalUserInfo(result);
-        await registerToDatabse(result);
+        await registerToDatabase(result);
         console.log(aditionalUserInfo);
         router.push('/');
         // The signed-in user info.
