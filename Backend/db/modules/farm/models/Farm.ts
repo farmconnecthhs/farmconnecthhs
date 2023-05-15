@@ -10,6 +10,7 @@ import {
 
 import sequelize from '../../../config/config';
 import { FarmProfile } from '../../farm_profile/models/FarmProfile';
+import { User } from '../../user/models/User';
 
 interface FarmAttributes {
   id: number;
@@ -72,3 +73,5 @@ Farm.init(
     paranoid: true,
   }
 );
+
+User.belongsTo(Farm, { foreignKey: 'farmId', targetKey: 'id' });
