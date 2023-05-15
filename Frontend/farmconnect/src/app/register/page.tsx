@@ -3,7 +3,6 @@ import {
   createUserWithEmailAndPassword,
   getAdditionalUserInfo,
   GoogleAuthProvider,
-  OAuthCredential,
   signInWithPopup,
   UserCredential,
 } from '@firebase/auth';
@@ -91,10 +90,6 @@ const RegisterPage: NextPage = () => {
       .then(async (result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         console.log(credential);
-
-        if (credential instanceof OAuthCredential) {
-          // const token = credential.accessToken;
-        }
         const aditionalUserInfo = getAdditionalUserInfo(result);
         await registerToDatabase(result);
         console.log(aditionalUserInfo);
