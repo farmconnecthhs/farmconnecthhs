@@ -4,23 +4,35 @@ import React from 'react';
 interface Props {
   style?: React.CSSProperties;
   menuItemStyle?: React.CSSProperties;
+  toggleOpen?: () => void;
 }
 
 export const MenuItems: React.FunctionComponent<Props> = (props) => {
-  const { style, menuItemStyle } = props;
+  const { style, menuItemStyle, toggleOpen } = props;
 
   return (
     <div style={style}>
-      <Link style={menuItemStyle} className={'nav-item'} href={'/'}>
+      <Link
+        style={menuItemStyle}
+        className={'nav-item'}
+        href={'/'}
+        onClick={toggleOpen}
+      >
         Kaart
       </Link>
-      <Link style={menuItemStyle} className={'nav-item'} href={'/auth/login'}>
+      <Link
+        style={menuItemStyle}
+        className={'nav-item'}
+        href={'/login'}
+        onClick={toggleOpen}
+      >
         Login
       </Link>
       <Link
         style={menuItemStyle}
         className={'nav-item'}
-        href={'/auth/register'}
+        href={'/register'}
+        onClick={toggleOpen}
       >
         Register
       </Link>
@@ -28,6 +40,7 @@ export const MenuItems: React.FunctionComponent<Props> = (props) => {
         style={menuItemStyle}
         className={'btn-call_to_action'}
         href={'/dashboard'}
+        onClick={toggleOpen}
       >
         Meld je boerderij aan
       </Link>

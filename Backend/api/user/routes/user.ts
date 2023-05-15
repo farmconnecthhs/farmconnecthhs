@@ -29,4 +29,6 @@ const userRouter: Router = Router();
  */
 userRouter.get('/', UserController.getAll);
 
+userRouter.post('/', UserController.create);
+
 export default userRouter;

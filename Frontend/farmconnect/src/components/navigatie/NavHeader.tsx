@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styles from './NavHeader.module.css';
 
@@ -30,13 +30,15 @@ const NavHeader: React.FunctionComponent = () => {
     setOpen(!open);
   }
 
-  React.useEffect(() => {
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        setOpen(false);
-      }
-    });
-  });
+  useEffect(() => {
+    if (window !== undefined) {
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+          setOpen(false);
+        }
+      });
+    }
+  }, []);
 
   return (
     <nav>
@@ -49,7 +51,7 @@ const NavHeader: React.FunctionComponent = () => {
           <Hamburger toggleOpen={toggleDrawer} />
         </div>
       </div>
-      <TopDrawer open={open} />
+      <TopDrawer open={open} toggleOpen={toggleDrawer} />
     </nav>
   );
 };

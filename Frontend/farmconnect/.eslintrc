@@ -13,17 +13,16 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react/recommended",
-    "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
+    "next/core-web-vitals",
     "google",
     "prettier"
   ],
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
-    "prettier/prettier": "error",
     "import/newline-after-import": [
       "error",
       {
@@ -41,6 +40,7 @@
         }
       }
     ],
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "no-var": "error",
     "quotes": ["error", "single"],
     "no-multiple-empty-lines": [

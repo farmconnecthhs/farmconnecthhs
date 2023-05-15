@@ -1,8 +1,11 @@
+'use client';
 import { NextPage } from 'next';
+import React from 'react';
 
-import styles from './page.module.css';
+import MapComponent from '@/components/kaart/MapComponent';
 
-const Home: NextPage = () => {
-  return <main className={styles.main}></main>;
+const KaartPagina: NextPage = () => {
+  return <div>{<MapComponent />}</div>;
 };
-export default Home;
+
+export default KaartPagina;
