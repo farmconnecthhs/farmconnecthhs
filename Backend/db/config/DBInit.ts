@@ -5,21 +5,21 @@ import { User } from '../modules/user/models/User';
 
 import sequelize from './config';
 
+const isDev = process.env.NODE_ENV === 'development';
+console.log('isDev');
 export const DBInit = async () => {
   try {
     await sequelize.authenticate();
     console.log('Connection to database has been established successfully.');
     try {
-      if (process.env.NODE_ENV === 'development') {
-        await sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
-        await sequelize.sync();
-        console.log('Database has been synced successfully.');
-        await User.sync();
-        await Role.sync();
-        await Farm.sync();
-        await FarmProfile.sync();
-        console.log('Database has been synced successfully.');
-      }
+      await sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+      await sequelize.sync();
+      console.log('Database has been synced successfully.');
+      await User.sync({ force: isDev });
+      await Role.sync({ force: isDev });
+      await Farm.sync({ force: isDev });
+      await FarmProfile.sync({ force: isDev });
+      console.log('Database has been synced successfully.');
     } catch (err) {
       console.error('Unable to sync database:', err);
     }
