@@ -1,0 +1,121 @@
+import {
+  CreationOptional,
+  DataTypes,
+  BelongsToGetAssociationMixin,
+  BelongsToSetAssociationMixin,
+  InferAttributes,
+  Model,
+  Optional,
+} from 'sequelize';
+
+import sequelize from '../../../config/config';
+import { Farm } from '../../farm/models/Farm';
+
+interface FarmProfileAttributes {
+  id: number;
+  thumbnail?: Buffer;
+  address: string;
+  postalCode: string;
+  city: string;
+  farmDescription?: string;
+  productDescription?: string;
+  email?: string;
+  website?: string;
+  phone?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  deletedAt?: Date;
+  farmId: number;
+}
+
+export type FarmProfileCreationAttributes = Optional<
+  FarmProfileAttributes,
+  'id'
+>;
+
+export class FarmProfile
+  extends Model<InferAttributes<FarmProfile>, FarmProfileCreationAttributes>
+  implements FarmProfileAttributes
+{
+  declare id: CreationOptional<number>;
+  declare thumbnail?: Buffer;
+  declare address: string;
+  declare postalCode: string;
+  declare city: string;
+  declare farmDescription?: string;
+  declare productDescription?: string;
+  declare email?: string;
+  declare website?: string;
+  declare phone?: string;
+  declare farmId: number;
+
+  public readonly createdAt!: CreationOptional<Date>;
+  public readonly updatedAt!: CreationOptional<Date>;
+  public readonly deletedAt!: CreationOptional<Date>;
+
+  public getFarm!: BelongsToGetAssociationMixin<Farm>;
+  public setFarm!: BelongsToSetAssociationMixin<Farm, 'farmId'>;
+}
+
+FarmProfile.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    thumbnail: {
+      type: DataTypes.BLOB,
+      allowNull: true,
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    postalCode: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    farmDescription: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    productDescription: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+    },
+    website: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+    },
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE,
+    deletedAt: DataTypes.DATE,
+    farmId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+  },
+  {
+    sequelize,
+    tableName: 'farm_profiles',
+    timestamps: true,
+    paranoid: true,
+  }
+);
+
+FarmProfile.belongsTo(Farm, { foreignKey: 'farmId', targetKey: 'id' });
