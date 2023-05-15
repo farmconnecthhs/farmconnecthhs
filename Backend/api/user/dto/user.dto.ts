@@ -4,5 +4,5 @@ export type CreateUserDTO = {
   phone_number?: string;
   user_name: string;
   email_address: string;
-  firebaseId?: string;
+  firebaseId: string;
 };
