@@ -51,7 +51,7 @@ const NavHeader: React.FunctionComponent = () => {
           <Hamburger toggleOpen={toggleDrawer} />
         </div>
       </div>
-      <TopDrawer open={open} />
+      <TopDrawer open={open} toggleOpen={toggleDrawer} />
     </nav>
   );
 };

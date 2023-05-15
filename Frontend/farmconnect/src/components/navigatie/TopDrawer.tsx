@@ -6,10 +6,11 @@ import { MenuItems } from '@/components/navigatie/MenuItems';
 
 interface Props {
   open: boolean;
+  toggleOpen: () => void;
 }
 
 export const TopDrawer: React.FunctionComponent<Props> = (props) => {
-  const { open } = props;
+  const { open, toggleOpen } = props;
   const [style, setStyle] = React.useState({ transform: 'translateY(-10rem)' });
 
   const menuStyle = {
@@ -31,9 +32,17 @@ export const TopDrawer: React.FunctionComponent<Props> = (props) => {
     }
   }, [open]);
 
+  function toggleDrawer() {
+    console.log('toggleDrawer');
+  }
   return (
     <div className={styles['top-drawer']} style={style}>
-      <MenuItems style={menuStyle} menuItemStyle={menuItemStyle} />
+      <MenuItems
+        style={menuStyle}
+        menuItemStyle={menuItemStyle}
+        burger={true}
+        toggleOpen={toggleOpen}
+      />
     </div>
   );
 };

@@ -3,7 +3,6 @@ import {
   createUserWithEmailAndPassword,
   getAdditionalUserInfo,
   GoogleAuthProvider,
-  OAuthCredential,
   signInWithPopup,
   UserCredential,
 } from '@firebase/auth';
@@ -49,11 +48,16 @@ const RegisterPage: NextPage = () => {
     await createUserWithEmailAndPassword(auth, email, password).then(
       async (userCredential) => {
         // TODO dit moet naar de backend
-        await registerToDatabse(userCredential);
+        await registerToDatabase(userCredential);
       }
     );
   }
-  async function registerToDatabse(userCredential: UserCredential) {
+
+  /**
+   * Register to the database
+   * @param {UserCredential} userCredential
+   */
+  async function registerToDatabase(userCredential: UserCredential) {
     const user = await userCredential.user;
     const token: string = await userCredential.user.getIdToken();
     const res = await fetch('http://localhost:3001/api/v1/users', {
@@ -77,6 +81,7 @@ const RegisterPage: NextPage = () => {
       await user.delete();
     }
   }
+
   /**
    * Register with Google
    */
@@ -85,14 +90,10 @@ const RegisterPage: NextPage = () => {
       .then(async (result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         console.log(credential);
-
-        if (credential instanceof OAuthCredential) {
-          const token = credential.accessToken;
-        }
         const aditionalUserInfo = getAdditionalUserInfo(result);
-        await registerToDatabse(result);
+        await registerToDatabase(result);
         console.log(aditionalUserInfo);
-        router.push('kaart');
+        router.push('/');
         // The signed-in user info.
       })
       .catch((error) => {
@@ -130,6 +131,9 @@ const RegisterPage: NextPage = () => {
             />
           </div>
           <div className={'col'}>
+            <button className={'button--provider'} onClick={() => register()}>
+              Register
+            </button>
             <button
               className={'button--provider'}
               onClick={() => registerWithGoogle()}
@@ -144,9 +148,6 @@ const RegisterPage: NextPage = () => {
                 loading="eager"
                 priority={false}
               />
-            </button>
-            <button className={'button--provider'} onClick={() => register()}>
-              Register
             </button>
           </div>
         </div>
