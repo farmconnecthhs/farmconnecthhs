@@ -13,11 +13,11 @@ const Card: React.FC<CardProps> = ({ farmCard }) => {
       <div className="card-full-width margin_s">
         <div className="card__image">
           <Image
-            // className={'card__header__image-full-width'}
+            className={'card__header__image-full-width'}
             src={'/placeholder.png'}
             alt={''}
-            width={500}
-            height={500}
+            width={200}
+            height={200}
           ></Image>
         </div>
         <div className={'card__body'}>

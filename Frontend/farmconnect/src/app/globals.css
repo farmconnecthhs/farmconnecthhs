@@ -110,6 +110,7 @@ h4 {
   color: rgb(66, 66, 66);
   font-weight: 800;
 }
+
 h2 {
   font-size: 1.2rem;
 }
@@ -293,6 +294,7 @@ h2 {
   margin: auto 0.5rem;
   justify-items: center;
 }
+
 textarea {
   font-family: var(--font-mono);
   font-weight: 500;

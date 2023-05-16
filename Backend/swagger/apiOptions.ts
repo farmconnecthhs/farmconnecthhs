@@ -67,7 +67,7 @@ export const options = {
           },
           responses: {
             '201': {
-              description: 'Created an User object',
+              description: 'Created a User object',
               content: {
                 'application/json': {
                   schema: {
@@ -94,14 +94,14 @@ export const options = {
           },
         },
       },
-      '/user/{userId}': {
+      '/users/{userId}': {
         get: {
-          summary: 'Get an user by ID',
+          summary: 'Get a user by ID',
           operationId: 'getUserById',
           tags: ['users'],
           responses: {
             '200': {
-              description: 'An user was successfully retrieved',
+              description: 'A user was successfully retrieved',
               content: {
                 'application/json': {
                   schema: {
@@ -128,7 +128,7 @@ export const options = {
           },
         },
         put: {
-          summary: 'Update an user by ID',
+          summary: 'Update a user by ID',
           operationId: 'updateUserById',
           tags: ['users'],
           requestBody: {
@@ -144,11 +144,45 @@ export const options = {
           },
           responses: {
             '200': {
-              description: 'Updated an User object',
+              description: 'Updated a User object',
               content: {
                 'application/json': {
                   schema: {
                     $ref: '#/components/schemas/User',
+                  },
+                },
+              },
+            },
+            '400': {
+              $ref: '#/components/responses/BadRequest',
+            },
+            '401': {
+              $ref: '#/components/responses/Unauthorized',
+            },
+            '403': {
+              $ref: '#/components/responses/Forbidden',
+            },
+            '404': {
+              $ref: '#/components/responses/NotFound',
+            },
+            '500': {
+              $ref: '#/components/responses/InternalServerError',
+            },
+          },
+        },
+      },
+      '/users/{userId}/farm': {
+        get: {
+          summary: 'Get a farm by user ID',
+          operationId: 'getFarmByUserId',
+          tags: ['users'],
+          responses: {
+            '200': {
+              description: 'A farm was successfully retrieved',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/Farm',
                   },
                 },
               },
@@ -338,7 +372,7 @@ export const options = {
           },
         },
       },
-      '/farm/{farmId}': {
+      '/farms/{farmId}': {
         get: {
           summary: 'Get a farm by ID',
           operationId: 'getFarmById',
@@ -415,7 +449,7 @@ export const options = {
           },
         },
       },
-      '/farm/{farmName}': {
+      '/farms/{farmName}': {
         get: {
           summary: 'Get a farm by name',
           operationId: 'getFarmByName',
@@ -449,18 +483,44 @@ export const options = {
           },
         },
       },
-      '/farm/{userId}': {
+      '/farms/{farmId}/users/{userId}/reviews': {
         get: {
-          summary: 'Get a farm by user ID',
-          operationId: 'getFarmByUserId',
+          summary: 'Get all reviews for a farm by user ID',
+          operationId: 'getAllReviewsForFarmByUser',
           tags: ['farms'],
+          parameters: [
+            {
+              name: 'sortDir',
+              in: 'query',
+              description: 'Sort by ascending or descending order',
+              required: false,
+              schema: {
+                type: 'string',
+                enum: ['asc', 'desc'],
+              },
+            },
+            {
+              name: 'limit',
+              in: 'query',
+              description: 'Limit the number of reviews returned',
+              required: false,
+              schema: {
+                type: 'integer',
+                minimum: 1,
+                maximum: 20,
+              },
+            },
+          ],
           responses: {
             '200': {
-              description: 'A farm was successfully retrieved',
+              description: 'A list of reviews was successfully retrieved',
               content: {
                 'application/json': {
                   schema: {
-                    $ref: '#/components/schemas/Farm',
+                    type: 'array',
+                    items: {
+                      $ref: '#/components/schemas/Review',
+                    },
                   },
                 },
               },
@@ -650,7 +710,7 @@ export const options = {
           },
         },
       },
-      '/farmProfile/{farmProfileId}': {
+      '/farmProfiles/{farmProfileId}': {
         get: {
           summary: 'Get a farm profile by ID',
           operationId: 'getFarmProfileById',
@@ -683,7 +743,7 @@ export const options = {
             },
           },
         },
-        put: {
+        patch: {
           summary: 'Update a farm profile by ID',
           operationId: 'updateFarmProfileById',
           tags: ['farmProfiles'],
@@ -700,7 +760,7 @@ export const options = {
           },
           responses: {
             '200': {
-              description: 'Updated a FarmProfile object',
+              description: 'Updated a farm profile object',
               content: {
                 'application/json': {
                   schema: {
@@ -727,7 +787,7 @@ export const options = {
           },
         },
       },
-      '/farmProfile/{farmName}': {
+      '/farmProfiles/{farmName}': {
         get: {
           summary: 'Get a farm profile by name',
           operationId: 'getFarmProfileByName',
@@ -883,7 +943,7 @@ export const options = {
           },
         },
       },
-      '/review/{reviewId}': {
+      '/reviews/{reviewId}': {
         get: {
           summary: 'Get a review by ID',
           operationId: 'getReviewById',
@@ -1109,7 +1169,7 @@ export const options = {
           },
         },
       },
-      '/log/{logId}': {
+      '/logs/{logId}': {
         get: {
           summary: 'Get a log by ID',
           operationId: 'getLogById',
@@ -1143,7 +1203,7 @@ export const options = {
           },
         },
       },
-      '/log/{userId}': {
+      '/logs/{userId}': {
         get: {
           summary: 'Get all logs by user ID',
           operationId: 'getLogsByUserId',
@@ -1222,7 +1282,7 @@ export const options = {
           },
         },
       },
-      '/role/{userId}': {
+      '/roles/{userId}': {
         get: {
           summary: 'Get a role by user ID',
           operationId: 'getRoleByUserId',
