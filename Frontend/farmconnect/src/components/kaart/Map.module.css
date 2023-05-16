@@ -1,5 +1,13 @@
 .mapContainer {
-  height: calc(100vh - 4.01rem);
+  height: calc(100vh - 4.08rem);
   width: 100%;
   position: relative;
+}
+
+@media (max-width: 764px) {
+  .mapContainer {
+    height: 500px;
+    width: 90%;
+    margin: auto;
+  }
 }
