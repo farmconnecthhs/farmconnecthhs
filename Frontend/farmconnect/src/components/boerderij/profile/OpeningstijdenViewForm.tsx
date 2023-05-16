@@ -1,4 +1,3 @@
-import { Openingstijd } from '@/components/boerderij/editor/interfaces/Openingstijd';
 import { Openingstijden } from '@/components/boerderij/editor/interfaces/Openingstijden';
 import OpeningstijdFormRow from '@/components/boerderij/editor/OpeningstijdFormRow';
 
