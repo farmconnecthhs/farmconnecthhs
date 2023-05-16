@@ -28,7 +28,34 @@ const farmProfileRouter: Router = Router();
  *
  */
 farmProfileRouter.get('/', FarmProfileController.getAll);
-
+/**
+ * @swagger
+ * /farmProfiles:
+ *   post:
+ *     tags:
+ *       - farmProfiles
+ *     description: Use to create a new farm profile
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/FarmProfile'
+ *     responses:
+ *       '201':
+ *         description: Farm profile created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/FarmProfile'
+ *       '400':
+ *         description: Bad request
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *
+ */
 farmProfileRouter.post('/', FarmProfileController.create);
 
 export default farmProfileRouter;
