@@ -5,20 +5,28 @@ import * as FarmProfileService from '../../../db/modules/farm_profile/services/f
 import { CreateFarmProfileDTO } from '../dto/farmProfile.dto';
 
 export const createFarmProfile = async (req: Request, res: Response) => {
-  try {
-    const payload: CreateFarmProfileDTO = req.body;
-    const farmProfile: FarmProfile = await FarmProfileService.create(payload);
-    res.status(201).json(farmProfile);
-  } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+  const payload: CreateFarmProfileDTO = req.body;
+  if (!payload) {
+    return res
+      .status(400)
+      .json({ error: 'Bad Request: Invalid Farm Profile Data' });
   }
+
+  const farmProfile: FarmProfile = await FarmProfileService.create(payload);
+  if (!farmProfile) {
+    return res
+      .status(400)
+      .json({ error: 'Bad Request: Farm Profile could not be created' });
+  }
+
+  return res.status(201).json(farmProfile);
 };
 
 export const getAllFarmProfiles = async (req: Request, res: Response) => {
-  try {
-    const farmProfiles: FarmProfile[] = await FarmProfileService.getAll();
-    res.status(200).json(farmProfiles);
-  } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+  const farmProfiles: FarmProfile[] = await FarmProfileService.getAll();
+  if (farmProfiles.length === 0) {
+    return res.status(404).json({ error: 'Not Found: No Farm Profiles' });
   }
+
+  return res.status(200).json(farmProfiles);
 };
