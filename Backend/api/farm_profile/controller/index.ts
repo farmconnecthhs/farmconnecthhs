@@ -17,7 +17,7 @@ export const create = async (req: Request, res: Response) => {
 export const getAll = async (req: Request, res: Response) => {
   try {
     const farmProfiles: FarmProfile[] = await FarmProfileService.getAll();
-    res.json(farmProfiles);
+    res.status(200).json(farmProfiles);
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
   }
