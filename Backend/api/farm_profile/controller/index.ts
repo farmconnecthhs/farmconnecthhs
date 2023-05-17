@@ -4,7 +4,7 @@ import { FarmProfile } from '../../../db/modules/farm_profile/models/FarmProfile
 import * as FarmProfileService from '../../../db/modules/farm_profile/services/farmProfileService';
 import { CreateFarmProfileDTO } from '../dto/farmProfile.dto';
 
-export const create = async (req: Request, res: Response) => {
+export const createFarmProfile = async (req: Request, res: Response) => {
   try {
     const payload: CreateFarmProfileDTO = req.body;
     const farmProfile: FarmProfile = await FarmProfileService.create(payload);
@@ -14,7 +14,7 @@ export const create = async (req: Request, res: Response) => {
   }
 };
 
-export const getAll = async (req: Request, res: Response) => {
+export const getAllFarmProfiles = async (req: Request, res: Response) => {
   try {
     const farmProfiles: FarmProfile[] = await FarmProfileService.getAll();
     res.status(200).json(farmProfiles);

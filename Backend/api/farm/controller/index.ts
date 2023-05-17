@@ -4,7 +4,7 @@ import { Farm } from '../../../db/modules/farm/models/Farm';
 import * as FarmService from '../../../db/modules/farm/services/farmService';
 import { CreateFarmDTO } from '../dto/farm.dto';
 
-export const create = async (req: Request, res: Response) => {
+export const createFarm = async (req: Request, res: Response) => {
   try {
     const payload: CreateFarmDTO = req.body;
     const farm: Farm = await FarmService.create(payload);
@@ -14,7 +14,7 @@ export const create = async (req: Request, res: Response) => {
   }
 };
 
-export const getAll = async (req: Request, res: Response) => {
+export const getAllFarms = async (req: Request, res: Response) => {
   try {
     const farms: Farm[] = await FarmService.getAll();
     res.json(farms);

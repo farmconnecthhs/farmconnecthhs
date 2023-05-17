@@ -27,35 +27,40 @@ const farmRouter: Router = Router();
  *                  $ref: '#/components/schemas/Error'
  *
  */
-farmRouter.get('/', FarmController.getAll);
+farmRouter.get('/', FarmController.getAllFarms);
 /**
  * @swagger
  * /farms:
- *   post:
- *     tags:
- *       - Farms
- *     description: Use to create a new farm
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Farm'
- *     responses:
- *       '201':
- *         description: Farm created successfully
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Farm'
- *       '400':
- *         description: Bad request
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- *
+ *  post:
+ *    summary: Create a farm
+ *    operationId: createFarm
+ *    tags:
+ *    - farms
+ *    requestBody:
+ *      description: Farm object that needs to be added
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/Farm'
+ *    responses:
+ *      '201':
+ *        description: Created a Farm object
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Farm'
+ *      '400':
+ *        $ref: '#/components/responses/BadRequest'
+ *      '401':
+ *        $ref: '#/components/responses/Unauthorized'
+ *      '403':
+ *        $ref: '#/components/responses/Forbidden'
+ *      '404':
+ *        $ref: '#/components/responses/NotFound'
+ *      '500':
+ *        $ref: '#/components/responses/InternalServerError'
  */
-farmRouter.post('/', FarmController.create);
+farmRouter.post('/', FarmController.createFarm);
 
 export default farmRouter;
