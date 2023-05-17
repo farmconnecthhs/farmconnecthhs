@@ -17,6 +17,8 @@ interface FarmProfileAttributes {
   address: string;
   postalCode: string;
   city: string;
+  latitude?: number;
+  longitude?: number;
   farmDescription?: string;
   productDescription?: string;
   email?: string;
@@ -42,6 +44,8 @@ export class FarmProfile
   declare address: string;
   declare postalCode: string;
   declare city: string;
+  declare latitude?: number;
+  declare longitude?: number;
   declare farmDescription?: string;
   declare productDescription?: string;
   declare email?: string;
@@ -79,6 +83,14 @@ FarmProfile.init(
     city: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    latitude: {
+      type: DataTypes.DECIMAL,
+      allowNull: true,
+    },
+    longitude: {
+      type: DataTypes.DECIMAL,
+      allowNull: true,
     },
     farmDescription: {
       type: DataTypes.TEXT,

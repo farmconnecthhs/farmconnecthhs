@@ -28,7 +28,7 @@ const markerIcon: Icon = L.icon({
 });
 
 const Map: React.FunctionComponent<MapProps> = ({ farms }) => {
-  const [center] = React.useState<LatLng>(new LatLng(52.3783, 4.9009));
+  const [center] = React.useState<LatLng>(new LatLng(52.2215, 6.8937));
 
   return (
     <div className={styles.mapContainer}>
