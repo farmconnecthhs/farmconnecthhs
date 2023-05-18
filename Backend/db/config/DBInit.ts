@@ -14,7 +14,7 @@ export const DBInit = async () => {
     console.log('Connection to database has been established successfully.');
     try {
       await sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
-      await sequelize.sync();
+      await sequelize.sync({ force: isDev });
       console.log('Database has been synced successfully.');
       await User.sync({ force: isDev });
       await Role.sync({ force: isDev });
