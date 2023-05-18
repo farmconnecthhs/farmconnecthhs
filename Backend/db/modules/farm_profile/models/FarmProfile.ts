@@ -38,7 +38,6 @@ export class FarmProfile
   extends Model<InferAttributes<FarmProfile>, FarmProfileCreationAttributes>
   implements FarmProfileAttributes
 {
-  declare id: CreationOptional<number>;
   declare thumbnail?: Buffer;
   declare address: string;
   declare postalCode: string;
