@@ -1,11 +1,10 @@
 'use client';
+import L, { LatLng, Icon } from 'leaflet';
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 
 import 'leaflet/dist/leaflet.css';
 import styles from './Map.module.css';
-
-import L, { LatLng, Icon } from 'leaflet';
 
 interface MapProps {
   farms: { id: number; latitude: number; longitude: number; name: string }[];
@@ -29,7 +28,7 @@ const markerIcon: Icon = L.icon({
 });
 
 const Map: React.FunctionComponent<MapProps> = ({ farms }) => {
-  const [center] = React.useState<LatLng>(new LatLng(52.3783, 4.9009));
+  const [center] = React.useState<LatLng>(new LatLng(52.2215, 6.8937));
 
   return (
     <div className={styles.mapContainer}>
