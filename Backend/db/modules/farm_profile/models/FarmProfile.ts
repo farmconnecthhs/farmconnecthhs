@@ -12,7 +12,6 @@ import sequelize from '../../../config/config';
 import { Farm } from '../../farm/models/Farm';
 
 interface FarmProfileAttributes {
-  id: number;
   thumbnail?: Buffer;
   address: string;
   postalCode: string;
@@ -39,7 +38,6 @@ export class FarmProfile
   extends Model<InferAttributes<FarmProfile>, FarmProfileCreationAttributes>
   implements FarmProfileAttributes
 {
-  declare id: CreationOptional<number>;
   declare thumbnail?: Buffer;
   declare address: string;
   declare postalCode: string;
@@ -63,11 +61,6 @@ export class FarmProfile
 
 FarmProfile.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
     thumbnail: {
       type: DataTypes.BLOB,
       allowNull: true,
