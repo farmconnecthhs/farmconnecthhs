@@ -12,7 +12,6 @@ import sequelize from '../../../config/config';
 import { Farm } from '../../farm/models/Farm';
 
 interface FarmProfileAttributes {
-  id: number;
   thumbnail?: Buffer;
   address: string;
   postalCode: string;
