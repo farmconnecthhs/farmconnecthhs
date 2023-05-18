@@ -1,6 +1,8 @@
 import { Farm } from '../modules/farm/models/Farm';
+import { FarmProfile } from '../modules/farm_profile/models/FarmProfile';
 import { User } from '../modules/user/models/User';
 
+import { mockFarmProfiles } from './mockFarmProfiles';
 import { mockFarms } from './mockfarms';
 import { mockusers } from './mockusers';
 
@@ -10,6 +12,7 @@ import { mockusers } from './mockusers';
 export function generateMockData() {
   generateUsers();
   generateFarms();
+  generateFarmProfiles();
 }
 
 /**
@@ -27,5 +30,14 @@ function generateUsers() {
 function generateFarms() {
   for (const farm of mockFarms) {
     Farm.create(farm);
+  }
+}
+
+/**
+ * Generate mock farm profiles
+ */
+function generateFarmProfiles() {
+  for (const farmProfile of mockFarmProfiles) {
+    FarmProfile.create(farmProfile);
   }
 }
