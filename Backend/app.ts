@@ -27,6 +27,8 @@ DBInit();
 
 app.use(cors(corsOptions));
 app.use(express.json());
+
+DBInit();
 // app.use(express.urlencoded({ extended: false }));
 
 const port = 3001;
