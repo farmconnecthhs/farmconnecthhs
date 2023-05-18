@@ -9,7 +9,8 @@ import {
 } from 'sequelize';
 
 import sequelize from '../../../config/config';
-import { FarmProductCategory } from '../../farm_product_category/models/FarmProductCategory';
+
+// import { FarmProductCategory } from '../../farm_product_category/models/FarmProductCategory';
 
 interface FarmAttributes {
   id: number;
@@ -36,8 +37,8 @@ export class Farm
   public readonly updatedAt!: CreationOptional<Date>;
   public readonly deletedAt!: CreationOptional<Date>;
 
-  public createFarmProductCategory!: HasManyCreateAssociationMixin<FarmProductCategory>;
-  public getFarmProductCategories!: HasManyGetAssociationsMixin<FarmProductCategory>;
+  // public createFarmProductCategory!: HasManyCreateAssociationMixin<FarmProductCategory>;
+  // public getFarmProductCategories!: HasManyGetAssociationsMixin<FarmProductCategory>;
 }
 
 Farm.init(

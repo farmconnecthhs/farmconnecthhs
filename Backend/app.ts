@@ -13,6 +13,7 @@ import swaggerUi from 'swagger-ui-express';
 import router from './api/routes';
 
 import { options } from './swagger/apiOptions';
+import DBInit from './db/config/DBInit';
 
 const app: Application = express();
 
@@ -26,6 +27,8 @@ const specs = swaggerJsdoc(options);
 
 app.use(cors(corsOptions));
 app.use(express.json());
+
+DBInit();
 // app.use(express.urlencoded({ extended: false }));
 
 const port = 3001;
