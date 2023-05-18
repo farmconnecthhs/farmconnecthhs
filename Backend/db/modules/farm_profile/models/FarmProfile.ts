@@ -29,10 +29,7 @@ interface FarmProfileAttributes {
   farmId: number;
 }
 
-export type FarmProfileCreationAttributes = Optional<
-  FarmProfileAttributes,
-  'id'
->;
+export type FarmProfileCreationAttributes = FarmProfileAttributes;
 
 export class FarmProfile
   extends Model<InferAttributes<FarmProfile>, FarmProfileCreationAttributes>
@@ -96,7 +93,6 @@ FarmProfile.init(
     email: {
       type: DataTypes.STRING,
       allowNull: true,
-      unique: true,
     },
     website: {
       type: DataTypes.STRING,
@@ -105,7 +101,6 @@ FarmProfile.init(
     phone: {
       type: DataTypes.STRING,
       allowNull: true,
-      unique: true,
     },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,

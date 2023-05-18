@@ -60,7 +60,6 @@ Farm.init(
     phone: {
       type: DataTypes.STRING,
       allowNull: true,
-      unique: true,
     },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
