@@ -23,7 +23,7 @@ const corsOptions = {
 };
 
 const specs = swaggerJsdoc(options);
-// dbInit();
+DBInit();
 
 app.use(cors(corsOptions));
 app.use(express.json());
