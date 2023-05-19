@@ -22,7 +22,7 @@ const Card: React.FC<CardProps> = ({ farmCard }) => {
         </div>
         <div className={'card__body'}>
           <div className="card__header">
-            <h2>{farmCard.farm.name}</h2>
+            <h2>{farmCard.Farm.name}</h2>
           </div>
           <p>{farmCard.city}</p>
           <p>{farmCard.farmDescription}</p>

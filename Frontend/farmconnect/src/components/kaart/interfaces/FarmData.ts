@@ -15,5 +15,5 @@ export interface FarmProfile {
   website?: string;
   phone?: string;
   farmId: number;
-  farm: Farm;
+  Farm: Farm;
 }
