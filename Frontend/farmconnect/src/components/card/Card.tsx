@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { FarmCard } from '@/components/interfaces/FarmCard';
+import { FarmProfile } from '@/components/kaart/interfaces/FarmData';
 
 interface CardProps {
-  farmCard: FarmCard;
+  farmCard: FarmProfile;
 }
 
 const Card: React.FC<CardProps> = ({ farmCard }) => {
@@ -22,10 +22,10 @@ const Card: React.FC<CardProps> = ({ farmCard }) => {
         </div>
         <div className={'card__body'}>
           <div className="card__header">
-            <h2>{farmCard.naam}</h2>
+            <h2>{farmCard.farm.name}</h2>
           </div>
-          <p>{farmCard.afstand}</p>
-          <p>{farmCard.beschrijving}</p>
+          <p>{farmCard.city}</p>
+          <p>{farmCard.farmDescription}</p>
         </div>
       </div>
     </div>
