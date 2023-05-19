@@ -23,6 +23,7 @@ interface UserAttributes {
   updatedAt?: Date;
   deletedAt?: Date;
   roleId?: number;
+  farmId?: number;
 }
 
 export type UserCreationAttributes = Optional<UserAttributes, 'id'>;
@@ -40,6 +41,7 @@ export class User extends Model<InferAttributes<User>, UserCreationAttributes> {
   declare email_address: string;
   declare phone_number?: string;
   declare roleId?: CreationOptional<number>;
+  declare farmId?: CreationOptional<number>;
 
   public getRole!: HasOneGetAssociationMixin<Role>;
   public setRole!: HasOneCreateAssociationMixin<Role>;
@@ -77,11 +79,15 @@ User.init(
     },
     roleId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     firebaseId: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    farmId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,

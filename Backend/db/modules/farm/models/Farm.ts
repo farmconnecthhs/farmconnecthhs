@@ -1,21 +1,22 @@
 import {
   CreationOptional,
   DataTypes,
-  // HasManyCreateAssociationMixin,
-  // HasManyGetAssociationsMixin,
+  HasOneCreateAssociationMixin,
+  HasOneGetAssociationMixin,
   InferAttributes,
   Model,
   Optional,
 } from 'sequelize';
 
 import sequelize from '../../../config/config';
-import { FarmProductCategory } from '../../farm_product_category/models/FarmProductCategory';
+import { FarmProfile } from '../../farm_profile/models/FarmProfile';
+import { User } from '../../user/models/User';
 
 interface FarmAttributes {
   id: number;
   name: string;
   email: string;
-  phone: string;
+  phone?: string;
   createdAt?: Date;
   updatedAt?: Date;
   deletedAt?: Date;
@@ -30,14 +31,14 @@ export class Farm
   declare id: CreationOptional<number>;
   declare name: string;
   declare email: string;
-  declare phone: string;
+  declare phone?: string;
 
   public readonly createdAt!: CreationOptional<Date>;
   public readonly updatedAt!: CreationOptional<Date>;
   public readonly deletedAt!: CreationOptional<Date>;
 
-  public createFarmProductCategory!: HasManyCreateAssociationMixin<FarmProductCategory>;
-  public getFarmProductCategories!: HasManyGetAssociationsMixin<FarmProductCategory>;
+  public getFarmProfile!: HasOneGetAssociationMixin<FarmProfile>;
+  public createFarmProfile!: HasOneCreateAssociationMixin<FarmProfile>;
 }
 
 Farm.init(
@@ -54,10 +55,11 @@ Farm.init(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     phone: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
@@ -70,3 +72,5 @@ Farm.init(
     paranoid: true,
   }
 );
+
+User.belongsTo(Farm, { foreignKey: 'farmId', targetKey: 'id' });
