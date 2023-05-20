@@ -46,11 +46,11 @@ const Map: React.FunctionComponent<MapProps> = ({ farmProfiles }) => {
         />
         {farmProfiles.map((farmProfile) => (
           <Marker
-            key={farmProfile.Farm.name}
+            key={farmProfile.farmId}
             position={[farmProfile.latitude, farmProfile.longitude]}
             icon={markerIcon}
           >
-            <Popup offset={[0, -22]}>{farmProfile.farmDescription}</Popup>
+            <Popup offset={[0, -22]}>{farmProfile.Farm.name}</Popup>
           </Marker>
         ))}
       </MapContainer>

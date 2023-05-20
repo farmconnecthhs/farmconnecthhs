@@ -10,12 +10,20 @@ import MapComponent from '@/components/kaart/MapComponent';
   /* @ts-expect-error Async Server Component */
 }
 const KaartPagina: NextPage = async () => {
-  const fetchData = async () => {
-    const response = await fetch('http://localhost:3001/api/v1/farmProfiles/');
-    const data = await response.json();
-    return data;
+  const fetchFarmData = async () => {
+    try {
+      const response = await fetch(
+        'http://localhost:3001/api/v1/farmProfiles/'
+      );
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.log('Error fetching data:', error);
+      return [];
+    }
   };
-  const data = await fetchData();
+
+  const data = await fetchFarmData();
 
   return (
     <div className={styles['main-container']}>
