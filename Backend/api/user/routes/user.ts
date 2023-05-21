@@ -31,6 +31,8 @@ userRouter.get('/', UserController.getAll);
 
 userRouter.get('/:id', UserController.getById);
 
+userRouter.get('/firebase/:id', UserController.getByFirebaseId);
+
 userRouter.post('/', UserController.create);
 
 export default userRouter;

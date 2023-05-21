@@ -17,3 +17,11 @@ export const getById = async (id: number) => {
   }
   return user;
 };
+
+export const getByFirebaseId = async (firebaseId: string) => {
+  const user = await User.findOne({ where: { firebaseId } });
+  if (!user) {
+    return null;
+  }
+  return user;
+};
