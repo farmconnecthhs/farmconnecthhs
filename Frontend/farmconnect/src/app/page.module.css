@@ -24,8 +24,9 @@
     overflow-y: scroll;
     overflow-x: hidden;
     background-color: rgba(189, 253, 227, 0.3);
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(22px);
     padding: 16px;
+    box-shadow: 0 0 0.6rem rgba(112, 111, 111, 0.44);
 }
 
 /* Tablet and Smaller Desktop */

@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { FarmCard } from '@/components/interfaces/FarmCard';
+import { FarmProfile } from '@/components/kaart/interfaces/FarmData';
 
 interface CardProps {
-  farmCard: FarmCard;
+  farmProfiles: FarmProfile;
 }
 
-const Card: React.FC<CardProps> = ({ farmCard }) => {
+const Card: React.FC<CardProps> = ({ farmProfiles }) => {
   return (
     <div className="card-full-width margin_s">
       <div className="card__image">
@@ -21,10 +21,10 @@ const Card: React.FC<CardProps> = ({ farmCard }) => {
       </div>
       <div className={'card__body'}>
         <div className="card__header">
-          <h2>{farmCard.naam}</h2>
+          <h2>{farmProfiles.Farm.name}</h2>
         </div>
-        <p>{farmCard.afstand}</p>
-        <p>{farmCard.beschrijving}</p>
+        <p>{farmProfiles.city}</p>
+        <p>{farmProfiles.farmDescription}</p>
       </div>
     </div>
   );
