@@ -5,7 +5,6 @@ import {
   BelongsToSetAssociationMixin,
   InferAttributes,
   Model,
-  Optional,
 } from 'sequelize';
 
 import sequelize from '../../../config/config';

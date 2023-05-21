@@ -1,3 +1,4 @@
+import { Farm } from '../../farm/models/Farm';
 import {
   FarmProfile,
   FarmProfileCreationAttributes,
@@ -18,5 +19,12 @@ export const getById = async (id: number): Promise<FarmProfile | null> => {
 };
 
 export const getAll = async (): Promise<FarmProfile[]> => {
-  return await FarmProfile.findAll();
+  return await FarmProfile.findAll({
+    include: [
+      {
+        model: Farm,
+        attributes: ['name'],
+      },
+    ],
+  });
 };
