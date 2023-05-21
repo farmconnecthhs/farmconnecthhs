@@ -1,5 +1,7 @@
+import React from 'react';
+
 import { Openingstijden } from '@/components/boerderij/editor/interfaces/Openingstijden';
-import OpeningstijdFormRow from '@/components/boerderij/editor/OpeningstijdFormRow';
+import OpeningstijdenViewRow from '@/components/boerderij/profile/OpeningstijdenViewRow';
 
 interface OpeningstijdenViewFormProps {
   openingstijden: Openingstijden;
@@ -15,10 +17,8 @@ const OpeningstijdenViewForm: React.FunctionComponent<
     for (const openingstijd in openingstijden) {
       if (openingstijd) {
         openingTimesElements.push(
-          <OpeningstijdFormRow
+          <OpeningstijdenViewRow
             openingstijd={openingstijden[openingstijd as keyof Openingstijden]}
-            key={openingstijd}
-            readOnly
           />
         );
       }
