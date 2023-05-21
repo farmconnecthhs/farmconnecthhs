@@ -40,7 +40,7 @@ const farmCards: FarmCard[] = [
 const FarmCardView: React.FunctionComponent = () => {
   return (
     <div>
-      <div className={'row'}>
+      <div className={'row-grow'}>
         {farmCards.map((farmCard, index) => (
           <Card key={index} farmCard={farmCard} />
         ))}

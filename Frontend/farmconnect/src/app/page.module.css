@@ -1,74 +1,76 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem;
+    min-height: 100vh;
 }
 
 .main-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-container {
-  z-index: 1001;
-  position: absolute;
-  top: 4rem;
-  right: 0;
-  width: 560px;
-  height: 90%;
-  overflow: auto;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  backdrop-filter: blur(20px);
+    z-index: 1001;
+    position: absolute;
+    top: 4rem;
+    right: 0;
+    width: 560px;
+    height: 90.5%;
+    overflow: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: rgba(189, 253, 227, 0.3);
+    backdrop-filter: blur(30px);
+    padding: 16px;
 }
 
 /* Tablet and Smaller Desktop */
 @media (max-width: 764px) {
-  .grid {
-    grid-template-columns: repeat(2, 50%);
-  }
+    .grid {
+        grid-template-columns: repeat(2, 50%);
+    }
 
-  .main-container {
-    flex-direction: column-reverse;
-    padding-bottom: 24px;
-  }
+    .main-container {
+        flex-direction: column-reverse;
+        padding-bottom: 24px;
+    }
 
-  .card-container {
-    position: unset;
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    z-index: 1001;
-    width: 80%;
-    height: 100%;
-    overflow: auto;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    backdrop-filter: none;
-    padding-bottom: 24px;
-    margin: auto;
-  }
+    .card-container {
+        position: unset;
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        z-index: 1001;
+        width: 80%;
+        height: 100%;
+        overflow: auto;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        backdrop-filter: none;
+        padding-bottom: 24px;
+        margin: auto;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
+    .vercelLogo {
+        filter: invert(1);
+    }
 
-  .logo {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-  }
+    .logo {
+        filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
+    }
 }
 
 @keyframes rotate {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
 }
