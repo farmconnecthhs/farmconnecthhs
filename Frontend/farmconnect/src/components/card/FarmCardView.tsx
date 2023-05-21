@@ -11,7 +11,7 @@ interface FarmCardViewProps {
 const FarmCardView: React.FC<FarmCardViewProps> = ({ farmProfiles }) => {
   return (
     <div>
-      <div className="row">
+      <div className="row-grow">
         {farmProfiles.map((farmProfile) => (
           <Card key={farmProfile.farmId} farmProfiles={farmProfile} />
         ))}
