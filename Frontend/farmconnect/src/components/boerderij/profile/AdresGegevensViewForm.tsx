@@ -7,6 +7,10 @@ interface ViewFormProps {
 }
 
 const ViewForm: React.FC<ViewFormProps> = ({ adresgegevens }) => {
+  if (!adresgegevens) {
+    return null;
+  }
+
   const { straat, huisnummer, postcode, stad } = adresgegevens;
 
   return (

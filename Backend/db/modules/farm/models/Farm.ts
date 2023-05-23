@@ -24,6 +24,7 @@ interface FarmAttributes {
 
 export type FarmCreationAttributes = Optional<FarmAttributes, 'id'>;
 
+// eslint-disable-next-line require-jsdoc
 export class Farm
   extends Model<InferAttributes<Farm>, FarmCreationAttributes>
   implements FarmAttributes

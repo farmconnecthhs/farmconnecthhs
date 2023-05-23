@@ -32,6 +32,7 @@ export const TopDrawer: React.FunctionComponent<Props> = (props) => {
     }
   }, [open]);
 
+  // eslint-disable-next-line no-unused-vars,require-jsdoc,@typescript-eslint/no-unused-vars
   function toggleDrawer() {
     console.log('toggleDrawer');
   }
