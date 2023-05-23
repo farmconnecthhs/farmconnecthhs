@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
-import { useSearchParams } from 'next/navigation';
 
+import { AddPost } from '@/components/gebruiker/profile/interfaces/Params';
 import type { User } from '@/components/gebruiker/profile/interfaces/User';
 
 type ProfileProps = {
@@ -10,8 +10,7 @@ type ProfileProps = {
 // prettier-ignore
 {/* @ts-expect-error Async Server Component */}
 const ProfielPage: NextPage<ProfileProps> = async () => {
-  const searchParams = useSearchParams();
-  const id: string | null = searchParams.get('id');
+  const id: string = AddPost('slug');
   console.log(id);
   const fetchUserData = async () => {
     try {
