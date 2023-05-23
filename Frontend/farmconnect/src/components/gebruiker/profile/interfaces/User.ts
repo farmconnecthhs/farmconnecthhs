@@ -1,7 +1,7 @@
 export interface User {
-  voornaam: string;
-  achternaam: string;
-  gebruikersnaam: string;
-  email: string;
-  telefoonnummer: string;
+  first_name: string;
+  last_name: string;
+  user_name: string;
+  email_address: string;
+  phone_number: string;
 }
