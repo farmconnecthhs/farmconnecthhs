@@ -2,7 +2,7 @@ import { Farm } from '../modules/farm/models/Farm';
 import { FarmProfile } from '../modules/farm_profile/models/FarmProfile';
 import { User } from '../modules/user/models/User';
 
-import { mockFarmProfiles } from './mockFarmProfiles';
+import { mockFarmProfiles } from './mockfarmprofiles';
 import { mockFarms } from './mockfarms';
 import { mockusers } from './mockusers';
 

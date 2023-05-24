@@ -15,6 +15,14 @@ export const getById = async (id: number) => {
   return user;
 };
 
+export const getByFirebaseId = async (firebaseId: string) => {
+  const user = await dal.getByFirebaseId(firebaseId);
+  if (!user) {
+    return null;
+  }
+  return user;
+};
+
 export const getAll = async () => {
   return await dal.getAll();
 };

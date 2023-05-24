@@ -6,9 +6,8 @@ import styles from './page.module.css';
 import FarmCardView from '@/components/card/FarmCardView';
 import MapComponent from '@/components/kaart/MapComponent';
 
-{
-  /* @ts-expect-error Async Server Component */
-}
+// prettier-ignore
+{/* @ts-expect-error Async Server Component */}
 const KaartPagina: NextPage = async () => {
   const fetchFarmData = async () => {
     try {
