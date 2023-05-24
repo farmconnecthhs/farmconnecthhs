@@ -7,12 +7,12 @@ import FarmCardView from '@/components/card/FarmCardView';
 import MapComponent from '@/components/kaart/MapComponent';
 
 // prettier-ignore
-{/* @ts-expect-error Async Server Component */}
+/* @ts-expect-error Async Server Component */
 const KaartPagina: NextPage = async () => {
   const fetchFarmData = async () => {
     try {
       const response = await fetch(
-        'http://localhost:3001/api/v1/farmProfiles/'
+        'http://localhost:3001/api/v1/farmProfiles/',
       );
       const data = await response.json();
       return data;
