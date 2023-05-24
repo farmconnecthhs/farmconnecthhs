@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import { notFound } from 'next/navigation';
 import React from 'react';
 
 import styles from './page.module.css';
@@ -25,6 +26,9 @@ const ProfielPage: NextPage<ProfileProps> = async ({
       const response = await fetch(
         'http://localhost:3001/api/v1/users/firebase/' + params.id
       );
+      if (!response.ok) {
+        return undefined;
+      }
       return await response.json();
     } catch (error) {
       console.log('Error fetching data:', error);
@@ -33,7 +37,9 @@ const ProfielPage: NextPage<ProfileProps> = async ({
   };
 
   const user: User = await fetchUserData();
-  console.log(user);
+  if (!user) {
+    notFound();
+  }
 
   return (
     <div className={'page content-container'}>

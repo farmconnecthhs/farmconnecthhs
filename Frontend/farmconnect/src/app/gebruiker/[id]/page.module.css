@@ -1,6 +1,6 @@
 .card__footer {
-    display: flex;
-    flex-flow: row;
-    justify-content: end !important;
-    width: 100% !important;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end !important;
+  width: 100% !important;
 }
