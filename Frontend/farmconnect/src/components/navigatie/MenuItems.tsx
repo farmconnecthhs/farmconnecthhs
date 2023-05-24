@@ -20,6 +20,15 @@ export const MenuItems: React.FunctionComponent<Props> = (props) => {
       >
         Home
       </Link>
+
+      <Link
+        style={menuItemStyle}
+        className={'nav-item'}
+        href={'/style'}
+        onClick={toggleOpen}
+      >
+        Style
+      </Link>
       <Link
         style={menuItemStyle}
         className={'nav-item'}
