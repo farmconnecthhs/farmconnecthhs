@@ -1,10 +1,11 @@
+import * as module from 'module';
+
 import { NextPage } from 'next';
 import React from 'react';
 
-import type { User } from '@/components/gebruiker/profile/interfaces/User';
-import styles = module;
+import styles from './page.module.css';
 
-import * as module from 'module';
+import type { User } from '@/components/gebruiker/profile/interfaces/User';
 
 type ProfileProps = {
   user: User;
@@ -15,7 +16,8 @@ interface Params {
 }
 
 // prettier-ignore
-{/* @ts-expect-error Async Server Component */}
+{/* @ts-expect-error Async Server Component */
+}
 const ProfielPage: NextPage<ProfileProps> = async ({
   params,
 }: {
