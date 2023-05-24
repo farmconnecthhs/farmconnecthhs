@@ -1,5 +1,3 @@
-import * as module from 'module';
-
 import { NextPage } from 'next';
 import React from 'react';
 
@@ -16,8 +14,7 @@ interface Params {
 }
 
 // prettier-ignore
-{/* @ts-expect-error Async Server Component */
-}
+{/* @ts-expect-error Async Server Component */}
 const ProfielPage: NextPage<ProfileProps> = async ({
   params,
 }: {
