@@ -15,7 +15,7 @@ interface Params {
 }
 
 // prettier-ignore
-{/* @ts-expect-error Async Server Component */}
+/* @ts-expect-error Async Server Component */
 const ProfielPage: NextPage<ProfileProps> = async ({
   params,
 }: {
@@ -32,6 +32,7 @@ const ProfielPage: NextPage<ProfileProps> = async ({
       return await response.json();
     } catch (error) {
       console.log('Error fetching data:', error);
+      throw notFound();
       return [];
     }
   };
