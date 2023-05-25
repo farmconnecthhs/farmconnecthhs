@@ -81,6 +81,11 @@ const Map: React.FunctionComponent<MapProps> = ({ farmProfiles }) => {
                         )
                       }
                     >
+                      <img
+                        src={'/logos/Google_-G-_Logo.svg.png'}
+                        alt="Google Maps Icon"
+                        className={styles.googleMapsIcon}
+                      />
                       {farmProfile.address}, {farmProfile.postalCode}{' '}
                       {farmProfile.city}
                     </a>
