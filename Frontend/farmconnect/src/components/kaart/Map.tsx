@@ -31,7 +31,7 @@ const markerIcon: Icon = L.icon({
 
 const openGoogleMaps = (address: string, postalCode: string, city: string) => {
   const formattedAddress = `${address}, ${postalCode} ${city}`;
-  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
     formattedAddress
   )}`;
   window.open(googleMapsUrl, '_blank');
