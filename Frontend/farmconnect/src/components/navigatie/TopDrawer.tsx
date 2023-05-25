@@ -35,6 +35,7 @@ export const TopDrawer: React.FunctionComponent<Props> = (props) => {
   function toggleDrawer() {
     console.log('toggleDrawer');
   }
+
   return (
     <div className={styles['top-drawer']} style={style}>
       <MenuItems

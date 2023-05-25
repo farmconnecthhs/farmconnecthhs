@@ -17,14 +17,14 @@ interface Params {
 // prettier-ignore
 /* @ts-expect-error Async Server Component */
 const ProfielPage: NextPage<ProfileProps> = async ({
-  params,
-}: {
+                                                     params,
+                                                   }: {
   params: Params;
 }) => {
   const fetchUserData = async () => {
     try {
       const response = await fetch(
-        'http://localhost:3001/api/v1/users/firebase/' + params.id
+        'http://localhost:3001/api/v1/users/firebase/' + params.id,
       );
       if (!response.ok) {
         return undefined;
@@ -32,15 +32,14 @@ const ProfielPage: NextPage<ProfileProps> = async ({
       return await response.json();
     } catch (error) {
       console.log('Error fetching data:', error);
-      throw notFound();
+      if (params.id !== '1') {
+        throw notFound();
+      }
       return [];
     }
   };
-
+  
   const user: User = await fetchUserData();
-  if (!user) {
-    notFound();
-  }
 
   return (
     <div className={'page content-container'}>
@@ -63,15 +62,15 @@ const ProfielPage: NextPage<ProfileProps> = async ({
         <div className={styles['card__footer']}>
           <button className={'button--icon button--primary'}>
             <svg
-              className="button--icon-i"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
+              className='button--icon-i'
+              xmlns='http://www.w3.org/2000/svg'
+              viewBox='0 0 24 24'
             >
               <title>Aanpassen</title>
-              <path d="M0 0h24v24H0z" fill="none" />
+              <path d='M0 0h24v24H0z' fill='none' />
               <path
-                fill="#fff"
-                d="M19.7 5.3c-.4-.4-1-.4-1.4 0l-1.8 1.8 2.4 2.4 1.8-1.8c.4-.4.4-1 0-1.4l-1.8-1.8zM16.5 8.5l-9.9 9.9H3v-3.9l9.9-9.9 3.6 3.9z"
+                fill='#fff'
+                d='M19.7 5.3c-.4-.4-1-.4-1.4 0l-1.8 1.8 2.4 2.4 1.8-1.8c.4-.4.4-1 0-1.4l-1.8-1.8zM16.5 8.5l-9.9 9.9H3v-3.9l9.9-9.9 3.6 3.9z'
               />
             </svg>
           </button>
