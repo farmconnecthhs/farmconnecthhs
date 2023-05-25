@@ -29,6 +29,14 @@ const markerIcon: Icon = L.icon({
   iconAnchor: [12, 41],
 });
 
+const openGoogleMaps = (address: string, postalCode: string, city: string) => {
+  const formattedAddress = `${address}, ${postalCode} ${city}`;
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    formattedAddress
+  )}`;
+  window.open(googleMapsUrl, '_blank');
+};
+
 const Map: React.FunctionComponent<MapProps> = ({ farmProfiles }) => {
   const [center] = React.useState<LatLng>(new LatLng(52.2215, 6.8937));
 
@@ -50,7 +58,36 @@ const Map: React.FunctionComponent<MapProps> = ({ farmProfiles }) => {
             position={[farmProfile.latitude, farmProfile.longitude]}
             icon={markerIcon}
           >
-            <Popup offset={[0, -22]}>{farmProfile.Farm.name}</Popup>
+            <Popup offset={[0, -22]} className={styles.popup}>
+              <div className={styles.popupContent}>
+                <img
+                  src={'/farm_placeholder.png'}
+                  alt="Farm Image"
+                  className={styles.popupImage}
+                />
+                <div className={styles.popupText}>
+                  <h3>
+                    <a href="">{farmProfile.Farm.name}</a>
+                  </h3>
+                  <p>{farmProfile.farmDescription}</p>
+                  <p>
+                    <a
+                      href="#"
+                      onClick={() =>
+                        openGoogleMaps(
+                          farmProfile.address,
+                          farmProfile.postalCode,
+                          farmProfile.city
+                        )
+                      }
+                    >
+                      {farmProfile.address}, {farmProfile.postalCode}{' '}
+                      {farmProfile.city}
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </Popup>
           </Marker>
         ))}
       </MapContainer>
