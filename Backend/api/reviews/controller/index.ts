@@ -6,6 +6,7 @@ import { CreateReviewDTO } from '../dto/review.dto';
 
 export const create = async (req: Request, res: Response) => {
   try {
+    console.log(req.body);
     const payload: CreateReviewDTO = req.body;
     const review: Review = await ReviewService.create(payload);
     res.status(201).json(review);
