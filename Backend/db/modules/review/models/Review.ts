@@ -16,7 +16,7 @@ interface ReviewAttributes {
   id: number;
   description: string;
   rating: number;
-  createdAt: Date;
+  createdAt?: Date;
   updatedAt?: Date;
   deletedAt?: Date;
   farmId: number;
