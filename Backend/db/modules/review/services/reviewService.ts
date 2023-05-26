@@ -12,11 +12,15 @@ export const create = async (
 };
 
 export const getById = async (id: number) => {
-  const review = await dal.getById(id);
-  if (!review) {
-    throw new Error('Review not found');
+  try {
+    const review = await dal.getById(id);
+    if (!review) {
+      new Error('Review not found');
+    }
+    return review;
+  } catch (e) {
+    console.log((e as Error).message);
   }
-  return review;
 };
 
 export const getAll = async () => {
