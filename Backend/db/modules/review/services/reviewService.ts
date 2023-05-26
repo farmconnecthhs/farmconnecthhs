@@ -26,3 +26,19 @@ export const getAll = async () => {
   }
   return reviews;
 };
+
+export const getByUserId = async (id: number) => {
+  const review = await dal.getByUserId(id);
+  if (!review) {
+    throw new Error('Review not found');
+  }
+  return review;
+};
+
+export const getByFarmId = async (id: number) => {
+  const review = await dal.getByFarmId(id);
+  if (!review) {
+    throw new Error('Review not found');
+  }
+  return review;
+};
