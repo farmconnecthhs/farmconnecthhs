@@ -26,17 +26,9 @@ const AdresGegevensEditForm: React.FunctionComponent<Props> = (
       <input
         className={'input'}
         type={'text'}
-        placeholder={'straat'}
+        placeholder={'adres'}
         onChange={(e) =>
-          changeAdresGegevens({ ...adresGegevens, straat: e.target.value })
-        }
-      />
-      <input
-        className={'input'}
-        type={'text'}
-        placeholder={'huisnummer'}
-        onChange={(e) =>
-          changeAdresGegevens({ ...adresGegevens, huisnummer: e.target.value })
+          changeAdresGegevens({ ...adresGegevens, adres: e.target.value })
         }
       />
       <input

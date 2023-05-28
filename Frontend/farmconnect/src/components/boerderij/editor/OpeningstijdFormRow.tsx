@@ -23,7 +23,7 @@ const OpeningstijdFormRow: React.FunctionComponent<OpeningstijdFormRowProps> = (
         disabled={openingstijd.closed}
         onChange={(event) => {
           const newOpeningstijd = openingstijd;
-          newOpeningstijd.open = event.target.value;
+          newOpeningstijd.openTime = event.target.value;
           onChangeOpeningstijd(newOpeningstijd);
         }}
       />
@@ -35,7 +35,7 @@ const OpeningstijdFormRow: React.FunctionComponent<OpeningstijdFormRowProps> = (
         disabled={openingstijd.closed}
         onChange={(event) => {
           const newOpeningstijd = openingstijd;
-          newOpeningstijd.close = event.target.value;
+          newOpeningstijd.closeTime = event.target.value;
           onChangeOpeningstijd(newOpeningstijd);
         }}
       />

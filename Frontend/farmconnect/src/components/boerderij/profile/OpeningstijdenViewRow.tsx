@@ -13,7 +13,7 @@ const OpeningstijdenViewRow: React.FunctionComponent<
   return (
     <div key={openingstijd.day} className={'row row_align_center'}>
       <span>
-        {openingstijd.open} - {openingstijd.close}
+        {openingstijd.openTime} - {openingstijd.closeTime}
       </span>
     </div>
   );

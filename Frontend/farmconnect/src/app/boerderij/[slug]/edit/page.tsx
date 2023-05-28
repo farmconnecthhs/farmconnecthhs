@@ -24,7 +24,7 @@ const EditFarmProfile: NextPage = () => {
     useState<string>('');
 
   const [adresGegevens, setAdresGegevens] = useState<Adresgegevens>({
-    straat: '',
+    adres: '',
     huisnummer: '',
     postcode: '',
     stad: '',

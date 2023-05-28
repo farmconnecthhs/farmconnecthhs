@@ -1,6 +1,5 @@
 export interface Openingstijd {
-  day: string;
-  open?: string;
-  close?: string;
-  closed: boolean;
+  day: number;
+  openTime?: Date;
+  closeTime?: Date;
 }

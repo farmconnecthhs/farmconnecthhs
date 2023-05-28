@@ -2,25 +2,26 @@
 
 import { NextPage } from 'next';
 
+import { Adresgegevens } from '@/components/boerderij/editor/interfaces/Adresgegevens';
 import AdresGegevensViewForm from '@/components/boerderij/profile/AdresGegevensViewForm';
 
 interface Params {
   slug: string;
 }
 
-/* @ts-expect-error Async Server Component */
 const BoerderijPage: NextPage = async ({ params }: { params: Params }) => {
   const fetchData = async () => {
-    console.log(params);
+    // console.log(params);
     const response = await fetch(
       `http://localhost:3001/api/v1/farmProfiles/${params.slug}`
     );
     const data = await response.json();
-    console.log(data);
-    return data;
+    // console.log(data);
+    return data as Adresgegevens;
   };
 
-  const profile = await fetchData;
+  const profile = await fetchData();
+  // console.log(profile);
 
   return (
     <div>

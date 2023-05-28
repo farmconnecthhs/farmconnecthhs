@@ -7,19 +7,21 @@ interface ViewFormProps {
 }
 
 const ViewForm: React.FC<ViewFormProps> = ({ adresgegevens }) => {
-  if (!adresgegevens) {
-    return null;
-  }
-
-  const { straat, huisnummer, postcode, stad } = adresgegevens;
+  const {
+    address: address,
+    postalCode: postalCode,
+    city: city,
+  } = adresgegevens;
+  console.log(address);
+  console.log(city);
+  console.log(postalCode);
 
   return (
     <div className={'card col margin_s'}>
       <h1>Adresgegevens</h1>
-      <div>Straat: {straat}</div>
-      <div>Huisnummer: {huisnummer}</div>
-      <div>Postcode: {postcode}</div>
-      <div>Stad: {stad}</div>
+      <div>Adres: {address}</div>
+      <div>Postcode: {postalCode}</div>
+      <div>Stad: {city}</div>
     </div>
   );
 };

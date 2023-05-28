@@ -1,7 +1,9 @@
+import { BusinessHours } from '../modules/business_hours/models/BusinessHours';
 import { Farm } from '../modules/farm/models/Farm';
 import { FarmProfile } from '../modules/farm_profile/models/FarmProfile';
 import { User } from '../modules/user/models/User';
 
+import { mockBusinessHours } from './mockBusinessHours';
 import { mockFarmProfiles } from './mockFarmProfiles';
 import { mockFarms } from './mockfarms';
 import { mockusers } from './mockusers';
@@ -13,6 +15,7 @@ export function generateMockData() {
   generateUsers();
   generateFarms();
   generateFarmProfiles();
+  generateBusinessHours();
 }
 
 /**
@@ -39,5 +42,14 @@ function generateFarms() {
 function generateFarmProfiles() {
   for (const farmProfile of mockFarmProfiles) {
     FarmProfile.create(farmProfile);
+  }
+}
+
+/**
+ * Generate mock business hours
+ */
+function generateBusinessHours() {
+  for (const businessHours of mockBusinessHours) {
+    BusinessHours.create(businessHours);
   }
 }
