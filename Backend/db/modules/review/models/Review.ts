@@ -81,5 +81,5 @@ Review.init(
   }
 );
 
-Review.belongsTo(Farm, { foreignKey: 'farmId', as: 'farm' });
-Review.belongsTo(User, { foreignKey: 'userId', as: 'user' });
+Review.belongsTo(Farm, { foreignKey: 'farmId', targetKey: 'id' });
+Review.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
