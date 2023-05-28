@@ -77,6 +77,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    phone_number: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     roleId: {
       type: DataTypes.INTEGER,
       allowNull: true,

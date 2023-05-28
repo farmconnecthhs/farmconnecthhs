@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 import styles from './NavHeader.module.css';
@@ -43,7 +44,10 @@ const NavHeader: React.FunctionComponent = () => {
   return (
     <nav>
       <div className={styles['nav-header']}>
-        <h1 className={styles['nav-logo']}>FarmConnect</h1>
+        <h1 className={styles['nav-logo']}>
+          <Link href={'/'}>FarmConnect </Link>
+        </h1>
+
         <div className={styles['nav-items']}>
           <MenuItems style={menuStyle} menuItemStyle={menuItemStyle} />
         </div>

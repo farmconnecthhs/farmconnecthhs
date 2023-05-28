@@ -18,7 +18,16 @@ export const MenuItems: React.FunctionComponent<Props> = (props) => {
         href={'/'}
         onClick={toggleOpen}
       >
-        Kaart
+        Home
+      </Link>
+
+      <Link
+        style={menuItemStyle}
+        className={'nav-item'}
+        href={'/style'}
+        onClick={toggleOpen}
+      >
+        Style
       </Link>
       <Link
         style={menuItemStyle}
@@ -39,7 +48,7 @@ export const MenuItems: React.FunctionComponent<Props> = (props) => {
       <Link
         style={menuItemStyle}
         className={'btn-call_to_action'}
-        href={'/dashboard'}
+        href={'/boerderij/1/edit'}
         onClick={toggleOpen}
       >
         Meld je boerderij aan

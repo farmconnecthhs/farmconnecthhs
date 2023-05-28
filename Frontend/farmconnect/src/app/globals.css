@@ -135,7 +135,6 @@ h2 {
   border-radius: var(--border-radius);
   box-shadow: var(--default-shadow);
   max-width: 250px;
-  height: fit-content;
   cursor: pointer;
 }
 
@@ -190,6 +189,36 @@ h2 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.row-grow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.farm-card {
+  flex-grow: 1;
+}
+
+.leaflet-popup-content-wrapper {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+.leaflet-popup-content-wrapper a {
+  color: rgb(66, 66, 66) !important;
+}
+
+.leaflet-popup-content-wrapper p {
+  color: black !important;
+}
+
+.leaflet-popup-close-button {
+  font-size: 28px !important;
+  color: black !important;
+  padding-right: 5px;
+  padding-top: 5px;
 }
 
 .row_align_center {

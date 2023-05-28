@@ -18,7 +18,11 @@ import DBInit from './db/config/DBInit';
 const app: Application = express();
 
 const corsOptions = {
-  origin: ['http://localhost:4200', 'http://localhost:3000'],
+  origin: [
+    'http://localhost:4200',
+    'http://localhost:3000',
+    'http://localhost:5555',
+  ],
   optionsSuccessStatus: 200,
 };
 
