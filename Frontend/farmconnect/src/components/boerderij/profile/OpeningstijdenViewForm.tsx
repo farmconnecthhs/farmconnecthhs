@@ -7,12 +7,17 @@ interface OpeningstijdenViewFormProps {
   openingstijden: Openingstijd[];
 }
 
-const OpeningstijdenViewForm: React.FunctionComponent<OpeningstijdenViewFormProps> = (props) => {
+const OpeningstijdenViewForm: React.FunctionComponent<
+  OpeningstijdenViewFormProps
+> = (props) => {
   const { openingstijden } = props;
 
   const getOpeningTimes = () => {
     return openingstijden.map((openingstijd) => (
-      <OpeningstijdenViewRow key={openingstijd.day} openingstijd={openingstijd} />
+      <OpeningstijdenViewRow
+        key={openingstijd.day}
+        openingstijd={openingstijd}
+      />
     ));
   };
 
@@ -22,9 +27,7 @@ const OpeningstijdenViewForm: React.FunctionComponent<OpeningstijdenViewFormProp
       <div className="row row__wrap">
         <div className="col">
           <div className="row row__wrap">
-            <div className="col">
-              {getOpeningTimes()}
-            </div>
+            <div className="col">{getOpeningTimes()}</div>
           </div>
         </div>
       </div>

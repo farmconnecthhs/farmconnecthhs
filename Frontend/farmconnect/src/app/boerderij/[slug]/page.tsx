@@ -30,7 +30,7 @@ const BoerderijPage: NextPage = async ({ params }: { params: Params }) => {
     );
     const data = await response.json();
     return data as Openingstijden;
-  }
+  };
   const businessHours = await fetchBusinessHoursData();
 
   const fetchPaymentOptions = async () => {
@@ -55,7 +55,6 @@ const BoerderijPage: NextPage = async ({ params }: { params: Params }) => {
       <div className="Betaalmogelijkheden">
         <BetaalmethodesViewForm betaalmethodes={paymentOptions} />
       </div>
-
     </div>
   );
 };
