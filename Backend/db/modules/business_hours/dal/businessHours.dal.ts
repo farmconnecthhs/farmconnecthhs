@@ -23,7 +23,7 @@ export const getAll = async (): Promise<BusinessHours[]> => {
 
 export const getByFarmId = async (id: number) => {
   const businessHours = await BusinessHours.findAll({
-    where: { profileFarmFarmId: id },
+    where: { farmId: id },
   });
   if (!businessHours) {
     return null;

@@ -3,5 +3,5 @@ export type CreateBusinessHoursDTO = {
   day: number;
   openTime: Date;
   closeTime: Date;
-  profileFarmFarmId: number;
+  farmId: number;
 };

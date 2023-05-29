@@ -27,7 +27,7 @@ export const getByUserId = async (id: number) => {
 };
 
 export const getByFarmId = async (id: number) => {
-  const review = await Review.findAll({ where: { profileFarmFarmId: id } });
+  const review = await Review.findAll({ where: { farmId: id } });
   if (!review) {
     return null;
   }

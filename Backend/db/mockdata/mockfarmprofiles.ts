@@ -11,7 +11,7 @@ export const mockFarmProfiles = [
     email: 'info@groenedraak.nl',
     website: 'www.groenedraak.nl',
     phone: '+31123456789',
-    profileFarmFarmId: 1,
+    farmId: 1,
   },
   {
     address: 'Paardstraat 2',
@@ -26,7 +26,7 @@ export const mockFarmProfiles = [
     email: 'contact@guldenpaard.nl',
     website: 'www.guldenpaard.nl',
     phone: '+31123456789',
-    profileFarmFarmId: 2,
+    farmId: 2,
   },
   {
     address: 'Zwaanstraat 3',
@@ -41,7 +41,7 @@ export const mockFarmProfiles = [
     email: 'informatie@wittezwaan.nl',
     website: 'www.wittezwaan.nl',
     phone: '+31123456789',
-    profileFarmFarmId: 3,
+    farmId: 3,
   },
   {
     address: 'Schaapstraat 4',
@@ -55,7 +55,7 @@ export const mockFarmProfiles = [
     email: 'klantenservice@zwarteschaap.nl',
     website: 'www.zwarteschaap.nl',
     phone: '+31123456789',
-    profileFarmFarmId: 4,
+    farmId: 4,
   },
   {
     address: 'Vlinderstraat 5',
@@ -70,7 +70,7 @@ export const mockFarmProfiles = [
     email: 'contact@blauwevlinder.com',
     website: 'www.blauwevlinder.com',
     phone: '+31123456789',
-    profileFarmFarmId: 5,
+    farmId: 5,
   },
   {
     address: 'Olifantstraat 6',
@@ -85,7 +85,7 @@ export const mockFarmProfiles = [
     email: 'contact@derozeolifant.com',
     website: 'www.derozeolifant.com',
     phone: '+31123456789',
-    profileFarmFarmId: 6,
+    farmId: 6,
   },
   {
     address: 'Koestraat 7',
@@ -100,7 +100,7 @@ export const mockFarmProfiles = [
     email: 'contact@derodekoe.com',
     website: 'www.derrodekoe.com',
     phone: '+31123456789',
-    profileFarmFarmId: 7,
+    farmId: 7,
   },
   {
     address: 'Kipstraat 8',
@@ -115,7 +115,7 @@ export const mockFarmProfiles = [
     email: 'contact@degelekip.com',
     website: 'www.degelekip.com',
     phone: '+31123456789',
-    profileFarmFarmId: 8,
+    farmId: 8,
   },
   {
     address: 'Krokodilstraat 9',
@@ -130,6 +130,6 @@ export const mockFarmProfiles = [
     email: 'contact@depaarsekrokodil.com',
     website: 'www.depaarsekrokodil.com',
     phone: '+31123456789',
-    profileFarmFarmId: 9,
+    farmId: 9,
   },
 ];

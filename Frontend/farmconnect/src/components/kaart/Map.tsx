@@ -54,7 +54,7 @@ const Map: React.FunctionComponent<MapProps> = ({ farmProfiles }) => {
         />
         {farmProfiles.map((farmProfile) => (
           <Marker
-            key={farmProfile.profileFarmFarmId}
+            key={farmProfile.farmId}
             position={[farmProfile.latitude, farmProfile.longitude]}
             icon={markerIcon}
           >

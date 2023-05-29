@@ -16,7 +16,7 @@ interface BusinessHoursAttributes {
   day: number;
   openTime: Date;
   closeTime: Date;
-  profileFarmFarmId: number;
+  farmId: number;
 }
 
 export type BusinessHoursCreationAttributes = Optional<
@@ -32,7 +32,7 @@ export class BusinessHours
   declare day: number;
   declare openTime: Date;
   declare closeTime: Date;
-  declare profileFarmFarmId: number;
+  declare farmId: number;
 
   public getProfileFarm!: BelongsToGetAssociationMixin<FarmProfile>;
   public setProfileFarm!: BelongsToSetAssociationMixin<
@@ -61,7 +61,7 @@ BusinessHours.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    profileFarmFarmId: {
+    farmId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
