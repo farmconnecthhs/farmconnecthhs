@@ -74,6 +74,6 @@ BusinessHours.init(
 );
 
 BusinessHours.belongsTo(FarmProfile, {
-  foreignKey: 'profileFarmFarmId',
-  targetKey: 'farmId',
+  foreignKey: 'farmId',
+  targetKey: 'id',
 });

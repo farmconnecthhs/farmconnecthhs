@@ -13,7 +13,10 @@ const FarmCardView: React.FC<FarmCardViewProps> = ({ farmProfiles }) => {
     <div>
       <div className="row-grow">
         {farmProfiles.map((farmProfile) => (
-          <Card key={farmProfile.profileFarmFarmId} farmProfiles={farmProfile} />
+          <Card
+            key={farmProfile.profileFarmFarmId}
+            farmProfiles={farmProfile}
+          />
         ))}
       </div>
     </div>
