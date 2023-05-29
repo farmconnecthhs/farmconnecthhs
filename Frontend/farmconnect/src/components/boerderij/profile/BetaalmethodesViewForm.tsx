@@ -10,11 +10,11 @@ const BetaalmethodesViewForm: React.FunctionComponent<Props> = (props) => {
       <h2>Betaalmethodes</h2>
       <div>
         <label htmlFor="contant">Contant:</label>
-        <span>{props.betaalmethodes.contant ? ' Ja' : ' Nee'}</span>
+        <span>{props.betaalmethodes.cashPayment ? ' Ja' : ' Nee'}</span>
       </div>
       <div>
         <label htmlFor="pin">Pin:</label>
-        <span>{props.betaalmethodes.pin ? ' Ja' : ' Nee'}</span>
+        <span>{props.betaalmethodes.cardPayment ? ' Ja' : ' Nee'}</span>
       </div>
     </div>
   );

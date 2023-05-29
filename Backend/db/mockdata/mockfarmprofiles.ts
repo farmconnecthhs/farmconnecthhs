@@ -11,6 +11,8 @@ export const mockFarmProfiles = [
     email: 'info@groenedraak.nl',
     website: 'www.groenedraak.nl',
     phone: '+31123456789',
+    cashPayment: true,
+    cardPayment: true,
     farmId: 1,
   },
   {
@@ -26,6 +28,8 @@ export const mockFarmProfiles = [
     email: 'contact@guldenpaard.nl',
     website: 'www.guldenpaard.nl',
     phone: '+31123456789',
+    cashPayment: true,
+    cardPayment: true,
     farmId: 2,
   },
   {
@@ -41,6 +45,8 @@ export const mockFarmProfiles = [
     email: 'informatie@wittezwaan.nl',
     website: 'www.wittezwaan.nl',
     phone: '+31123456789',
+    cashPayment: true,
+    cardPayment: true,
     farmId: 3,
   },
   {
@@ -55,6 +61,8 @@ export const mockFarmProfiles = [
     email: 'klantenservice@zwarteschaap.nl',
     website: 'www.zwarteschaap.nl',
     phone: '+31123456789',
+    cashPayment: true,
+    cardPayment: true,
     farmId: 4,
   },
   {
@@ -70,6 +78,8 @@ export const mockFarmProfiles = [
     email: 'contact@blauwevlinder.com',
     website: 'www.blauwevlinder.com',
     phone: '+31123456789',
+    cashPayment: true,
+    cardPayment: false,
     farmId: 5,
   },
   {
@@ -85,6 +95,8 @@ export const mockFarmProfiles = [
     email: 'contact@derozeolifant.com',
     website: 'www.derozeolifant.com',
     phone: '+31123456789',
+    cashPayment: true,
+    cardPayment: true,
     farmId: 6,
   },
   {
@@ -100,6 +112,8 @@ export const mockFarmProfiles = [
     email: 'contact@derodekoe.com',
     website: 'www.derrodekoe.com',
     phone: '+31123456789',
+    cashPayment: true,
+    cardPayment: false,
     farmId: 7,
   },
   {
@@ -115,6 +129,8 @@ export const mockFarmProfiles = [
     email: 'contact@degelekip.com',
     website: 'www.degelekip.com',
     phone: '+31123456789',
+    cashPayment: true,
+    cardPayment: true,
     farmId: 8,
   },
   {
@@ -130,6 +146,8 @@ export const mockFarmProfiles = [
     email: 'contact@depaarsekrokodil.com',
     website: 'www.depaarsekrokodil.com',
     phone: '+31123456789',
+    cashPayment: true,
+    cardPayment: false,
     farmId: 9,
   },
 ];

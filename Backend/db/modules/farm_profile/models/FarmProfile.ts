@@ -22,6 +22,8 @@ interface FarmProfileAttributes {
   email?: string;
   website?: string;
   phone?: string;
+  cashPayment: boolean;
+  cardPayment: boolean;
   createdAt?: Date;
   updatedAt?: Date;
   deletedAt?: Date;
@@ -45,6 +47,8 @@ export class FarmProfile
   declare email?: string;
   declare website?: string;
   declare phone?: string;
+  declare cashPayment: boolean;
+  declare cardPayment: boolean;
   declare farmId: number;
 
   public readonly createdAt!: CreationOptional<Date>;
@@ -100,6 +104,12 @@ FarmProfile.init(
     phone: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    cashPayment: {
+      type: DataTypes.BOOLEAN,
+    },
+    cardPayment: {
+      type: DataTypes.BOOLEAN,
     },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,

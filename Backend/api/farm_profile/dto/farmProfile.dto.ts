@@ -8,6 +8,8 @@ export type CreateFarmProfileDTO = {
   email?: string;
   website?: string;
   phone?: string;
+  cashPayment: boolean;
+  cardPayment: boolean;
   latitude?: number;
   longitude?: number;
   farmId: number;

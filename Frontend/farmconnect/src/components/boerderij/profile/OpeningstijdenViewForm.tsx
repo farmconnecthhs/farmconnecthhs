@@ -1,41 +1,29 @@
 import React from 'react';
 
-import { Openingstijden } from '@/components/boerderij/editor/interfaces/Openingstijden';
+import { Openingstijd } from '@/components/boerderij/editor/interfaces/Openingstijd';
 import OpeningstijdenViewRow from '@/components/boerderij/profile/OpeningstijdenViewRow';
 
 interface OpeningstijdenViewFormProps {
-  openingstijden: Openingstijden;
+  openingstijden: Openingstijd[];
 }
 
-const OpeningstijdenViewForm: React.FunctionComponent<
-  OpeningstijdenViewFormProps
-> = (props) => {
+const OpeningstijdenViewForm: React.FunctionComponent<OpeningstijdenViewFormProps> = (props) => {
   const { openingstijden } = props;
 
   const getOpeningTimes = () => {
-    const openingTimesElements = [];
-    for (const openingstijd in openingstijden) {
-      if (openingstijd) {
-        openingTimesElements.push(
-          <OpeningstijdenViewRow
-            openingstijd={openingstijden[openingstijd as keyof Openingstijden]}
-          />
-        );
-      }
-    }
-    return openingTimesElements;
+    return openingstijden.map((openingstijd) => (
+      <OpeningstijdenViewRow key={openingstijd.day} openingstijd={openingstijd} />
+    ));
   };
 
   return (
-    <div className={'card col margin_s'}>
+    <div className="card col margin_s">
       <h2>Openingstijden</h2>
-      <div className={'row row__wrap'}>
-        <div className={'col'}>
-          <div className={'row row__wrap'}>
-            <div className={'col'}>
-              {getOpeningTimes().map((openingstijd) => {
-                return openingstijd;
-              })}
+      <div className="row row__wrap">
+        <div className="col">
+          <div className="row row__wrap">
+            <div className="col">
+              {getOpeningTimes()}
             </div>
           </div>
         </div>

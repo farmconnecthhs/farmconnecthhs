@@ -12,13 +12,10 @@ const ViewForm: React.FC<ViewFormProps> = ({ adresgegevens }) => {
     postalCode: postalCode,
     city: city,
   } = adresgegevens;
-  console.log(address);
-  console.log(city);
-  console.log(postalCode);
 
   return (
     <div className={'card col margin_s'}>
-      <h1>Adresgegevens</h1>
+      <h2>Adresgegevens</h2>
       <div>Adres: {address}</div>
       <div>Postcode: {postalCode}</div>
       <div>Stad: {city}</div>
