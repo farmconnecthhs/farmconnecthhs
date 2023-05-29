@@ -16,7 +16,9 @@ export const getAllBusinessHours = async (req: Request, res: Response) => {
   try {
     const businessHours: BusinessHours[] = await BusinessHoursService.getAll();
     if (!businessHours) {
-      res.status(404).json({ message: 'niet gevonden kut!' });
+      res
+        .status(404)
+        .json({ message: 'No business hours found for this farm' });
     }
     res.status(200).json(businessHours);
   } catch (err) {

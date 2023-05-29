@@ -89,7 +89,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    profileFarmFarmId: {
+    farmId: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
