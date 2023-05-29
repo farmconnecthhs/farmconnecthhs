@@ -14,10 +14,18 @@ export const create = async (
   return businessHours;
 };
 
-export const getAll = async (): Promise<BusinessHours[]> => {
+export const getAll = async () => {
   const businessHours = await dal.getAll();
   if (!businessHours) {
     throw new Error('Business Hours not found');
+  }
+  return businessHours;
+};
+
+export const getByFarmId = async (id: number) => {
+  const businessHours = await dal.getByFarmId(id);
+  if (!businessHours) {
+    throw new Error('Business Hours not found for the given farmId');
   }
   return businessHours;
 };

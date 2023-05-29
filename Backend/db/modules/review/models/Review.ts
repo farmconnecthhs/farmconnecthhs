@@ -64,7 +64,7 @@ Review.init(
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
     deletedAt: DataTypes.DATE,
-    farmId: {
+    profileFarmFarmId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

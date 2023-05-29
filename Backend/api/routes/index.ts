@@ -1,6 +1,5 @@
 import { Router } from 'express';
 
-// eslint-disable-next-line import/default
 import businessHoursRouter from '../business_hours/routes/businessHours';
 import farmRouter from '../farm/routes/farm';
 import farmProfileRouter from '../farm_profile/routes/farmProfile';

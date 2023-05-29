@@ -6,7 +6,6 @@ import { User } from '../modules/user/models/User';
 
 import { mockBusinessHours } from './mockBusinessHours';
 import { mockFarmProfiles } from './mockFarmProfiles';
-import { mockFarmProfiles } from './mockfarmprofiles';
 import { mockFarms } from './mockfarms';
 import { mockReviews } from './mockreviews';
 import { mockusers } from './mockusers';

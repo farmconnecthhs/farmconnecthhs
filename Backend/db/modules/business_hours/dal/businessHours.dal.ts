@@ -1,4 +1,3 @@
-import { FarmProfile } from '../../farm_profile/models/FarmProfile';
 import {
   BusinessHours,
   BusinessHoursCreationAttributes,
@@ -19,12 +18,15 @@ export const getById = async (id: number): Promise<BusinessHours | null> => {
 };
 
 export const getAll = async (): Promise<BusinessHours[]> => {
-  return BusinessHours.findAll({
-    include: [
-      {
-        model: FarmProfile,
-        attributes: ['name'],
-      },
-    ],
+  return BusinessHours.findAll();
+};
+
+export const getByFarmId = async (id: number) => {
+  const businessHours = await BusinessHours.findAll({
+    where: { profileFarmFarmId: id },
   });
+  if (!businessHours) {
+    return null;
+  }
+  return businessHours;
 };

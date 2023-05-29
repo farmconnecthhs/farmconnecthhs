@@ -1457,7 +1457,7 @@ export const options = {
               type: 'string',
               example: '2020-12-31T00:00:00.000Z',
             },
-            farmId: {
+            profileFarmFarmId: {
               type: 'integer',
               format: 'int64',
               example: 1,
