@@ -14,9 +14,6 @@ const OpeningstijdenViewRow: React.FunctionComponent<
   const { openingstijd } = props;
 
   const formatTime = (time: Date | string | undefined) => {
-    // if (openingstijd.closed) {
-    //   return 'Gesloten';
-    // }
     if (time instanceof Date) {
       return time.toLocaleTimeString([], {
         hour: '2-digit',
