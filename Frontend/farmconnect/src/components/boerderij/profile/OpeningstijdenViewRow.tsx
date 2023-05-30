@@ -52,10 +52,11 @@ const OpeningstijdenViewRow: React.FunctionComponent<
         <span className={styles.time}>Gesloten</span>
       ) : (
         <span className={styles.time}>
-        {formatTime(openingstijd.openTime)} - {formatTime(openingstijd.closeTime)}
-      </span>
+          {formatTime(openingstijd.openTime)} -{' '}
+          {formatTime(openingstijd.closeTime)}
+        </span>
       )}
     </div>
   );
-}
+};
 export default OpeningstijdenViewRow;
