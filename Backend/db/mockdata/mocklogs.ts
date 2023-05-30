@@ -27,4 +27,10 @@ export const mockLogs = [
     message: 'Log entry for Service D',
     userId: 2,
   },
+  {
+    date: new Date(),
+    service_name: 'Service E',
+    level: 'fatal',
+    message: 'Log entry for Service E',
+  },
 ];
