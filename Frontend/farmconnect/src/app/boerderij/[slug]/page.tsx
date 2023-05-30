@@ -28,7 +28,9 @@ const BoerderijPage: NextPage = async ({ params }: { params: Params }) => {
     const response = await fetch(
       `http://localhost:3001/api/v1/businesshours/farm/${params.slug}`
     );
+    console.log(params.slug);
     const data = await response.json();
+    console.log(data);
     return data as Openingstijden;
   };
   const businessHours = await fetchBusinessHoursData();

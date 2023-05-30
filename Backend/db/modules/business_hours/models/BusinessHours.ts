@@ -14,6 +14,7 @@ import { FarmProfile } from '../../farm_profile/models/FarmProfile';
 interface BusinessHoursAttributes {
   id: number;
   day: number;
+  closed: boolean;
   openTime: Date;
   closeTime: Date;
   farmId: number;
@@ -30,6 +31,7 @@ export class BusinessHours
 {
   declare id: CreationOptional<number>;
   declare day: number;
+  declare closed: boolean;
   declare openTime: Date;
   declare closeTime: Date;
   declare farmId: number;
@@ -52,6 +54,9 @@ BusinessHours.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       unique: false,
+    },
+    closed: {
+      type: DataTypes.BOOLEAN,
     },
     openTime: {
       type: DataTypes.DATE,

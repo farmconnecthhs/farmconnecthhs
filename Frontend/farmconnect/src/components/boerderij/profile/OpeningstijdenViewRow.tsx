@@ -14,6 +14,9 @@ const OpeningstijdenViewRow: React.FunctionComponent<
   const { openingstijd } = props;
 
   const formatTime = (time: Date | string | undefined) => {
+    // if (openingstijd.closed) {
+    //   return 'Gesloten';
+    // }
     if (time instanceof Date) {
       return time.toLocaleTimeString([], {
         hour: '2-digit',
@@ -31,13 +34,13 @@ const OpeningstijdenViewRow: React.FunctionComponent<
 
   const getDayAbbreviation = (day: number) => {
     const days = [
-      'Zondag',
       'Maandag',
       'Dinsdag',
       'Woensdag',
       'Donderdag',
       'Vrijdag',
       'Zaterdag',
+      'Zondag',
     ];
     return days[day];
   };
@@ -45,12 +48,14 @@ const OpeningstijdenViewRow: React.FunctionComponent<
   return (
     <div className={styles.row}>
       <span className={styles.day}>{getDayAbbreviation(openingstijd.day)}</span>
-      <span className={styles.time}>
-        {formatTime(openingstijd.openTime)} -{' '}
-        {formatTime(openingstijd.closeTime)}
+      {openingstijd.closed ? (
+        <span className={styles.time}>Gesloten</span>
+      ) : (
+        <span className={styles.time}>
+        {formatTime(openingstijd.openTime)} - {formatTime(openingstijd.closeTime)}
       </span>
+      )}
     </div>
   );
-};
-
+}
 export default OpeningstijdenViewRow;
