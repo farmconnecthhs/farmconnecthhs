@@ -1,10 +1,12 @@
 import { Farm } from '../modules/farm/models/Farm';
 import { FarmProfile } from '../modules/farm_profile/models/FarmProfile';
+import { Logger } from '../modules/logger/models/Logger';
 import { Review } from '../modules/review/models/Review';
 import { User } from '../modules/user/models/User';
 
 import { mockFarmProfiles } from './mockfarmprofiles';
 import { mockFarms } from './mockfarms';
+import { mockLogs } from './mocklogs';
 import { mockReviews } from './mockreviews';
 import { mockusers } from './mockusers';
 
@@ -16,6 +18,7 @@ export function generateMockData() {
   generateFarms();
   generateFarmProfiles();
   generateReviews();
+  generateLogs();
 }
 
 /**
@@ -51,5 +54,14 @@ function generateFarmProfiles() {
 function generateReviews() {
   for (const review of mockReviews) {
     Review.create(review);
+  }
+}
+
+/**
+ * Generate mock logs
+ */
+function generateLogs() {
+  for (const log of mockLogs) {
+    Logger.create(log);
   }
 }

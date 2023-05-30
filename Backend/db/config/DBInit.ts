@@ -1,6 +1,7 @@
 import { generateMockData } from '../mockdata/mockDataGenerator';
 import { Farm } from '../modules/farm/models/Farm';
 import { FarmProfile } from '../modules/farm_profile/models/FarmProfile';
+import { Logger } from '../modules/logger/models/Logger';
 import { Role } from '../modules/role/models/Role';
 import { User } from '../modules/user/models/User';
 
@@ -17,6 +18,7 @@ export const DBInit = async () => {
       await sequelize.sync({ force: isDev });
       console.log('Database has been synced successfully.');
       await User.sync({ force: isDev });
+      await Logger.sync({ force: isDev });
       await Role.sync({ force: isDev });
       await Farm.sync({ force: isDev });
       await FarmProfile.sync({ force: isDev });
