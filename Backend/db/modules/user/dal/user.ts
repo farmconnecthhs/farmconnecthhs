@@ -1,6 +1,5 @@
 import { Farm } from '../../farm/models/Farm';
 import { FarmProfile } from '../../farm_profile/models/FarmProfile';
-import Favorite from '../../favorites/models/Favorite';
 import { User, UserCreationAttributes } from '../models/User';
 
 export const create = async (
@@ -16,7 +15,7 @@ export const getFavorites = async (id: number) => {
       {
         model: Farm,
         as: 'favorites',
-        include: [{ model: FarmProfile }],
+        include: [{ model: FarmProfile, attributes: ['address', 'city'] }],
       },
     ],
   });
