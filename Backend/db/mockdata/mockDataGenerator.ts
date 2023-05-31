@@ -16,6 +16,7 @@ import { mockusers } from './mockusers';
 export async function generateMockData() {
   await generateUsers();
   await generateFarms();
+  await linkFavorites();
   await generateFarmProfiles();
   await generateReviews();
   await generateProductCategories();
@@ -79,5 +80,19 @@ async function generateFarmProfiles() {
 async function generateReviews() {
   for (const review of mockReviews) {
     await Review.create(review);
+  }
+}
+
+/**
+ * Link all farms to all users as favorites
+ */
+async function linkFavorites() {
+  const users: User[] = await User.findAll();
+  const farms: Farm[] = await Farm.findAll();
+  for (const user of users) {
+    for (const farm of farms) {
+      console.log(user);
+      await user.addFavorite(farm);
+    }
   }
 }
