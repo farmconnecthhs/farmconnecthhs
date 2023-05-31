@@ -1,4 +1,5 @@
 import { Farm } from '../../farm/models/Farm';
+import { ProductCategory } from '../../product_category/models/ProductCategory';
 import {
   FarmProfile,
   FarmProfileCreationAttributes,
@@ -24,6 +25,11 @@ export const getAll = async (): Promise<FarmProfile[]> => {
       {
         model: Farm,
         attributes: ['name'],
+        include: [
+          {
+            model: ProductCategory,
+          },
+        ],
       },
     ],
   });
