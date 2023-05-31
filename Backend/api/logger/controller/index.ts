@@ -8,9 +8,9 @@ export const create = async (req: Request, res: Response) => {
   try {
     const payload: CreateLoggerDTO = req.body;
     const logger: Logger = await LoggerService.create(payload);
-    res.status(201).send(logger);
+    return res.status(201).send(logger);
   } catch (err) {
-    res.status(500).json({ message: (err as Error).message });
+    return res.status(500).json({ message: (err as Error).message });
   }
 };
 
@@ -18,11 +18,11 @@ export const getAll = async (req: Request, res: Response) => {
   try {
     const loggers = await LoggerService.getAll();
     if (!loggers) {
-      res.status(404).json({ message: 'Logs not found!' });
+      return res.status(404).json({ message: 'Logs not found!' });
     }
-    res.status(200).json(loggers);
+    return res.status(200).json(loggers);
   } catch (err) {
-    res.status(500).json({ message: (err as Error).message });
+    return res.status(500).json({ message: (err as Error).message });
   }
 };
 
@@ -30,11 +30,11 @@ export const getById = async (req: Request, res: Response) => {
   try {
     const logger = await LoggerService.getById(Number(req.params.id));
     if (!logger) {
-      res.status(404).json({ message: 'Log not found!' });
+      return res.status(404).json({ message: 'Log not found!' });
     }
-    res.status(200).json(logger);
+    return res.status(200).json(logger);
   } catch (err) {
-    res.status(500).json({ message: (err as Error).message });
+    return res.status(500).json({ message: (err as Error).message });
   }
 };
 
@@ -44,7 +44,7 @@ export const getByUserId = async (req: Request, res: Response) => {
     if (!logger) {
       return res
         .status(404)
-        .json({ message: 'Logs not found for given user!' });
+        .json({ message: 'Logs not found for the given user!' });
     }
     return res.status(200).json(logger);
   } catch (err) {

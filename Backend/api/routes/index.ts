@@ -9,7 +9,7 @@ import userRouter from '../user/routes/user';
 const router = Router();
 
 router.use('/users', userRouter);
-router.use('/logger', loggerRouter);
+router.use('/logs', loggerRouter);
 router.use('/farms', farmRouter);
 router.use('/farmProfiles', farmProfileRouter);
 router.use('/reviews', reviewRouter);
