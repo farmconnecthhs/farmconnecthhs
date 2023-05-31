@@ -6,6 +6,16 @@ export const create = async (
   return await User.create(payload);
 };
 
+export const getFavorites = async (id: number) => {
+  const user = await User.findOne({
+    where: { id: id },
+  });
+  if (!user) {
+    return null;
+  }
+  return user.getFavorites();
+};
+
 export const getAll = async () => {
   return await User.findAll();
 };

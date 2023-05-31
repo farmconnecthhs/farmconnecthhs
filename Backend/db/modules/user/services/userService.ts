@@ -7,6 +7,10 @@ export const create = async (
   return await dal.create(payload);
 };
 
+export const getFavorites = async (userId: number) => {
+  return await dal.getFavorites(userId);
+};
+
 export const getById = async (id: number) => {
   const user = await dal.getById(id);
   if (!user) {
