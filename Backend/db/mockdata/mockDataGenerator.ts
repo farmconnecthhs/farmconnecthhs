@@ -1,10 +1,12 @@
 import { Farm } from '../modules/farm/models/Farm';
 import { FarmProfile } from '../modules/farm_profile/models/FarmProfile';
+import { ProductCategory } from '../modules/product_category/models/ProductCategory';
 import { Review } from '../modules/review/models/Review';
 import { User } from '../modules/user/models/User';
 
 import { mockFarmProfiles } from './mockfarmprofiles';
 import { mockFarms } from './mockfarms';
+import { mockProductCategories } from './MockProductCategories';
 import { mockReviews } from './mockreviews';
 import { mockusers } from './mockusers';
 
@@ -17,6 +19,8 @@ export async function generateMockData() {
   await linkFavorites();
   await generateFarmProfiles();
   await generateReviews();
+  await generateProductCategories();
+  await linkProductCategoriesToFarms();
 }
 
 /**
@@ -25,6 +29,30 @@ export async function generateMockData() {
 async function generateUsers() {
   for (const user of mockusers) {
     await User.create(user);
+  }
+}
+
+/**
+ * Link product categories to farms
+ */
+async function linkProductCategoriesToFarms() {
+  await Farm.findAll().then((farms) => {
+    ProductCategory.findAll().then(async (productCategories) => {
+      for (const farm of farms) {
+        for (const productCategory of productCategories) {
+          await farm.addProductCategory(productCategory);
+        }
+      }
+    });
+  });
+}
+
+/**
+ * Generate mock product categories
+ */
+async function generateProductCategories() {
+  for (const productCategory of mockProductCategories) {
+    await ProductCategory.create(productCategory);
   }
 }
 
