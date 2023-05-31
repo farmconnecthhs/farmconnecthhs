@@ -7,7 +7,7 @@ import styles from './FavoritesList.module.css';
 export const FavoritesList: React.FunctionComponent = async () => {
   const fetchFavoritesData = async () => {
     try {
-      const id = '1';
+      const id = '1234567890';
       const response = await fetch(
         `http://localhost:3001/api/v1/users/${id}/favorites`
       );
@@ -29,15 +29,25 @@ export const FavoritesList: React.FunctionComponent = async () => {
       <div className={'page__header'}>
         <h1 className={'page__title'}>Favorieten</h1>
       </div>
-      {favorites.map((favorite: any) => (
-        <div className={styles.row__entry} key={favorite}>
-          <Link href={`/boerderij/${favorite.id}`} key={favorite}>
-            <div className={styles.row__content}>
-              <h3 className={styles.row__title}>{favorite.name}</h3>
-            </div>
-          </Link>
-        </div>
-      ))}
+      {!favorites && <p>Nog geen favorieten opgeslagen</p>}
+      {favorites &&
+        favorites.map((favorite: any) => (
+          <div className={styles.row__entry} key={favorite}>
+            <Link href={`/boerderij/${favorite.id}`} key={favorite}>
+              <div className={styles.row__content}>
+                <h3 className={styles.row__title}>{favorite.name}</h3>
+                <div className={styles.row__address}>
+                  <p className={styles.row__text}>
+                    {favorite.FarmProfile.address}
+                  </p>
+                  <p className={styles.row__text}>
+                    {favorite.FarmProfile.city}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          </div>
+        ))}
     </div>
   );
 };

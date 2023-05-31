@@ -1,3 +1,6 @@
+import { Farm } from '../../farm/models/Farm';
+import { FarmProfile } from '../../farm_profile/models/FarmProfile';
+import Favorite from '../../favorites/models/Favorite';
 import { User, UserCreationAttributes } from '../models/User';
 
 export const create = async (
@@ -8,12 +11,22 @@ export const create = async (
 
 export const getFavorites = async (id: number) => {
   const user = await User.findOne({
-    where: { id: id },
+    where: { firebaseId: id },
+    include: [
+      {
+        model: Farm,
+        as: 'favorites',
+        include: [{ model: FarmProfile }],
+      },
+    ],
   });
+  console.log(user);
   if (!user) {
+    console.log('User not found!');
     return null;
   }
-  return user.getFavorites();
+  console.log(user.favorites);
+  return user.favorites;
 };
 
 export const getAll = async () => {

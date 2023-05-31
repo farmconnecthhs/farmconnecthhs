@@ -8,7 +8,9 @@ export const create = async (
 };
 
 export const getFavorites = async (userId: number) => {
-  return await dal.getFavorites(userId);
+  const favorites = await dal.getFavorites(userId);
+  console.log(favorites);
+  return favorites;
 };
 
 export const getById = async (id: number) => {

@@ -72,5 +72,4 @@ Farm.init(
     paranoid: true,
   }
 );
-
 User.belongsTo(Farm, { foreignKey: 'farmId', targetKey: 'id' });
