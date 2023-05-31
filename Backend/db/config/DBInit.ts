@@ -1,6 +1,7 @@
 import { generateMockData } from '../mockdata/mockDataGenerator';
 import { Farm } from '../modules/farm/models/Farm';
 import { FarmProfile } from '../modules/farm_profile/models/FarmProfile';
+import Favorite from '../modules/favorites/models/Favorite';
 import { Role } from '../modules/role/models/Role';
 import { User } from '../modules/user/models/User';
 
@@ -16,9 +17,10 @@ export const DBInit = async () => {
       await sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
       await sequelize.sync({ force: isDev });
       console.log('Database has been synced successfully.');
+      await Favorite.sync({ force: isDev });
       await User.sync({ force: isDev });
-      await Role.sync({ force: isDev });
       await Farm.sync({ force: isDev });
+      await Role.sync({ force: isDev });
       await FarmProfile.sync({ force: isDev });
 
       if (isDev) {
