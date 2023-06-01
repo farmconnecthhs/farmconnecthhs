@@ -2,6 +2,7 @@ import { generateMockData } from '../mockdata/mockDataGenerator';
 import { Farm } from '../modules/farm/models/Farm';
 import { FarmProfile } from '../modules/farm_profile/models/FarmProfile';
 import Favorite from '../modules/favorites/models/Favorite';
+import { Logger } from '../modules/logger/models/Logger';
 import { ProductCategory } from '../modules/product_category/models/ProductCategory';
 import { ProductCategoryFarm } from '../modules/product_category-farm/models/ProductCategoryFarm';
 import { Role } from '../modules/role/models/Role';
@@ -21,6 +22,7 @@ export const DBInit = async () => {
       console.log('Database has been synced successfully.');
       await Favorite.sync({ force: isDev });
       await User.sync({ force: isDev });
+      await Logger.sync({ force: isDev });
       await Farm.sync({ force: isDev });
       await Role.sync({ force: isDev });
       await FarmProfile.sync({ force: isDev });

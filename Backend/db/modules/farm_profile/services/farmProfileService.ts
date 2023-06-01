@@ -14,7 +14,7 @@ export const create = async (
   return farmProfile;
 };
 
-export const getById = async (id: number): Promise<FarmProfile> => {
+export const getById = async (id: number) => {
   const farmProfile = await dal.getById(id);
   if (!farmProfile) {
     throw new Error('FarmProfile not found');
@@ -22,7 +22,7 @@ export const getById = async (id: number): Promise<FarmProfile> => {
   return farmProfile;
 };
 
-export const getAll = async (): Promise<FarmProfile[]> => {
+export const getAll = async () => {
   const farmProfiles = await dal.getAll();
   if (!farmProfiles) {
     throw new Error('FarmProfiles not found');

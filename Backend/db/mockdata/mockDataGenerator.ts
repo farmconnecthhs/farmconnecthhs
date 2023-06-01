@@ -1,11 +1,13 @@
 import { Farm } from '../modules/farm/models/Farm';
 import { FarmProfile } from '../modules/farm_profile/models/FarmProfile';
+import { Logger } from '../modules/logger/models/Logger';
 import { ProductCategory } from '../modules/product_category/models/ProductCategory';
 import { Review } from '../modules/review/models/Review';
 import { User } from '../modules/user/models/User';
 
 import { mockFarmProfiles } from './mockfarmprofiles';
 import { mockFarms } from './mockfarms';
+import { mockLogs } from './mocklogs';
 import { mockProductCategories } from './MockProductCategories';
 import { mockReviews } from './mockreviews';
 import { mockusers } from './mockusers';
@@ -21,6 +23,7 @@ export async function generateMockData() {
   await generateReviews();
   await generateProductCategories();
   await linkProductCategoriesToFarms();
+  await generateLogs();
 }
 
 /**
@@ -94,5 +97,14 @@ async function linkFavorites() {
       console.log(user);
       await user.addFavorite(farm);
     }
+  }
+}
+
+/**
+ * Generate mock logs
+ */
+async function generateLogs() {
+  for (const log of mockLogs) {
+    await Logger.create(log);
   }
 }
