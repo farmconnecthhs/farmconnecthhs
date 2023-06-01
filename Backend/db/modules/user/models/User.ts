@@ -1,14 +1,19 @@
 import {
+  Association,
+  BelongsToManyAddAssociationMixin,
+  BelongsToManyGetAssociationsMixin,
   CreationOptional,
   DataTypes,
   HasOneCreateAssociationMixin,
   HasOneGetAssociationMixin,
   InferAttributes,
   Model,
+  NonAttribute,
   Optional,
 } from 'sequelize';
 
 import sequelize from '../../../config/config';
+import { Farm } from '../../farm/models/Farm';
 import { Role } from '../../role/models/Role';
 
 interface UserAttributes {
@@ -43,8 +48,21 @@ export class User extends Model<InferAttributes<User>, UserCreationAttributes> {
   declare roleId?: CreationOptional<number>;
   declare farmId?: CreationOptional<number>;
 
-  public getRole!: HasOneGetAssociationMixin<Role>;
-  public setRole!: HasOneCreateAssociationMixin<Role>;
+  declare favorites?: NonAttribute<Farm[]>;
+
+  declare static associations: {
+    favorites: Association<Farm, User>;
+    farm: Association<Farm, User>;
+  };
+
+  declare getRole: HasOneGetAssociationMixin<Role>;
+  declare setRole: HasOneCreateAssociationMixin<Role>;
+
+  declare addFarm: HasOneCreateAssociationMixin<Farm>;
+  declare getFarm: HasOneGetAssociationMixin<Farm>;
+
+  declare addFavorite: BelongsToManyAddAssociationMixin<Farm, number>;
+  declare getFavorites: BelongsToManyGetAssociationsMixin<Farm>;
 
   // timestamps!
   // timestamps are optional, so we need to use CreationOptional

@@ -1,4 +1,5 @@
 import {
+  BelongsToManyAddAssociationMixin,
   CreationOptional,
   DataTypes,
   HasOneCreateAssociationMixin,
@@ -10,6 +11,7 @@ import {
 
 import sequelize from '../../../config/config';
 import { FarmProfile } from '../../farm_profile/models/FarmProfile';
+import { ProductCategory } from '../../product_category/models/ProductCategory';
 import { User } from '../../user/models/User';
 
 interface FarmAttributes {
@@ -24,6 +26,9 @@ interface FarmAttributes {
 
 export type FarmCreationAttributes = Optional<FarmAttributes, 'id'>;
 
+/**
+ * Model for Farm
+ */
 export class Farm
   extends Model<InferAttributes<Farm>, FarmCreationAttributes>
   implements FarmAttributes
@@ -39,6 +44,11 @@ export class Farm
 
   public getFarmProfile!: HasOneGetAssociationMixin<FarmProfile>;
   public createFarmProfile!: HasOneCreateAssociationMixin<FarmProfile>;
+
+  public addProductCategory!: BelongsToManyAddAssociationMixin<
+    ProductCategory,
+    number
+  >;
 }
 
 Farm.init(
@@ -72,5 +82,4 @@ Farm.init(
     paranoid: true,
   }
 );
-
 User.belongsTo(Farm, { foreignKey: 'farmId', targetKey: 'id' });
