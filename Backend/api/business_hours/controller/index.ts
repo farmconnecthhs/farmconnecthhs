@@ -9,7 +9,7 @@ export const createBusinessHours = async (req: Request, res: Response) => {
   const businessHours: BusinessHours = await BusinessHoursService.create(
     payload
   );
-  return res.status(201).json(businessHours);
+  res.status(201).json(businessHours);
 };
 
 export const getAllBusinessHours = async (req: Request, res: Response) => {

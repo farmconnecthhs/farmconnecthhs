@@ -8,11 +8,13 @@ import {
 } from 'sequelize';
 
 import sequelize from '../../../config/config';
+import { BusinessHours } from '../../business_hours/models/BusinessHours';
 import { Farm } from '../../farm/models/Farm';
 
 interface FarmProfileAttributes {
   thumbnail?: Buffer;
-  address: string;
+  streetName: string;
+  houseNumber: string;
   postalCode: string;
   city: string;
   latitude?: number;
@@ -37,7 +39,8 @@ export class FarmProfile
   implements FarmProfileAttributes
 {
   declare thumbnail?: Buffer;
-  declare address: string;
+  declare streetName: string;
+  declare houseNumber: string;
   declare postalCode: string;
   declare city: string;
   declare latitude?: number;
@@ -65,7 +68,11 @@ FarmProfile.init(
       type: DataTypes.BLOB,
       allowNull: true,
     },
-    address: {
+    streetName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    houseNumber: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -107,9 +114,11 @@ FarmProfile.init(
     },
     cashPayment: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     cardPayment: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,

@@ -75,7 +75,8 @@ const Map: React.FunctionComponent<MapProps> = ({ farmProfiles }) => {
                       href="#"
                       onClick={() =>
                         openGoogleMaps(
-                          farmProfile.address,
+                          farmProfile.streetName,
+                          farmProfile.houseNumber,
                           farmProfile.postalCode,
                           farmProfile.city
                         )
@@ -86,7 +87,7 @@ const Map: React.FunctionComponent<MapProps> = ({ farmProfiles }) => {
                         alt="Google Maps Icon"
                         className={styles.googleMapsIcon}
                       />
-                      {farmProfile.address}, {farmProfile.postalCode}{' '}
+                      {farmProfile.streetName}, {farmProfile.houseNumber},{farmProfile.postalCode}{' '}
                       {farmProfile.city}
                     </a>
                   </p>

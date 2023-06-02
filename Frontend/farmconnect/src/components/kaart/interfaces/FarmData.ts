@@ -4,7 +4,8 @@ interface Farm {
 
 export interface FarmProfile {
   thumbnail?: Buffer;
-  address: string;
+  streetName: string;
+  houseNumber: string;
   postalCode: string;
   city: string;
   latitude?: number;

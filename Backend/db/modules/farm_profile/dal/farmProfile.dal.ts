@@ -1,3 +1,4 @@
+import { BusinessHours } from '../../business_hours/models/BusinessHours';
 import { Farm } from '../../farm/models/Farm';
 import {
   FarmProfile,
@@ -24,6 +25,9 @@ export const getAll = async (): Promise<FarmProfile[]> => {
       {
         model: Farm,
         attributes: ['name'],
+      },
+      {
+        model: BusinessHours,
       },
     ],
   });

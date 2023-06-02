@@ -1,5 +1,6 @@
 export interface Adresgegevens {
-  address: string;
+  streetName: string;
+  houseNumber: string;
   postalCode: string;
   city: string;
 }

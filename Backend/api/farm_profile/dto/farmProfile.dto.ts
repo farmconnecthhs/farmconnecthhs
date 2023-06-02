@@ -1,6 +1,7 @@
 export type CreateFarmProfileDTO = {
   thumbnail?: Buffer;
-  address: string;
+  streetName: string;
+  houseNumber: string;
   postalCode: string;
   city: string;
   farmDescription?: string;

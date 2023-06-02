@@ -9,14 +9,6 @@ export const create = async (
   return await BusinessHours.create(payload);
 };
 
-export const getById = async (id: number): Promise<BusinessHours | null> => {
-  const businessHours = await BusinessHours.findByPk(id);
-  if (!businessHours) {
-    return null;
-  }
-  return businessHours;
-};
-
 export const getAll = async (): Promise<BusinessHours[]> => {
   return BusinessHours.findAll();
 };

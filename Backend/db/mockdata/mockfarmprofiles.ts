@@ -1,6 +1,7 @@
 export const mockFarmProfiles = [
   {
-    address: 'Draakstraat 1',
+    streetName: 'Draakstraat',
+    houseNumber: '1',
     postalCode: '1000AA',
     city: 'Amsterdam',
     latitude: 52.370216,
@@ -16,7 +17,8 @@ export const mockFarmProfiles = [
     farmId: 1,
   },
   {
-    address: 'Paardstraat 2',
+    streetName: 'Paardstraat',
+    houseNumber: '25',
     postalCode: '2000BB',
     city: 'Rotterdam',
     latitude: 51.9225,
@@ -33,7 +35,8 @@ export const mockFarmProfiles = [
     farmId: 2,
   },
   {
-    address: 'Zwaanstraat 3',
+    streetName: 'Zwaanstraat',
+    houseNumber: '87',
     postalCode: '3000CC',
     city: 'Utrecht',
     latitude: 52.0894444,
@@ -50,7 +53,8 @@ export const mockFarmProfiles = [
     farmId: 3,
   },
   {
-    address: 'Schaapstraat 4',
+    streetName: 'Schaapstraat',
+    houseNumber: '4',
     postalCode: '4000DD',
     city: 'Den Haag',
     latitude: 52.078663,
@@ -66,7 +70,8 @@ export const mockFarmProfiles = [
     farmId: 4,
   },
   {
-    address: 'Vlinderstraat 5',
+    streetName: 'Vlinderstraat',
+    houseNumber: '23',
     postalCode: '5000EE',
     city: 'Eindhoven',
     latitude: 51.441642,
@@ -83,7 +88,8 @@ export const mockFarmProfiles = [
     farmId: 5,
   },
   {
-    address: 'Olifantstraat 6',
+    streetName: 'Olifantstraat',
+    houseNumber: '29',
     postalCode: '6000FF',
     city: 'Tilburg',
     latitude: 51.560596,
@@ -100,7 +106,8 @@ export const mockFarmProfiles = [
     farmId: 6,
   },
   {
-    address: 'Koestraat 7',
+    streetName: 'Koestraat',
+    houseNumber: '17',
     postalCode: '7000GG',
     city: 'Groningen',
     latitude: 53.219383,
@@ -117,7 +124,8 @@ export const mockFarmProfiles = [
     farmId: 7,
   },
   {
-    address: 'Kipstraat 8',
+    streetName: 'Kipstraat',
+    houseNumber: '65',
     postalCode: '8000HH',
     city: 'Nijmegen',
     latitude: 51.812563,
@@ -134,7 +142,8 @@ export const mockFarmProfiles = [
     farmId: 8,
   },
   {
-    address: 'Krokodilstraat 9',
+    streetName: 'Krokodilstraat',
+    houseNumber: '287',
     postalCode: '9000II',
     city: 'Haarlem',
     latitude: 52.387388,

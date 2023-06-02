@@ -19,7 +19,6 @@
     "prettier": "2.8.8"
   },
   "dependencies": {
-    "all": "^0.0.0",
     "cors": "^2.8.5"
   }
 }

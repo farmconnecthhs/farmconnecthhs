@@ -20,14 +20,20 @@ const OpeningstijdenViewRow: React.FunctionComponent<
         minute: '2-digit',
       });
     } else if (typeof time === 'string') {
-      const date = new Date(time);
-      return date.toLocaleTimeString([], {
+      const [hours, minutes, seconds] = time.split(':');
+      const currentDate = new Date();
+      currentDate.setHours(Number(hours));
+      currentDate.setMinutes(Number(minutes));
+      currentDate.setSeconds(Number(seconds));
+
+      return currentDate.toLocaleTimeString([], {
         hour: '2-digit',
         minute: '2-digit',
       });
     }
     return '';
   };
+
 
   const getDayAbbreviation = (day: number) => {
     const days = [
