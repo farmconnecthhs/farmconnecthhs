@@ -87,8 +87,8 @@ const Map: React.FunctionComponent<MapProps> = ({ farmProfiles }) => {
                         alt="Google Maps Icon"
                         className={styles.googleMapsIcon}
                       />
-                      {farmProfile.streetName}, {farmProfile.houseNumber},{farmProfile.postalCode}{' '}
-                      {farmProfile.city}
+                      {farmProfile.streetName}, {farmProfile.houseNumber},
+                      {farmProfile.postalCode} {farmProfile.city}
                     </a>
                   </p>
                 </div>

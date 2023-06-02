@@ -8,7 +8,9 @@ interface ViewFormProps {
   adresgegevens: Adresgegevens;
 }
 
-const ViewForm: React.FunctionComponent<ViewFormProps> = ({ adresgegevens }) => {
+const ViewForm: React.FunctionComponent<ViewFormProps> = ({
+  adresgegevens,
+}) => {
   const {
     streetName: streetName,
     houseNumber: houseNumber,

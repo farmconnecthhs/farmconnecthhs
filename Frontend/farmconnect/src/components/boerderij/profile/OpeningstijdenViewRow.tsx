@@ -34,7 +34,6 @@ const OpeningstijdenViewRow: React.FunctionComponent<
     return '';
   };
 
-
   const getDayAbbreviation = (day: number) => {
     const days = [
       'Maandag',

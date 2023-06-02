@@ -35,10 +35,10 @@ export const defaultOpeningstijden: Openingstijden = {
     openTime: new Date(),
     closeTime: new Date(),
   },
-    vr: {
-      day: 4,
-      closed: false,
-      openTime: new Date(),
+  vr: {
+    day: 4,
+    closed: false,
+    openTime: new Date(),
     closeTime: new Date(),
   },
   za: {

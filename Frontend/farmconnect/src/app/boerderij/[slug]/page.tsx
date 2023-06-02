@@ -27,7 +27,6 @@ const BoerderijPage: NextPage = async ({ params }: { params: Params }) => {
   const profile = combinedData.adresgegevens;
   const paymentOptions = combinedData.betaalmethodes;
 
-
   return (
     <div>
       <h1>Boerderij</h1>
