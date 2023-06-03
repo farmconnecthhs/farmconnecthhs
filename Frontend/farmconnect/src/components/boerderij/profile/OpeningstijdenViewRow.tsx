@@ -8,7 +8,9 @@ interface OpeningstijdenViewRowProps {
   openingstijd: Openingstijd;
 }
 
-const OpeningstijdenViewRow: React.FunctionComponent<OpeningstijdenViewRowProps> = (props: OpeningstijdenViewRowProps) => {
+const OpeningstijdenViewRow: React.FunctionComponent<
+  OpeningstijdenViewRowProps
+> = (props: OpeningstijdenViewRowProps) => {
   const { openingstijd } = props;
 
   const formatTime = (time: Date | string | undefined) => {
@@ -43,12 +45,15 @@ const OpeningstijdenViewRow: React.FunctionComponent<OpeningstijdenViewRowProps>
 
   return (
     <div className={styles.row}>
-      <span className={`${styles.label} ${styles.day}`}>{getDayAbbreviation(openingstijd.day)}</span>
+      <span className={`${styles.label} ${styles.day}`}>
+        {getDayAbbreviation(openingstijd.day)}
+      </span>
       {openingstijd.closed ? (
         <span className={styles.value}>Gesloten</span>
       ) : (
         <span className={styles.value}>
-          {formatTime(openingstijd.openTime)} - {formatTime(openingstijd.closeTime)}
+          {formatTime(openingstijd.openTime)} -{' '}
+          {formatTime(openingstijd.closeTime)}
         </span>
       )}
     </div>

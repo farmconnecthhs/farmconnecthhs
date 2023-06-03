@@ -23,11 +23,10 @@ const BoerderijPage: NextPage = async ({ params }: { params: Params }) => {
   };
   const combinedData = await fetchProfileData();
 
-  const adresgegevens =  combinedData as Adresgegevens;
+  const adresgegevens = combinedData as Adresgegevens;
   const betaalmethodes = combinedData as Betaalmethodes;
   const profiel = combinedData as Profiel;
   const businessHours = profiel.BusinessHours;
-
 
   return (
     <div>
