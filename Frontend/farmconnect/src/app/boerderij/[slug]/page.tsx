@@ -5,6 +5,7 @@ import { NextPage } from 'next';
 import { Adresgegevens } from '@/components/boerderij/editor/interfaces/Adresgegevens';
 import { Betaalmethodes } from '@/components/boerderij/editor/interfaces/Betaalmethodes';
 import { Openingstijden } from '@/components/boerderij/editor/interfaces/Openingstijden';
+import { Profiel } from '@/components/boerderij/editor/interfaces/Profiel';
 import AdresGegevensViewForm from '@/components/boerderij/profile/AdresGegevensViewForm';
 import BetaalmethodesViewForm from '@/components/boerderij/profile/BetaalmethodesViewForm';
 import OpeningstijdenViewForm from '@/components/boerderij/profile/OpeningstijdenViewForm';
@@ -14,30 +15,31 @@ interface Params {
 }
 
 const BoerderijPage: NextPage = async ({ params }: { params: Params }) => {
-  const fetchAddressData = async () => {
+  const fetchProfileData = async () => {
     const response = await fetch(
       `http://localhost:3001/api/v1/farmProfiles/${params.slug}`
     );
-    const data = await response.json();
-    return data;
+    return await response.json();
   };
+  const combinedData = await fetchProfileData();
 
-  const combinedData = await fetchAddressData();
-  console.log(combinedData);
-  const profile = combinedData.adresgegevens;
-  const paymentOptions = combinedData.betaalmethodes;
+  const adresgegevens =  combinedData as Adresgegevens;
+  const betaalmethodes = combinedData as Betaalmethodes;
+  const profiel = combinedData as Profiel;
+  const businessHours = profiel.BusinessHours;
+
 
   return (
     <div>
       <h1>Boerderij</h1>
       <div className="AdresgegevensContainer">
-        <AdresGegevensViewForm adresgegevens={profile} />
+        <AdresGegevensViewForm adresgegevens={adresgegevens} />
       </div>
       <div className="OpeningstijdenContainer">
-        {/* <OpeningstijdenViewForm openingstijden={businessHours} /> */}
+        <OpeningstijdenViewForm openingstijden={businessHours} />
       </div>
       <div className="Betaalmogelijkheden">
-        <BetaalmethodesViewForm betaalmethodes={paymentOptions} />
+        <BetaalmethodesViewForm betaalmethodes={betaalmethodes} />
       </div>
     </div>
   );

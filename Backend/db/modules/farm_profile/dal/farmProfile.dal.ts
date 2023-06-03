@@ -12,11 +12,13 @@ export const create = async (
 };
 
 export const getById = async (id: number): Promise<FarmProfile | null> => {
-  const farmProfile = await FarmProfile.findByPk(id);
-  if (!farmProfile) {
-    return null;
-  }
-  return farmProfile;
+  return await FarmProfile.findByPk(id, {
+    include: [
+      {
+        model: BusinessHours,
+      },
+    ],
+  });
 };
 
 export const getAll = async (): Promise<FarmProfile[]> => {

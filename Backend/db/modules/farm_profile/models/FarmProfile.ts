@@ -8,7 +8,6 @@ import {
 } from 'sequelize';
 
 import sequelize from '../../../config/config';
-import { BusinessHours } from '../../business_hours/models/BusinessHours';
 import { Farm } from '../../farm/models/Farm';
 
 interface FarmProfileAttributes {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './OpeningstijdenViewRow.module.css';
+import styles from './Profiel.module.css';
 
 import { Openingstijd } from '@/components/boerderij/editor/interfaces/Openingstijd';
 
@@ -8,9 +8,7 @@ interface OpeningstijdenViewRowProps {
   openingstijd: Openingstijd;
 }
 
-const OpeningstijdenViewRow: React.FunctionComponent<
-  OpeningstijdenViewRowProps
-> = (props: OpeningstijdenViewRowProps) => {
+const OpeningstijdenViewRow: React.FunctionComponent<OpeningstijdenViewRowProps> = (props: OpeningstijdenViewRowProps) => {
   const { openingstijd } = props;
 
   const formatTime = (time: Date | string | undefined) => {
@@ -20,17 +18,13 @@ const OpeningstijdenViewRow: React.FunctionComponent<
         minute: '2-digit',
       });
     } else if (typeof time === 'string') {
-      const [hours, minutes, seconds] = time.split(':');
-      const currentDate = new Date();
-      currentDate.setHours(Number(hours));
-      currentDate.setMinutes(Number(minutes));
-      currentDate.setSeconds(Number(seconds));
-
+      const currentDate = new Date(time);
       return currentDate.toLocaleTimeString([], {
         hour: '2-digit',
         minute: '2-digit',
       });
     }
+
     return '';
   };
 
@@ -49,16 +43,16 @@ const OpeningstijdenViewRow: React.FunctionComponent<
 
   return (
     <div className={styles.row}>
-      <span className={styles.day}>{getDayAbbreviation(openingstijd.day)}</span>
+      <span className={`${styles.label} ${styles.day}`}>{getDayAbbreviation(openingstijd.day)}</span>
       {openingstijd.closed ? (
-        <span className={styles.time}>Gesloten</span>
+        <span className={styles.value}>Gesloten</span>
       ) : (
-        <span className={styles.time}>
-          {formatTime(openingstijd.openTime)} -{' '}
-          {formatTime(openingstijd.closeTime)}
+        <span className={styles.value}>
+          {formatTime(openingstijd.openTime)} - {formatTime(openingstijd.closeTime)}
         </span>
       )}
     </div>
   );
 };
+
 export default OpeningstijdenViewRow;

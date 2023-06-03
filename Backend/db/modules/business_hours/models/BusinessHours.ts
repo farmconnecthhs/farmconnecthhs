@@ -80,5 +80,7 @@ BusinessHours.init(
 
 BusinessHours.belongsTo(FarmProfile, {
   foreignKey: 'farmId',
-  targetKey: 'id',
+});
+FarmProfile.hasMany(BusinessHours, {
+  foreignKey: 'farmId',
 });

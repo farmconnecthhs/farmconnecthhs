@@ -17,8 +17,5 @@ export const getByFarmId = async (id: number) => {
   const businessHours = await BusinessHours.findAll({
     where: { farmId: id },
   });
-  if (!businessHours) {
-    return null;
-  }
   return businessHours;
 };

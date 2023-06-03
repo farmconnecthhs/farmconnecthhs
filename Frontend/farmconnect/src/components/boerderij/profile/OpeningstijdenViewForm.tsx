@@ -20,7 +20,6 @@ const OpeningstijdenViewForm: React.FunctionComponent<
       />
     ));
   };
-  console.log(openingstijden);
 
   return (
     <div className="card col margin_s">
