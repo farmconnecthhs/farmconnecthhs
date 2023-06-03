@@ -2,6 +2,7 @@
 import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signInWithRedirect,
 } from '@firebase/auth';
 import { NextPage } from 'next';
@@ -36,8 +37,13 @@ const LoginPage: NextPage = () => {
    */
   async function loginWithGoogle() {
     console.log('login with google');
-    const provider = new GoogleAuthProvider();
-    signInWithRedirect(auth, provider);
+    await signInWithRedirect(auth, new GoogleAuthProvider())
+      .then((result) => {
+        console.log('result', result);
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
   }
 
   /**
@@ -49,7 +55,7 @@ const LoginPage: NextPage = () => {
       console.log('Email or password is empty');
       return;
     }
-    signInWithEmailAndPassword(
+    await signInWithEmailAndPassword(
       auth,
       emailRef.current?.value,
       passwordRef.current?.value
@@ -77,12 +83,14 @@ const LoginPage: NextPage = () => {
             <button
               className={'button--provider'}
               onClick={() => loginWithEmail()}
+              type={'button'}
             >
               Login with email
             </button>
             <button
               className={'button--provider'}
               onClick={() => loginWithGoogle()}
+              type={'button'}
             >
               Login with Google{' '}
               <Image

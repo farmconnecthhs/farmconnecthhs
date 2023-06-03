@@ -4,6 +4,7 @@ import React from 'react';
 
 import styles from './page.module.css';
 
+import { FavoritesList } from '@/components/gebruiker/favorites/FavoritesList';
 import type { User } from '@/components/gebruiker/profile/interfaces/User';
 
 type ProfileProps = {
@@ -38,7 +39,7 @@ const ProfielPage: NextPage<ProfileProps> = async ({
       return [];
     }
   };
-  
+
   const user: User = await fetchUserData();
 
   return (
@@ -76,6 +77,7 @@ const ProfielPage: NextPage<ProfileProps> = async ({
           </button>
         </div>
       </div>
+      <FavoritesList />
     </div>
   );
 };

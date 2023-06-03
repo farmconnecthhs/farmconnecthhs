@@ -136,3 +136,4 @@ FarmProfile.init(
 );
 
 FarmProfile.belongsTo(Farm, { foreignKey: 'farmId', targetKey: 'id' });
+Farm.hasOne(FarmProfile, { foreignKey: 'farmId', sourceKey: 'id' });

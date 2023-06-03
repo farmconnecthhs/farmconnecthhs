@@ -6,7 +6,7 @@
 
 .popup {
   max-width: 400px;
-  width: auto;
+  width: 325px;
 }
 
 .popupContent {
@@ -16,8 +16,8 @@
 }
 
 .popupImage {
-  width: 200px;
-  height: 160px;
+  width: 250px;
+  height: 166px;
   object-fit: cover;
 }
 
@@ -29,7 +29,8 @@
   margin-right: 4px;
 }
 
-.popupText {
+.popupText a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 764px) {
@@ -37,5 +38,14 @@
     height: 500px;
     width: 90%;
     margin: auto;
+  }
+
+  .popup {
+    width: 250px;
+    max-width: 300px;
+  }
+
+  .popupImage {
+    display: none;
   }
 }

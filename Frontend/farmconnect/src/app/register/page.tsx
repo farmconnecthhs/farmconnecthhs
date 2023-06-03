@@ -1,7 +1,6 @@
 'use client';
 import {
   createUserWithEmailAndPassword,
-  getAdditionalUserInfo,
   GoogleAuthProvider,
   signInWithPopup,
   UserCredential,
@@ -62,6 +61,7 @@ const RegisterPage: NextPage = () => {
     const token: string = await userCredential.user.getIdToken();
     const res = await fetch('http://localhost:3001/api/v1/users', {
       method: 'POST',
+      cache: 'no-cache',
       headers: {
         'Content-Type': 'application/json',
         Authorization: token,
@@ -75,10 +75,11 @@ const RegisterPage: NextPage = () => {
     });
     if (res.status === 200) {
       console.log('User saved');
+      return res.json();
     } else {
       // If for some reason the user is created in firebase but not in the database, delete the user from firebase
       console.log('User not saved');
-      await user.delete();
+      return null;
     }
   }
 
@@ -88,11 +89,12 @@ const RegisterPage: NextPage = () => {
   async function registerWithGoogle() {
     await signInWithPopup(auth, new GoogleAuthProvider())
       .then(async (result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        console.log(credential);
-        const aditionalUserInfo = getAdditionalUserInfo(result);
-        await registerToDatabase(result);
-        console.log(aditionalUserInfo);
+        const dbUser = await registerToDatabase(result);
+        if (!dbUser) {
+          console.log('User not saved');
+          result.user?.delete();
+          return;
+        }
         router.push('/');
         // The signed-in user info.
       })
