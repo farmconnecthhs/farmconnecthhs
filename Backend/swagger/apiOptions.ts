@@ -1373,7 +1373,7 @@ export const options = {
               type: 'string',
               example: 'https://via.placeholder.com/150',
             },
-            address: {
+            streetName: {
               type: 'string',
               example: 'De Dam 1',
             },

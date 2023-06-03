@@ -12,7 +12,8 @@ import { Farm } from '../../farm/models/Farm';
 
 interface FarmProfileAttributes {
   thumbnail?: Buffer;
-  address: string;
+  streetName: string;
+  houseNumber: string;
   postalCode: string;
   city: string;
   latitude?: number;
@@ -22,6 +23,8 @@ interface FarmProfileAttributes {
   email?: string;
   website?: string;
   phone?: string;
+  cashPayment: boolean;
+  cardPayment: boolean;
   createdAt?: Date;
   updatedAt?: Date;
   deletedAt?: Date;
@@ -35,7 +38,8 @@ export class FarmProfile
   implements FarmProfileAttributes
 {
   declare thumbnail?: Buffer;
-  declare address: string;
+  declare streetName: string;
+  declare houseNumber: string;
   declare postalCode: string;
   declare city: string;
   declare latitude?: number;
@@ -45,6 +49,8 @@ export class FarmProfile
   declare email?: string;
   declare website?: string;
   declare phone?: string;
+  declare cashPayment: boolean;
+  declare cardPayment: boolean;
   declare farmId: number;
 
   public readonly createdAt!: CreationOptional<Date>;
@@ -61,7 +67,11 @@ FarmProfile.init(
       type: DataTypes.BLOB,
       allowNull: true,
     },
-    address: {
+    streetName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    houseNumber: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -100,6 +110,14 @@ FarmProfile.init(
     phone: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    cashPayment: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    cardPayment: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,

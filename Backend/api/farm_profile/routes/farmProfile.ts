@@ -136,4 +136,6 @@ farmProfileRouter.get('/', FarmProfileController.getAllFarmProfiles);
  */
 farmProfileRouter.post('/', FarmProfileController.createFarmProfile);
 
+farmProfileRouter.get('/:id', FarmProfileController.getFarmProfileById);
+
 export default farmProfileRouter;

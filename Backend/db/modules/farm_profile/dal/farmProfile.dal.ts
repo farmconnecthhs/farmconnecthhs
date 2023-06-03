@@ -1,3 +1,4 @@
+import { BusinessHours } from '../../business_hours/models/BusinessHours';
 import { Farm } from '../../farm/models/Farm';
 import { ProductCategory } from '../../product_category/models/ProductCategory';
 import {
@@ -12,11 +13,13 @@ export const create = async (
 };
 
 export const getById = async (id: number): Promise<FarmProfile | null> => {
-  const farmProfile = await FarmProfile.findByPk(id);
-  if (!farmProfile) {
-    return null;
-  }
-  return farmProfile;
+  return await FarmProfile.findByPk(id, {
+    include: [
+      {
+        model: BusinessHours,
+      },
+    ],
+  });
 };
 
 export const getAll = async (): Promise<FarmProfile[]> => {
@@ -30,6 +33,9 @@ export const getAll = async (): Promise<FarmProfile[]> => {
             model: ProductCategory,
           },
         ],
+      },
+      {
+        model: BusinessHours,
       },
     ],
   });
