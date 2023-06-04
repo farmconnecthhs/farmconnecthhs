@@ -29,14 +29,13 @@ jobs:
           
       - name: Create archive
         run: |
-          cd ./Frontend/farmconnect
-          tar -czf archive.tar.gz ./.next
+          tar -czf archive.tar.gz ./Frontend/farmconnect
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: ./Frontend/farmconnect/.next
+          path: ./archive.tar.gz
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,10 +48,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
-#       - name: Unpack archive
-#         run: |
-#           ls
-#           tar -xzf ./archive.tar.gz -C node-app     
+      - name: Unpack archive
+        run: |
+          ls
+          tar -xvf archive.tar.gz     
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -61,3 +60,9 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C476A3D3210945818CC9138587D447DC }}
           package: .
+      - name: 'Start server'
+        id: start-server
+        run: | 
+          cd ./Farmconnect/frontend
+          npm run next start
+          
