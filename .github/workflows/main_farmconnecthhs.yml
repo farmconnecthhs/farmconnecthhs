@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: ./Frontend/farmconnect/.next
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -61,3 +61,8 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C476A3D3210945818CC9138587D447DC }}
           package: .
+      - name: 'Start server'
+        id: start-server
+        run: | 
+          npm run next start
+          
