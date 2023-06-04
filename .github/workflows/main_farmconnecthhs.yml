@@ -49,9 +49,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
-#       - name: Unpack archive
-#         run: |
-#           tar -xzf node-app/archive.tar.gz -C node-app
+      - name: Unpack archive
+        run: |
+          tar -xzf node-app/archive.tar.gz -C node-app
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -59,4 +59,4 @@ jobs:
           app-name: 'Farmconnecthhs'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C476A3D3210945818CC9138587D447DC }}
-          package: ./node-app/archive.tar.gz
+          package: ./node-app
