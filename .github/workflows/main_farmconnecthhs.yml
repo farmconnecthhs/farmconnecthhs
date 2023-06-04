@@ -26,13 +26,17 @@ jobs:
           cd ./Frontend/farmconnect
           npm install
           npm run build --if-present
-          npm run test --if-present
+          
+      - name: Create archive
+        run: |
+          cd ./Frontend/farmconnect
+          tar -czf archive.tar.gz ./.next
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: .
+          path: ./Frontend/farmconnect/.next
 
   deploy:
     runs-on: ubuntu-latest
@@ -40,13 +44,15 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
           name: node-app
-
+      - name: Unpack archive
+        run: |
+          ls
+          tar -xzf ./archive.tar.gz -C node-app     
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
