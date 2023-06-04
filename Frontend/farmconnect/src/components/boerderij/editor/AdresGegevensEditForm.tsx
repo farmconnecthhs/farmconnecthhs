@@ -22,21 +22,13 @@ const AdresGegevensEditForm: React.FunctionComponent<Props> = (
 
   return (
     <div className={'card col margin_s'}>
-      <h2>Bezoekersaddress</h2>
+      <h2>Bezoekersadres</h2>
       <input
         className={'input'}
         type={'text'}
-        placeholder={'straat'}
+        placeholder={'adres'}
         onChange={(e) =>
-          changeAdresGegevens({ ...adresGegevens, straat: e.target.value })
-        }
-      />
-      <input
-        className={'input'}
-        type={'text'}
-        placeholder={'huisnummer'}
-        onChange={(e) =>
-          changeAdresGegevens({ ...adresGegevens, huisnummer: e.target.value })
+          changeAdresGegevens({ ...adresGegevens, adres: e.target.value })
         }
       />
       <input

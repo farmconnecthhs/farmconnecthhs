@@ -1,4 +1,4 @@
 export interface Betaalmethodes {
-  contant: boolean;
-  pin: boolean;
+  cashPayment: boolean;
+  cardPayment: boolean;
 }

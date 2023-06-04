@@ -1,3 +1,4 @@
+import { BusinessHours } from '../modules/business_hours/models/BusinessHours';
 import { Farm } from '../modules/farm/models/Farm';
 import { FarmProfile } from '../modules/farm_profile/models/FarmProfile';
 import { Logger } from '../modules/logger/models/Logger';
@@ -5,7 +6,8 @@ import { ProductCategory } from '../modules/product_category/models/ProductCateg
 import { Review } from '../modules/review/models/Review';
 import { User } from '../modules/user/models/User';
 
-import { mockFarmProfiles } from './mockfarmprofiles';
+import { mockBusinessHours } from './mockBusinessHours';
+import { mockFarmProfiles } from './mockFarmProfiles';
 import { mockFarms } from './mockfarms';
 import { mockLogs } from './mocklogs';
 import { mockProductCategories } from './MockProductCategories';
@@ -24,6 +26,7 @@ export async function generateMockData() {
   await generateProductCategories();
   await linkProductCategoriesToFarms();
   await generateLogs();
+  await generateBusinessHours();
 }
 
 /**
@@ -74,6 +77,15 @@ async function generateFarms() {
 async function generateFarmProfiles() {
   for (const farmProfile of mockFarmProfiles) {
     await FarmProfile.create(farmProfile);
+  }
+}
+
+/**
+ * Generate mock business hours
+ */
+function generateBusinessHours() {
+  for (const businessHours of mockBusinessHours) {
+    BusinessHours.create(businessHours);
   }
 }
 

@@ -39,8 +39,8 @@ export type UserCreationAttributes = Optional<UserAttributes, 'id'>;
 export class User extends Model<InferAttributes<User>, UserCreationAttributes> {
   // CreateOptional is a type that allows you to set the type of a property to undefined
   declare id: CreationOptional<number>;
-  declare first_name?: string;
-  declare last_name?: string;
+  declare first_name?: CreationOptional<string>;
+  declare last_name?: CreationOptional<string>;
   declare user_name: string;
   declare firebaseId: string;
   declare email_address: string;
@@ -81,11 +81,11 @@ User.init(
     },
     first_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     last_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     user_name: {
       type: DataTypes.STRING,

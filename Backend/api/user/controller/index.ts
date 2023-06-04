@@ -1,11 +1,17 @@
 import { Request, Response } from 'express';
 
-import { User } from '../../../db/modules/user/models/User';
 import * as UserService from '../../../db/modules/user/services/userService';
-import { CreateUserDTO } from '../dto/user.dto';
 
-export const create = async (payload: CreateUserDTO): Promise<User> => {
-  return await UserService.create(payload);
+export const create = async (req: Request, res: Response) => {
+  try {
+    const user = await UserService.create(req.body);
+    if (!user) {
+      res.status(500).json({ message: 'User not created!' });
+    }
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: (err as Error).message });
+  }
 };
 
 export const getAll = async () => {

@@ -12,31 +12,45 @@ export interface Openingstijden {
 
 export const defaultOpeningstijden: Openingstijden = {
   ma: {
-    day: 'ma',
+    day: 0,
     closed: false,
+    openTime: new Date(),
+    closeTime: new Date(),
   },
   di: {
-    day: 'di',
+    day: 1,
     closed: false,
+    openTime: new Date(),
+    closeTime: new Date(),
   },
   wo: {
-    day: 'wo',
+    day: 2,
     closed: false,
+    openTime: new Date(),
+    closeTime: new Date(),
   },
   do: {
-    day: 'do',
+    day: 3,
     closed: false,
+    openTime: new Date(),
+    closeTime: new Date(),
   },
   vr: {
-    day: 'vr',
+    day: 4,
     closed: false,
+    openTime: new Date(),
+    closeTime: new Date(),
   },
   za: {
-    day: 'za',
+    day: 5,
     closed: false,
+    openTime: new Date(),
+    closeTime: new Date(),
   },
   zo: {
-    day: 'zo',
+    day: 6,
     closed: false,
+    openTime: new Date(),
+    closeTime: new Date(),
   },
 };
