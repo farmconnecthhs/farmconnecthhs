@@ -57,4 +57,4 @@ jobs:
           app-name: 'Farmconnecthhs'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C476A3D3210945818CC9138587D447DC }}
-          package: ./node-app/archive.tar.gz
+          package: ./archive.tar.gz
