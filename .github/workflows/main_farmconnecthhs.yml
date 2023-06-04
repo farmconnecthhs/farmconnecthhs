@@ -51,7 +51,8 @@ jobs:
           name: node-app
       - name: Unpack archive
         run: |
-          tar -xzf archive.tar.gz -C node-app
+          ls
+          tar -xzf ./archive.tar.gz -C node-app
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
