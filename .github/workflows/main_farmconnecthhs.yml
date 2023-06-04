@@ -29,7 +29,7 @@ jobs:
           
       - name: Create archive
         run: |
-          tar -czf archive.tar.gz .
+          tar -czf archive.tar.gz ./Frontend/farmconnect/dist
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -57,4 +57,4 @@ jobs:
           app-name: 'Farmconnecthhs'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C476A3D3210945818CC9138587D447DC }}
-          package: .
+          package: ./node-app/archive.tar.gz
