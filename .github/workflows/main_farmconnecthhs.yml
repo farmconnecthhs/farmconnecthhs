@@ -63,5 +63,5 @@ jobs:
       - name: 'Start server'
         id: start-server
         run: |
-          pm2 start /home/site/wwwroot/ecosystem.config.js --no-daemon
+          npm run start
 
