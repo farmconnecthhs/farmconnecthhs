@@ -26,12 +26,16 @@ jobs:
           cd ./Frontend/farmconnect
           npm install
           npm run build --if-present
+          
+      - name: Create archive
+        run: |
+          tar -czf archive.tar.gz .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: .
+          path: ./archive.tar.gz
 
   deploy:
     runs-on: ubuntu-latest
