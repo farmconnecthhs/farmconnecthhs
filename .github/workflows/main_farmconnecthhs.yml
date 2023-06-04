@@ -63,5 +63,6 @@ jobs:
       - name: 'Start server'
         id: start-server
         run: | 
+          cd ./Farmconnect/frontend
           npm run next start
           
