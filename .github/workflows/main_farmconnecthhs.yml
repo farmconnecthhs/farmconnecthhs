@@ -29,14 +29,13 @@ jobs:
           
       - name: Create archive
         run: |
-          cd ./Frontend/farmconnect
-          tar -czf archive.tar.gz .
+          tar -czf archive.tar.gz ./Frontend/farmconnect
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: ./Frontend/farmconnect/archive.tar.gz
+          path: ./archive.tar.gz
 
   deploy:
     runs-on: ubuntu-latest
