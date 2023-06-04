@@ -29,6 +29,7 @@ jobs:
           
       - name: Create archive
         run: |
+          cd ./Frontend/farmconnect
           tar -czf archive.tar.gz ./.next
 
       - name: Upload artifact for deployment job
