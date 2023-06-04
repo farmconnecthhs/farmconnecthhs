@@ -13,14 +13,3 @@ const nextConfig = {
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
-module.exports = {
-  apps: [
-    {
-      name: "farmconnect",
-      script: "./node_modules/.bin/next",
-      args: "start -p " + (process.env.PORT || 3000),
-      watch: false,
-      autorestart: true,
-    },
-  ],
-};
