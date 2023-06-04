@@ -54,7 +54,7 @@ Logger.init(
   },
   {
     sequelize,
-    tableName: 'loggers',
+    tableName: 'logs',
     timestamps: false,
   }
 );
