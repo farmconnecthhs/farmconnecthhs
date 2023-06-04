@@ -55,7 +55,10 @@ const Map: React.FunctionComponent<MapProps> = ({ farmProfiles }) => {
         {farmProfiles.map((farmProfile) => (
           <Marker
             key={farmProfile.farmId}
-            position={[farmProfile.latitude, farmProfile.longitude]}
+            position={[
+              farmProfile.latitude || 1.234,
+              farmProfile.longitude || 1.234,
+            ]}
             icon={markerIcon}
           >
             <Popup offset={[0, -22]} className={styles.popup}>
@@ -76,7 +79,6 @@ const Map: React.FunctionComponent<MapProps> = ({ farmProfiles }) => {
                       onClick={() =>
                         openGoogleMaps(
                           farmProfile.streetName,
-                          farmProfile.houseNumber,
                           farmProfile.postalCode,
                           farmProfile.city
                         )

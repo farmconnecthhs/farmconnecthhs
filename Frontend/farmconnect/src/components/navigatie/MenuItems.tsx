@@ -4,6 +4,7 @@ import React from 'react';
 interface Props {
   style?: React.CSSProperties;
   menuItemStyle?: React.CSSProperties;
+  burger?: boolean;
   toggleOpen?: () => void;
 }
 

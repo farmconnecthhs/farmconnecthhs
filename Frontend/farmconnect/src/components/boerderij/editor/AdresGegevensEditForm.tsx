@@ -28,7 +28,7 @@ const AdresGegevensEditForm: React.FunctionComponent<Props> = (
         type={'text'}
         placeholder={'adres'}
         onChange={(e) =>
-          changeAdresGegevens({ ...adresGegevens, adres: e.target.value })
+          changeAdresGegevens({ ...adresGegevens, streetName: e.target.value })
         }
       />
       <input
@@ -36,7 +36,7 @@ const AdresGegevensEditForm: React.FunctionComponent<Props> = (
         type={'text'}
         placeholder={'postcode'}
         onChange={(e) =>
-          changeAdresGegevens({ ...adresGegevens, postcode: e.target.value })
+          changeAdresGegevens({ ...adresGegevens, postalCode: e.target.value })
         }
       />
       <input
@@ -44,7 +44,7 @@ const AdresGegevensEditForm: React.FunctionComponent<Props> = (
         type={'text'}
         placeholder={'stad'}
         onChange={(e) =>
-          changeAdresGegevens({ ...adresGegevens, stad: e.target.value })
+          changeAdresGegevens({ ...adresGegevens, city: e.target.value })
         }
       />
     </div>

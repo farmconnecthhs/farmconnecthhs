@@ -24,15 +24,15 @@ const EditFarmProfile: NextPage = () => {
     useState<string>('');
 
   const [adresGegevens, setAdresGegevens] = useState<Adresgegevens>({
-    straat: '',
-    huisnummer: '',
-    postcode: '',
-    stad: '',
+    streetName: '',
+    houseNumber: '',
+    postalCode: '',
+    city: '',
   });
 
   const [betaalmethoden, setBetaalmethoden] = useState<Betaalmethodes>({
-    contant: false,
-    pin: false,
+    cardPayment: false,
+    cashPayment: false,
   });
 
   const [boerderijNaam, setBoerderijNaam] = useState<string>('');

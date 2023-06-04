@@ -15,11 +15,11 @@ const BetaalmethodesEditForm: React.FunctionComponent<Props> = (props) => {
           type="checkbox"
           id="contant"
           name="contant"
-          checked={props.betaalmethodes.contant}
+          checked={props.betaalmethodes.cashPayment}
           onChange={(e) =>
             props.setBetaalmethodes({
               ...props.betaalmethodes,
-              contant: e.target.checked,
+              cashPayment: e.target.checked,
             })
           }
         />
@@ -30,11 +30,11 @@ const BetaalmethodesEditForm: React.FunctionComponent<Props> = (props) => {
           type="checkbox"
           id="pin"
           name="pin"
-          checked={props.betaalmethodes.pin}
+          checked={props.betaalmethodes.cardPayment}
           onChange={(e) =>
             props.setBetaalmethodes({
               ...props.betaalmethodes,
-              pin: e.target.checked,
+              cardPayment: e.target.checked,
             })
           }
         />

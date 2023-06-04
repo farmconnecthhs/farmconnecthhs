@@ -2,7 +2,7 @@
 import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
-  signInWithPopup,
+  // signInWithPopup,
   signInWithRedirect,
 } from '@firebase/auth';
 import { NextPage } from 'next';

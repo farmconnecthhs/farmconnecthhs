@@ -7,58 +7,46 @@ import styles from './page.module.css';
 import { FavoritesList } from '@/components/gebruiker/favorites/FavoritesList';
 import type { User } from '@/components/gebruiker/profile/interfaces/User';
 
-type ProfileProps = {
-  user: User;
-};
-
-interface Params {
-  id: string;
-}
-
 // prettier-ignore
 /* @ts-expect-error Async Server Component */
-const ProfielPage: NextPage<ProfileProps> = async ({
-                                                     params,
-                                                   }: {
-  params: Params;
-}) => {
+const ProfielPage: NextPage<Params> = async (
+  { params }: { params: { id: string } }) => {
   const fetchUserData = async () => {
     try {
       const response = await fetch(
-        'http://localhost:3001/api/v1/users/firebase/' + params.id,
+        `http://localhost:3001/api/v1/users/firebase/${params.id}`,
       );
       if (!response.ok) {
         return undefined;
       }
-      return await response.json();
+      return await response.json() as User;
     } catch (error) {
       console.log('Error fetching data:', error);
       if (params.id !== '1') {
         throw notFound();
       }
-      return [];
     }
   };
 
-  const user: User = await fetchUserData();
+  const user: User | undefined = await fetchUserData();
 
   return (
     <div className={'page content-container'}>
       <div className={'page__header'}>
         <h1 className={'page__title'}>
-          Gebruikersprofiel van {user.user_name}
+          Gebruikersprofiel van {user?.user_name}
         </h1>
       </div>
       <div className={'card card--small margin_s'}>
         <div className={'card__header'}>
-          <h2 className={'card__title'}> {user.user_name}</h2>
+          <h2 className={'card__title'}> {user?.user_name}</h2>
         </div>
         <div className={'card__body'}>
           <p className={'card__text'}>
-            Naam: {user.first_name} {user.last_name}
+            Naam: {user?.first_name} {user?.last_name}
           </p>
-          <p className={'card__text'}>Email: {user.email_address}</p>
-          <p className={'card__text'}>Telefoonnummer: {user.phone_number}</p>
+          <p className={'card__text'}>Email: {user?.email_address}</p>
+          <p className={'card__text'}>Telefoonnummer: {user?.phone_number}</p>
         </div>
         <div className={styles['card__footer']}>
           <button className={'button--icon button--primary'}>

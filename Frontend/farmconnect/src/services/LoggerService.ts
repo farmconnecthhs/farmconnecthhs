@@ -1,3 +1,9 @@
+/**
+ * @param{string} serviceName
+ * @param{string} level
+ * @param{string} message
+ * @param{number} userId
+ */
 async function logToDatabase(
   serviceName: string,
   level: string,
@@ -26,15 +32,40 @@ async function logToDatabase(
   }
 }
 
+/**
+ * LoggerService class
+ * @class
+ * @classdesc LoggerService class to log to database
+ */
 class LoggerService {
+
+  /**
+   * Log info to database
+   * @param{string} serviceName
+   * @param{string} message
+   * @param{number} userId
+   */
   async debug(serviceName: string, message?: string, userId?: number) {
     await logToDatabase(serviceName, 'debug', message, userId);
   }
 
+  /**
+   * Log info to database
+   * @param{string} serviceName
+   * @param{string} message
+   * @param{number} userId
+   */
   async warning(serviceName: string, message?: string, userId?: number) {
     await logToDatabase(serviceName, 'warning', message, userId);
   }
 
+  /**
+   * Log error to database
+   * @param{string} serviceName
+   * @param{string} message
+   * @param{number} userId
+   * @param{Error} error
+   */
   async error(
     serviceName: string,
     message?: string,

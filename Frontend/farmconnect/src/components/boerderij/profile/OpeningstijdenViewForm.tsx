@@ -1,24 +1,26 @@
 import React from 'react';
 
-import { Openingstijd } from '@/components/boerderij/editor/interfaces/Openingstijd';
-import OpeningstijdenViewRow from '@/components/boerderij/profile/OpeningstijdenViewRow';
+import { Openingstijden } from '@/components/boerderij/editor/interfaces/Openingstijden';
+// import OpeningstijdenViewRow from '@/components/boerderij/profile/OpeningstijdenViewRow';
 
 interface OpeningstijdenViewFormProps {
-  openingstijden: Openingstijd[];
+  openingstijden: Openingstijden;
 }
 
 const OpeningstijdenViewForm: React.FunctionComponent<
   OpeningstijdenViewFormProps
 > = (props) => {
-  const { openingstijden } = props;
+  // const { openingstijden } = props;
 
   const getOpeningTimes = () => {
-    return openingstijden.map((openingstijd) => (
-      <OpeningstijdenViewRow
-        key={openingstijd.day}
-        openingstijd={openingstijd}
-      />
-    ));
+    return (
+      <div>test</div>
+      // openingstijden.map((openingstijden) => (
+      //   <OpeningstijdenViewRow
+      //     key={openingstijd.day}
+      //     openingstijd={openingstijd}
+      //   />
+    );
   };
 
   return (
