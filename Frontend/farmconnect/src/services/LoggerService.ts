@@ -35,8 +35,19 @@ class LoggerService {
     await logToDatabase(serviceName, 'warning', message, userId);
   }
 
-  async error(serviceName: string, message?: string, userId?: number) {
-    await logToDatabase(serviceName, 'error', message, userId);
+  async error(
+    serviceName: string,
+    message?: string,
+    userId?: number,
+    error?: Error
+  ) {
+    const formattedError = error
+      ? `${error.name}: ${error.message} : ${error.stack}`
+      : '';
+    const fullMessage = message
+      ? `${message} : ${formattedError}`
+      : formattedError;
+    await logToDatabase(serviceName, 'error', fullMessage, userId);
   }
 }
 
